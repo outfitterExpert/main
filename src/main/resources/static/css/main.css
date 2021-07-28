@@ -632,6 +632,9 @@
         right: 0;
 
     }
+    .hidden-info{
+        display: none;
+    }
 
 
 }

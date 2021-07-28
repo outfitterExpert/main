@@ -23,8 +23,9 @@
            <div id="listing-page">
 <!--            <img class="buck" src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}"/>-->
                <img class="buck" src="../../static/img/buck-img.jpg" th:src="${listing.imgUrl}"/>
-               <h3 class="first-txt" th:text="${listing.location}"/>
-               <h3 class="second-txt" th:text="${listing.title}"/>
+               <h3 class="first-txt listing-location" th:text="${listing.location}"/>
+               <h3 class="second-txt listing-title" th:text="${listing.title}"/>
+               <p class="hidden-info listing-id" th:text="${listing.id}"></p>
            </div>
         </button>
         </form>
@@ -37,6 +38,11 @@
     <div class="map col-lg-5 col-md-0 col-sm-0">
         <div class="navstyle">
         <div id='map' style='width: 50vw; height: 92vh; margin: 60px;'></div>
+            <div class="listing-pg" th:each="listing : ${listings}">
+            <div class="first-txt listing-location" th:text="${listing.location}"></div>
+            <div class="second-txt listing-title" th:text="${listing.title}"></div>
+            <p class="hidden-info listing-id" th:text="${listing.id}"></p>
+            </div>
         </div>
     </div>
     <script th:replace="partials/scripts :: scripts"/>
