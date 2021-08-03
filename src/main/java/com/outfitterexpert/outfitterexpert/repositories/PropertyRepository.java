@@ -10,6 +10,11 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
     Property findById(long id);
 
     @Query("FROM Property p where p.user.id = ?1")
+    @Query("SELECT p FROM Property p where p.location = ?1")
+    @Query("SELECT p FROM Property p where p.animals = ?1")
+
+
+
     List<Property> findByUserId(long id);
 
     Property findTopByOrderByIdDesc();
