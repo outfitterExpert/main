@@ -22,6 +22,7 @@ CREATE TABLE post_land (
     animals TEXT NOT NULL,
     price DOUBLE NOT NULL,
     duration DATE NOT NULL,
+    slots INT NOT NULL,
     guided BOOL NOT NULL,
     lodging BOOL NOT NULL,
     method VARCHAR(50) NOT NULL,
