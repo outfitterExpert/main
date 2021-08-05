@@ -1,9 +1,9 @@
+DROP DATABASE IF EXISTS outfitter_db;
 CREATE DATABASE outfitter_db;
 
 USE outfitter_db;
 
 DROP TABLE IF EXISTS users;
-
 CREATE TABLE users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
@@ -16,7 +16,6 @@ CREATE TABLE users (
 );
 
 DROP TABLE IF EXISTS post_land;
-
 CREATE TABLE post_land (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     animals TEXT NOT NULL,
@@ -30,13 +29,12 @@ CREATE TABLE post_land (
 );
 
 DROP TABLE IF EXISTS post_review;
-
 CREATE TABLE post_review (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     title VARCHAR(50) NOT NULL,
     body TEXT NOT NULL,
     rating INT UNSIGNED NOT NULL,
-    land_id INT,
+    land_id INT UNSIGNED NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (land_id) REFERENCES post_land(id)
+    FOREIGN KEY (land_id) REFERENCES post_land (id)
 );
