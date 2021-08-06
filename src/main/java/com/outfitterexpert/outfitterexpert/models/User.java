@@ -1,15 +1,36 @@
 package com.outfitterexpert.outfitterexpert.models;
 
-public class Users {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID;
+
+    @Column(nullable = false)
     private String username;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
+
+    @Column(nullable = false)
     private boolean outfitter;
 
-    public Users(String username, String password, String email, String firstName, String lastName, boolean outfitter) {
+    public User() {
+    }
+
+    public User(String username, String password, String email, String firstName, String lastName, boolean outfitter) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -18,7 +39,7 @@ public class Users {
         this.outfitter = outfitter;
     }
 
-    public Users(long ID, String username, String password, String email, String firstName, String lastName, boolean outfitter) {
+    public User(long ID, String username, String password, String email, String firstName, String lastName, boolean outfitter) {
         this.ID = ID;
         this.username = username;
         this.password = password;
@@ -26,10 +47,6 @@ public class Users {
         this.firstName = firstName;
         this.lastName = lastName;
         this.outfitter = outfitter;
-    }
-
-    public Users() {
-
     }
 
     public long getID() {
