@@ -14,3 +14,4 @@ Hunters should NOT be able to see the exact location of a hunt, instead they sho
 
 Long description:
 OutfitterExpert is a hunting and fishing online travel booking marketplace. By designing a seamless and user friendly platform for Guides, Property Owners and Fishing Charters to advertise their professional services, we will create the ultimate one stop shop for Outdoorsman to book their next adventure. All users will benefit from our easy to use, consolidated platform due to its ability to sort and filter by region, species, trip price, etc. This ensures that all desired trips are easy to advertise, search, compare and book. OutfitterExpert will make hunting and fishing travel booking effective, approachable and convenient for all users.
+# main
