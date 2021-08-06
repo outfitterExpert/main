@@ -1,12 +1,10 @@
 package com.outfitterexpert.outfitterexpert.models;
 
-import org.apache.catalina.User;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "reviews")
-public class Reviews {
+public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -21,13 +19,28 @@ public class Reviews {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Reviews() {
+    @ManyToOne
+    @JoinColumn(name = "land_id")
+    private Property property;
+
+
+
+    public Review() {
     }
 
-    public Reviews(String title, String body, User user) {
+    public Review(String title, String body, User user, Property property) {
         this.title = title;
         this.body = body;
         this.user = user;
+        this.property = property;
+    }
+
+    public Review(long id, String title, String body, User user, Property property) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.user = user;
+        this.property = property;
     }
 
     public String getTitle() {
@@ -60,5 +73,13 @@ public class Reviews {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Property getProperty() {
+        return property;
+    }
+
+    public void setProperty(Property property) {
+        this.property = property;
     }
 }

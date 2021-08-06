@@ -4,24 +4,24 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "animals")
-
-public class Animals {
+public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(nullable = false)
     private String name;
 
 
-    public Animals() {
+    public Animal() {
     }
 
-    public Animals(long id, String name) {
-        this.id = id;
+    public Animal(String name) {
         this.name = name;
     }
 
-    public Animals(String name) {
+    public Animal(long id, String name) {
+        this.id = id;
         this.name = name;
     }
 
