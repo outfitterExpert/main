@@ -1,6 +1,7 @@
 package com.outfitterexpert.outfitterexpert.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "animals")
@@ -12,17 +13,22 @@ public class Animal {
     @Column(nullable = false)
     private String name;
 
+    @ManyToMany(mappedBy = "animals")
+    private List<Property> properties;
+
 
     public Animal() {
     }
 
-    public Animal(String name) {
+    public Animal(String name, List<Property> properties) {
         this.name = name;
+        this.properties = properties;
     }
 
-    public Animal(long id, String name) {
+    public Animal(long id, String name, List<Property> properties) {
         this.id = id;
         this.name = name;
+        this.properties = properties;
     }
 
     public long getId() {
@@ -39,5 +45,13 @@ public class Animal {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
     }
 }

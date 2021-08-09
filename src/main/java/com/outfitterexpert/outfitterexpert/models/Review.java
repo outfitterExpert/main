@@ -12,7 +12,7 @@ public class Review {
     @Column(nullable = false, length = 125)
     private String title;
 
-    @Column(nullable = false, length = 600)
+    @Column(nullable = false, length = 1200)
     private String body;
 
     @ManyToOne
