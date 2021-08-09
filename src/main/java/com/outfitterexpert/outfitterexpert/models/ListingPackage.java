@@ -22,6 +22,15 @@ public class ListingPackage {
     private int duration;
 
     @Column(nullable = false)
+    private String description;
+
+    @Column(nullable = false)
+    private boolean guided;
+
+    @Column(nullable = false)
+    private boolean lodging;
+
+    @Column(nullable = false)
     private Date post_exp;
 
     @ManyToOne
@@ -31,19 +40,25 @@ public class ListingPackage {
     public ListingPackage() {
     }
 
-    public ListingPackage(long property_id, double price, int duration, Date post_exp, Property property) {
+    public ListingPackage(long property_id, double price, int duration, String description, boolean guided, boolean lodging, Date post_exp, Property property) {
         this.property_id = property_id;
         this.price = price;
         this.duration = duration;
+        this.description = description;
+        this.guided = guided;
+        this.lodging = lodging;
         this.post_exp = post_exp;
         this.property = property;
     }
 
-    public ListingPackage(long id, long property_id, double price, int duration, Date post_exp, Property property) {
+    public ListingPackage(long id, long property_id, double price, int duration, String description, boolean guided, boolean lodging, Date post_exp, Property property) {
         this.id = id;
         this.property_id = property_id;
         this.price = price;
         this.duration = duration;
+        this.description = description;
+        this.guided = guided;
+        this.lodging = lodging;
         this.post_exp = post_exp;
         this.property = property;
     }
@@ -94,5 +109,29 @@ public class ListingPackage {
 
     public void setProperty(Property property) {
         this.property = property;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isGuided() {
+        return guided;
+    }
+
+    public void setGuided(boolean guided) {
+        this.guided = guided;
+    }
+
+    public boolean isLodging() {
+        return lodging;
+    }
+
+    public void setLodging(boolean lodging) {
+        this.lodging = lodging;
     }
 }
