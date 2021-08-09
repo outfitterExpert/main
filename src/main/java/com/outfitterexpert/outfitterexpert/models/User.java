@@ -48,6 +48,13 @@ public class User {
 
     public User() {
     }
+    public User(User copy) {
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+//        review = copy.reviews;
+    }
 
     public User(long id, String username, String password, String email, String firstName, String lastName, boolean outfitter, List<Property> properties, List<Review> reviews, List<Booking> bookings, List<Property> bookmarks) {
         this.id = id;
@@ -82,11 +89,12 @@ public class User {
         this.outfitter = outfitter;
     }
 
-    public long getID() {
+
+    public long getId() {
         return id;
     }
 
-    public void setID(long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
