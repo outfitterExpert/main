@@ -3,10 +3,10 @@ USE outfitter_db;
 # TRUNCATE TABLE users;
 
 INSERT INTO users (username, password, first_name, last_name, email, outfitter)
-VALUES  ('austin_user', 'password1', 'Austin', 'Whitley', 'admin1@email.com', true),
-        ('naysa_user', 'password1', 'Naysa', 'Moreno', 'admin1@email.com', true),
-        ('irvin_user', 'password1', 'Irvin', 'Buendia', 'admin1@email.com', true),
-        ('benny_user', 'password1', 'Benny', 'Alvarez', 'admin1@email.com', true);
+VALUES  ('austin_user', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Austin', 'Whitley', 'admin1@email.com', true),
+        ('naysa_user', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Naysa', 'Moreno', 'admin1@email.com', true),
+        ('irvin_user', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Irvin', 'Buendia', 'admin1@email.com', true),
+        ('benny_user', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Benny', 'Alvarez', 'admin1@email.com', true);
 
 INSERT INTO animals (id, name)
 VALUES (1, 'Bear'),
