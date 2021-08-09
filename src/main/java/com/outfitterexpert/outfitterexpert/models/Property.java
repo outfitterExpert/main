@@ -1,6 +1,7 @@
 package com.outfitterexpert.outfitterexpert.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "properties")
@@ -35,7 +36,43 @@ public class Property {
     @JoinColumn(name="owner_id")
     private User user;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Review> reviews;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
+    private List<Booking> bookings;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
+    private List<ListingPackage> packages;
+
+    @ManyToMany(mappedBy = "properties")
+    private List<Property> properties;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="post_animals",
+            joinColumns = {@JoinColumn(name="animal_id")},
+            inverseJoinColumns = {@JoinColumn(name="property_id")}
+    )
+    private List<Animal> animals;
+
     public Property (){
+    }
+
+    public Property(String username, String title, String location, int slots, boolean guided, boolean lodging, String method, User user, List<Review> reviews, List<Booking> bookings, List<ListingPackage> packages, List<Property> properties, List<Animal> animals) {
+        this.username = username;
+        this.title = title;
+        this.location = location;
+        this.slots = slots;
+        this.guided = guided;
+        this.lodging = lodging;
+        this.method = method;
+        this.user = user;
+        this.reviews = reviews;
+        this.bookings = bookings;
+        this.packages = packages;
+        this.properties = properties;
+        this.animals = animals;
     }
 
     public Property(String username, String title, String location, int slots, boolean guided, boolean lodging, String method, User user) {
@@ -131,5 +168,45 @@ public class Property {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
+    public List<ListingPackage> getPackages() {
+        return packages;
+    }
+
+    public void setPackages(List<ListingPackage> packages) {
+        this.packages = packages;
+    }
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
+    }
+
+    public List<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(List<Animal> animals) {
+        this.animals = animals;
     }
 }
