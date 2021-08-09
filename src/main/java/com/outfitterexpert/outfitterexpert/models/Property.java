@@ -45,8 +45,8 @@ public class Property {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
     private List<ListingPackage> packages;
 
-    @ManyToMany(mappedBy = "properties")
-    private List<Property> properties;
+//    @ManyToMany(mappedBy = "property")
+//    private List<Property> properties;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -59,7 +59,7 @@ public class Property {
     public Property (){
     }
 
-    public Property(String username, String title, String location, int slots, boolean guided, boolean lodging, String method, User user, List<Review> reviews, List<Booking> bookings, List<ListingPackage> packages, List<Property> properties, List<Animal> animals) {
+    public Property(String username, String title, String location, int slots, boolean guided, boolean lodging, String method, User user, List<Review> reviews, List<Booking> bookings, List<ListingPackage> packages, List<Animal> animals) {
         this.username = username;
         this.title = title;
         this.location = location;
@@ -71,7 +71,6 @@ public class Property {
         this.reviews = reviews;
         this.bookings = bookings;
         this.packages = packages;
-        this.properties = properties;
         this.animals = animals;
     }
 
@@ -194,13 +193,13 @@ public class Property {
         this.packages = packages;
     }
 
-    public List<Property> getProperties() {
-        return properties;
-    }
-
-    public void setProperties(List<Property> properties) {
-        this.properties = properties;
-    }
+//    public List<Property> getProperties() {
+//        return properties;
+//    }
+//
+//    public void setProperties(List<Property> properties) {
+//        this.properties = properties;
+//    }
 
     public List<Animal> getAnimals() {
         return animals;
