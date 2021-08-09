@@ -12,7 +12,7 @@ public class ListingPackage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, insertable = false, updatable = false)
     private long property_id;
 
     @Column(nullable = false)
