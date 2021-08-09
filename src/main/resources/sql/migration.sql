@@ -3,6 +3,7 @@ CREATE DATABASE outfitter_db;
 
 USE outfitter_db;
 
+
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
