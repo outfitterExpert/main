@@ -20,19 +20,19 @@ public class ListingController {
 
 
 
-    @GetMapping("/listings")
-    // listing/index
-
-    @GetMapping("/listings/{id}")
-    // listings/show
-
-    @GetMapping("/listings/{id}/edit")
-    // listings/edit
-
-    @GetMapping("/listings/create")
-    // listings/create
-
-    @GetMapping("/listings/delete/{id}")
-    // redirect:/listings
+//    @GetMapping("/listings")
+//    // listing/index
+//
+//    @GetMapping("/listings/{id}")
+//    // listings/show
+//
+//    @GetMapping("/listings/{id}/edit")
+//    // listings/edit
+//
+//    @GetMapping("/listings/create")
+//    // listings/create
+//
+//    @GetMapping("/listings/delete/{id}")
+//    // redirect:/listings
 
 }
