@@ -42,6 +42,9 @@ public class Property {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
     private List<Booking> bookings;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
+    private List<ListingPackage> packages;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name="post_animals",
