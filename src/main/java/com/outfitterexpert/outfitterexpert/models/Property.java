@@ -1,6 +1,7 @@
 package com.outfitterexpert.outfitterexpert.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "properties")
@@ -34,6 +35,20 @@ public class Property {
     @ManyToOne
     @JoinColumn(name="owner_id")
     private User user;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Review> reviews;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
+    private List<Booking> bookings;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="post_animals",
+            joinColumns = {@JoinColumn(name="animal_id")},
+            inverseJoinColumns = {@JoinColumn(name="property_id")}
+    )
+    private List<Animal> animals;
 
     public Property (){
     }

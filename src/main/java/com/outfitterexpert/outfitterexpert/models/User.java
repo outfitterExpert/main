@@ -1,13 +1,14 @@
 package com.outfitterexpert.outfitterexpert.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ID;
+    private long id;
 
     @Column(nullable = false)
     private String username;
@@ -27,6 +28,16 @@ public class User {
     @Column(nullable = false)
     private boolean outfitter;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Property> properties;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Review> reviews;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Booking> bookings;
+
+
     public User() {
     }
 
@@ -39,8 +50,8 @@ public class User {
         this.outfitter = outfitter;
     }
 
-    public User(long ID, String username, String password, String email, String firstName, String lastName, boolean outfitter) {
-        this.ID = ID;
+    public User(long id, String username, String password, String email, String firstName, String lastName, boolean outfitter) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -50,11 +61,11 @@ public class User {
     }
 
     public long getID() {
-        return ID;
+        return id;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setID(long id) {
+        this.id = id;
     }
 
     public String getUsername() {
