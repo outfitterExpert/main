@@ -9,35 +9,34 @@
 
     <form action="/listings/create" th:action="@{listings/create}" method="post" th:object="${listing}">
         <label for="listing-title">Title:</label>
-        <input id="listing-title" name="title" type="text" th:value="*{title}" th:field="*{title}" />
+        <input id="listing-title" name="title" type="text" th:field="*{title}" />
         <br/>
         <label for="listing-location">Location:</label>
-        <input id="listing-location" name="location" type="text" th:value="*{location}"  th:field="*{location}" />
+        <input id="listing-location" name="location" type="text" th:field="*{location}" />
         <br/>
         <label for="listing-slots">Slots:</label>
-        <input id="listing-slots" name="slots" type="text" th:value="*{slots}" th:field="*{slots}" />
+        <input id="listing-slots" name="slots" type="text" th:field="*{slots}" />
         <br/>
 
         <div class="form-check form-switch">
-            <input class="form-check-input" name="guided" type="checkbox" id="listing-guided" th:value="*{guided}" th:field="*{guided}">
+            <input class="form-check-input" name="guided" type="checkbox" id="listing-guided" th:field="*{guided}">
             <label class="form-check-label" for="listing-guided">
                 Guided
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" name="lodging" type="checkbox" id="listing-lodging" th:value="*{lodging}" th:field="*{lodging}">
+            <input class="form-check-input" name="lodging" type="checkbox" id="listing-lodging" th:field="*{lodging}">
             <label class="form-check-label" for="listing-lodging">
                 Lodging
             </label>
         </div>
         <br/>
 
-        <select class="form-select" aria-label="Default select example" th:value="*{blinds}" th:value="*{bow}" th:value="*{decoy}" th:value="*{rifle}" th:value="*{tracking}" th:value="*{trapping}" th:field="*{method}" >
-            <option selected>Choose a method</option>
+        <select class="form-select" aria-label="Default select example" name="method" th:field="*{method}" >
             <option value="blinds">Blinds</option>
             <option value="bow">Bow</option>
             <option value="decoy">Decoy</option>
-            <option value="rifle">Rifle</option>
+            <option value="rifle" selected>Rifle</option>
             <option value="tracking">Tracking</option>
             <option value="trapping">Trapping</option>
         </select>
