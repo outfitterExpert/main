@@ -23,8 +23,6 @@ public class Review {
     @JoinColumn(name = "land_id")
     private Property property;
 
-
-
     public Review() {
     }
 
