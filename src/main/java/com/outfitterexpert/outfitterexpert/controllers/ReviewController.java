@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -47,6 +48,14 @@ public class ReviewController {
 
     }
 
-//    @PostMapping("/review")
+    @PostMapping("/reviews/create")
+    public String createReview(@ModelAttribute Review review){
+        User user = userDao.findById(1L);
+        review.setUser(user);
+        reviewDao.save(review);
+        return "redirect:/reviews";
+    }
 
 }
+
+//For Wed 8-10-21, we will finish review, and then work on edit and delete GET and POST mapping.
