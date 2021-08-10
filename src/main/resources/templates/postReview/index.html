@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<h1>Here are all the Reviews</h1>
+
+<h1>Blog</h1>
+    <div th:each="review : ${reviews}">
+        <p th:text="${review.title}" />
+        <p th:text="${review.body}" />
+        <p th:text="${review.rating}" />
+    </div>
+</body>
+</html>    

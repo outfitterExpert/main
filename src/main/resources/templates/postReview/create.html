@@ -13,10 +13,8 @@
                     <textarea id="body" name="body" class="materialize-textarea" th:field="*{body}"></textarea>
                     <label for="body">Body</label>
 
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-                    </div>
+                    <input id="rating" name="rating" type="number" class="validate" th:field="*{rating}">
+                    <label for="rating">Rating</label>
 
                     <button type="submit" value="submit" class="waves-effect waves-purple btn-small indigo accent-3">Submit</button>
                 </form>

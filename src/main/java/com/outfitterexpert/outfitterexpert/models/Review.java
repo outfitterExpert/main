@@ -15,6 +15,9 @@ public class Review {
     @Column(nullable = false, length = 1200)
     private String body;
 
+    @Column(nullable = false)
+    private long rating;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -26,14 +29,14 @@ public class Review {
     public Review() {
     }
 
-    public Review(String title, String body, User user, Property property) {
+    public Review(String title, String body, long rating, User user, Property property) {
         this.title = title;
         this.body = body;
         this.user = user;
         this.property = property;
     }
 
-    public Review(long id, String title, String body, User user, Property property) {
+    public Review(long id, String title, String body, long rating, User user, Property property) {
         this.id = id;
         this.title = title;
         this.body = body;
@@ -80,4 +83,14 @@ public class Review {
     public void setProperty(Property property) {
         this.property = property;
     }
+
+    public long getRating() {
+        return rating;
+    }
+
+    public void setRating(long rating) {
+        this.rating = rating;
+    }
+
+
 }
