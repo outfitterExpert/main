@@ -6,5 +6,13 @@
 </head>
 <body>
 <h1>Show all available listings</h1>
+<div th:each="listing : ${listings}">
+    <div>
+        <div class="card-content preview-post">
+            <h4 class="card-title" th:text="${listing.title}" />
+            <p th:text="${listing.description}" />
+        </div>
+    </div>
+</div>
 </body>
 </html>

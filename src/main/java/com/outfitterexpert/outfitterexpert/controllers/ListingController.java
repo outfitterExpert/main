@@ -4,6 +4,7 @@ package com.outfitterexpert.outfitterexpert.controllers;
 import com.outfitterexpert.outfitterexpert.repositories.PropertyRepository;
 import com.outfitterexpert.outfitterexpert.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -18,10 +19,11 @@ public class ListingController {
     }
 
 
-
-
-//    @GetMapping("/listings")
-//    // listing/index
+    @GetMapping("/listings")
+    public String viewPosts(Model model) {
+        model.addAttribute("listings", propDao.findAll());
+        return "listings/index";
+    }
 //
 //    @GetMapping("/listings/{id}")
 //    // listings/show
