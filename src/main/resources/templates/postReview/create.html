@@ -6,6 +6,19 @@
 </head>
 <body>
     <h1>Write a Review on a Listing</h1>
+        <h1>Don't lose hope!</h1>
+                <form action="/reviews/create" th:action="@{/reivews/create}" method="post" th:object="${review}">
+                    <input id="title" name="title" type="text" class="validate" th:field="*{title}">
+                    <label for="title">Title</label>
+                    <textarea id="body" name="body" class="materialize-textarea" th:field="*{body}"></textarea>
+                    <label for="body">Body</label>
 
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                    </div>
+
+                    <button type="submit" value="submit" class="waves-effect waves-purple btn-small indigo accent-3">Submit</button>
+                </form>
 </body>
 </html>    
