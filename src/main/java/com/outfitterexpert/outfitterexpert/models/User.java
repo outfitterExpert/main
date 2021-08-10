@@ -50,9 +50,17 @@ public class User {
     }
     public User(User copy) {
         id = copy.id;
-        email = copy.email;
         username = copy.username;
         password = copy.password;
+        email = copy.email;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
+        outfitter = copy.outfitter;
+        properties = copy.properties;
+        reviews = copy.reviews;
+        bookings = copy.bookings;
+        bookmarks = copy.bookmarks;
+
 //        review = copy.reviews;
     }
 

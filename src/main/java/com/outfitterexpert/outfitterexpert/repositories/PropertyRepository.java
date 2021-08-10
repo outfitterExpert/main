@@ -8,4 +8,5 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
     Property findById(long id);
 
 //    @Query("from outfitter")
+    Property save(Property property);
 }

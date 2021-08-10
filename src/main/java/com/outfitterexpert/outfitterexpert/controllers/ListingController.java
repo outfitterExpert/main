@@ -9,36 +9,52 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ListingController {
-    private final PropertyRepository propDao;
+    private final PropertyRepository propertyDao;
     private final UserRepository userDao;
 
 
     public ListingController(PropertyRepository propDao, UserRepository userDao) {
-        this.propDao = propDao;
+        this.propertyDao = propDao;
         this.userDao = userDao;
     }
 
 
     @GetMapping("/listings")
     public String viewPosts(Model model) {
-        model.addAttribute("listings", propDao.findAll());
+        model.addAttribute("listings", propertyDao.findAll());
         return "listings/index";
     }
 
-    @GetMapping("/listing/create")
+    @GetMapping("/listings/create")
     public String createListing(Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(currentUser != null){
+            model.addAttribute("listing", new Property());
+            return "listings/create";
+        }
+        return "redirect:/listings";
+    }
+
+    @PostMapping("/listings/create")
+    public String submitListing(@ModelAttribute Property property){
 //        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        if(currentUser != null){
-//            model.addAttribute("listing", new Property());
-//            return "listings/create";
-//        }
-//        return "redirect:/listings";
-        model.addAttribute("listing", new Property());
-        return "listings/create";
+        User u = userDao.findById(1L);
+
+        property.setUser(u);
+        propertyDao.save(property);
+
+        System.out.println(property.getTitle());
+        System.out.println(property.getLocation());
+        System.out.println(property.getSlots());
+        System.out.println(property.isLodging());
+        System.out.println(property.getUser().getId());
+
+        return "redirect:/listings";
     }
 
 //    @PostMapping("/listing/create")
