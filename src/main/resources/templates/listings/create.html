@@ -8,7 +8,7 @@
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
 <h1>Create a new listing form</h1>
-    <form th:action="@{listings/create}" method="POST" th:object="${listing}">
+    <form th:action="@{/listings/create}" method="POST" th:object="${listing}">
         <label for="listing-title">Title:</label>
         <input id="listing-title" type="text" th:field="*{title}" />
         <br/>

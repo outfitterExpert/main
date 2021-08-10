@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Package Form</title>
+</head>
+<body>
+<form>
+    <form th:action="@{/listings/package/create}" method="POST" th:object="${property}">
+        <label for="price">Price</label>
+        <input id="price" th:field="*{price}" />
+
+        <label for="duration">Duration</label>
+        <input id="duration" th:field="*{duration}" />
+
+        <label for="description">Description</label>
+        <textarea id="description" th:field="*{description}" placeholder="Activities provided"></textarea>
+        <div class="btn-group">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Small button
+            </button>
+            <div class="dropdown-menu">0
+
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="outfitter" />
+            <label class="form-check-label" for="outfitter" th:field="*{outfitter}"
+            >Outfitter?</label
+            >
+        </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" name="guided" type="checkbox" id="listing-guided" th:value="*{guided}" th:field="*{guided}">
+                    <label class="form-check-label" for="listing-guided">
+                        Guided
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="lodging" type="checkbox" id="listing-lodging" th:value="*{lodging}" th:field="*{lodging}">
+                    <label class="form-check-label" for="listing-lodging">
+                        Lodging
+                    </label>
+                </div>
+</form>
+</body>
+</html>
