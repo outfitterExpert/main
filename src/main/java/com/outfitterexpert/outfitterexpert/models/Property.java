@@ -12,9 +12,6 @@ public class Property {
     private long id;
 
     @Column(nullable = false)
-    private String username;
-
-    @Column(nullable = false)
     private String title;
 
     @Column(nullable = false)
@@ -59,8 +56,7 @@ public class Property {
     public Property (){
     }
 
-    public Property(String username, String title, String location, int slots, boolean guided, boolean lodging, String method, User user, List<Review> reviews, List<Booking> bookings, List<ListingPackage> packages, List<Animal> animals) {
-        this.username = username;
+    public Property(String title, String location, int slots, boolean guided, boolean lodging, String method, User user, List<Review> reviews, List<Booking> bookings, List<ListingPackage> packages, List<Animal> animals) {
         this.title = title;
         this.location = location;
         this.slots = slots;
@@ -69,13 +65,11 @@ public class Property {
         this.method = method;
         this.user = user;
         this.reviews = reviews;
-        this.bookings = bookings;
         this.packages = packages;
         this.animals = animals;
     }
 
-    public Property(String username, String title, String location, int slots, boolean guided, boolean lodging, String method, User user) {
-        this.username = username;
+    public Property(String title, String location, int slots, boolean guided, boolean lodging, String method, User user) {
         this.title = title;
         this.location = location;
         this.slots = slots;
@@ -85,9 +79,8 @@ public class Property {
         this.user = user;
     }
 
-    public Property(long id, String username, String title, String location, int slots, boolean guided, boolean lodging, String method, User user) {
+    public Property(long id, String title, String location, int slots, boolean guided, boolean lodging, String method, User user) {
         this.id = id;
-        this.username = username;
         this.title = title;
         this.location = location;
         this.slots = slots;
@@ -103,14 +96,6 @@ public class Property {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getTitle() {

@@ -25,13 +25,9 @@
     <input id="last_name" type="text" th:field="*{lastName}" />
 
     <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="outfitter" />
-        <label class="form-check-label" for="outfitter" th:field="*{outfitter}"
-        >Outfitter?</label
-        >
+        <input class="form-check-input" name="outfitter" th:field="*{outfitter}" type="checkbox" id="outfitter" />
+        <label class="form-check-label" for="outfitter" >Outfitter?</label>
     </div>
-
-
 
     <input value="Sign me up!" type="submit" />
 </form>

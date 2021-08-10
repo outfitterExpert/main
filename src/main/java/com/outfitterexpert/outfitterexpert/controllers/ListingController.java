@@ -42,8 +42,10 @@ public class ListingController {
 
     @PostMapping("/listings/create")
     public String submitListing(@ModelAttribute Property property){
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        property.setUser(currentUser);
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User u = userDao.findById(1L);
+
+        property.setUser(u);
         propertyDao.save(property);
 
         System.out.println(property.getTitle());
