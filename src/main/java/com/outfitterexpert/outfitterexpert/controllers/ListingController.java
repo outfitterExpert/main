@@ -57,6 +57,38 @@ public class ListingController {
         return "redirect:/listings";
     }
 
+    @GetMapping("/listings")
+    public String viewPackages(Model model) {
+        model.addAttribute("package", propertyDao.findAll());
+        return "listings/packages";
+    }
+    @GetMapping("/listings/package/create")
+    public String createPackage(Model model){
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if(currentUser != null){
+                model.addAttribute("package", new Property());
+                return "listings/package/create";
+            }
+            return "redirect:/listings/package";
+    }
+
+    @PostMapping("/listings/package/create")
+    public String submitPackage(@ModelAttribute Property p){
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User u = userDao.findById(1L);
+
+        p.setUser(u);
+        propertyDao.save(p);
+
+        System.out.println(p.getProperty_id());
+        System.out.println(p.getDescription());
+        System.out.println(p.getDuration());
+        System.out.println(p.isGuided());
+        System.out.println(p.getUser().getId());
+
+        return "redirect:/listings/package";
+
+
 //    @PostMapping("/listing/create")
 //    public String postNewListing(){
 //
