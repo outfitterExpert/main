@@ -6,7 +6,20 @@
 </head>
 <body>
 <h1>Viewing a single listing page</h1>
-<br>
+<h3 th:text="${listing.title}"/>
+    <p th:text="${listing.location}"/>
+    <p th:text="${listing.slots}"/>
+    <p th:text="${listing.guided}"/>
+    <p th:text="${listing.lodging}"/>
+    <p th:text="${listing.method}"/>
+<!--<div th:if="${isPostOwner}">-->
+<!--    <form th:action="@{/posts/{id}/delete(id = ${post.id})}" method="post">-->
+<!--        <button class="waves-effect waves-purple btn-small indigo accent-3">Delete Post</button>-->
+<!--    </form>-->
+<!--    <a th:href="@{/posts/{id}/edit(id = ${post.id})}"-->
+<!--       class="waves-effect waves-purple btn-small indigo accent-3">Edit Post</a>-->
+<!--</div>-->
+<br/>
 <h1>Viewing listing's reviews</h1>
 </body>
 </html>

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -88,7 +89,21 @@ public class ListingController {
 //    @PostMapping("/listing/create")
 //    public String postNewListing(){
 //
-//    @GetMapping("/listings/{id}")
+
+    @GetMapping("/listings/{id}")
+    public String singleListing(@PathVariable long id, Model model){
+        Property property = propertyDao.getById(id);
+        boolean isPropertyOwner = false;
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            isPropertyOwner = currentUser.getId() == property.getUser().getId();
+        }
+        model.addAttribute("listing", property);
+        model.addAttribute("isPropertyOwner", isPropertyOwner);
+        return "/listings/show";
+    }
+
+
 //    // listings/show
 //
 //    @GetMapping("/listings/{id}/edit")
