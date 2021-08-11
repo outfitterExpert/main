@@ -8,12 +8,11 @@
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
 <h1>Show all available listings</h1>
-<div th:each="listing : ${listings}">
-    <div>
-<!--        <div class="card-content preview-post">-->
-<!--            -->
-<!--        </div>-->
-        <div class="card text-center">
+    <div th:each="listing : ${listings}">
+
+        <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
+        <button type="submit" class="custom-button">
+        <div  class="card text-center">
             <div class="card-header">
                 <h5 class="card-title" th:text="${listing.title}"></h5>
             </div>
@@ -21,7 +20,7 @@
                 <div style="width: 75%; height: 75%; ">
                     <img src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}" /><span class="bottom-img img-text" th:text="${listing.location}"></span>
                 </div>
-                <a href="/listings/${listing.id}" class="btn btn-primary" style="width: 100%">View post</a>
+                <a href="#" class="btn btn-primary" style="width: 100%">View post</a>
             </div>
             <div class="card-footer text-muted">
                 <div class="row">
@@ -37,7 +36,9 @@
                 </div>
             </div>
         </div>
+        </button>
+        </form>
+
     </div>
-</div>
 </body>
 </html>

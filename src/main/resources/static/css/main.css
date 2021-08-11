@@ -179,3 +179,7 @@ a:hover{
 input{
     padding-right: 40px;
 }
+.custom-button{
+    border: none;
+    border-radius: 5em;
+}
