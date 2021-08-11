@@ -1,7 +1,9 @@
 package com.outfitterexpert.outfitterexpert.controllers;
 
+import com.outfitterexpert.outfitterexpert.models.Property;
 import com.outfitterexpert.outfitterexpert.models.Review;
 import com.outfitterexpert.outfitterexpert.models.User;
+import com.outfitterexpert.outfitterexpert.repositories.PropertyRepository;
 import com.outfitterexpert.outfitterexpert.repositories.ReviewRepository;
 import com.outfitterexpert.outfitterexpert.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,16 +18,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ReviewController {
     private final ReviewRepository reviewDao;
     private final UserRepository userDao;
+    private final PropertyRepository propertyDao;
 
-    public ReviewController(ReviewRepository reviewDao, UserRepository userDao ) {
+    public ReviewController(ReviewRepository reviewDao, UserRepository userDao, PropertyRepository propertyDao ) {
         this.reviewDao = reviewDao;
         this.userDao = userDao;
+        this.propertyDao = propertyDao;
     }
 
     @GetMapping("/reviews")
     public String viewPosts(Model model) {
         model.addAttribute("reviews", reviewDao.findAll());
-        return "/postReview/review";
+        return "/postReview/index";
     }
 
     @GetMapping("/reviews/create")
@@ -50,11 +54,17 @@ public class ReviewController {
 
     @PostMapping("/reviews/create")
     public String createReview(@ModelAttribute Review review){
-        User user = userDao.findById(1L);
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Property property = propertyDao.findById(1L);
+
         review.setUser(user);
+        review.setProperty(property);
         reviewDao.save(review);
         return "redirect:/reviews";
     }
+
+
 
 }
 

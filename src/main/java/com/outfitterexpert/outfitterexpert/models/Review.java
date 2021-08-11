@@ -32,6 +32,7 @@ public class Review {
     public Review(String title, String body, long rating, User user, Property property) {
         this.title = title;
         this.body = body;
+        this.rating = rating;
         this.user = user;
         this.property = property;
     }
@@ -39,6 +40,7 @@ public class Review {
     public Review(long id, String title, String body, long rating, User user, Property property) {
         this.id = id;
         this.title = title;
+        this.rating = rating;
         this.body = body;
         this.user = user;
         this.property = property;
