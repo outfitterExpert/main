@@ -1,8 +1,10 @@
 package com.outfitterexpert.outfitterexpert.controllers;
 
 
+import com.outfitterexpert.outfitterexpert.models.ListingPackage;
 import com.outfitterexpert.outfitterexpert.models.Property;
 import com.outfitterexpert.outfitterexpert.models.User;
+import com.outfitterexpert.outfitterexpert.repositories.PackageRepository;
 import com.outfitterexpert.outfitterexpert.repositories.PropertyRepository;
 import com.outfitterexpert.outfitterexpert.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,11 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ListingController {
     private final PropertyRepository propertyDao;
     private final UserRepository userDao;
+    private final PackageRepository packageDao;
 
 
-    public ListingController(PropertyRepository propDao, UserRepository userDao) {
+    public ListingController(PropertyRepository propDao, UserRepository userDao, PackageRepository packageDao) {
         this.propertyDao = propDao;
         this.userDao = userDao;
+        this.packageDao = packageDao;
     }
 
 
@@ -58,12 +62,34 @@ public class ListingController {
         return "redirect:/listings";
     }
 
+    @GetMapping("/listings/package/create")
+    public String createPackage(Model model){
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if(currentUser != null){
+                model.addAttribute("listPackage", new ListingPackage());
+                return "listings/createPackage";
+            }
+            return "redirect:/listings/index";
+    }
+
+    @PostMapping("/listings/package/create")
+    public String submitPackage(@ModelAttribute ListingPackage listPackage) {
+        Property property = propertyDao.findById(1L);
+        listPackage.setProperty(property);
+        packageDao.save(listPackage);
+
+        System.out.println(listPackage.getProperty_id());
+        System.out.println(listPackage.getDescription());
+        System.out.println(listPackage.getDuration());
+        System.out.println(listPackage.isGuided());
+
+        return "redirect:/listings/package";
+    }
+
 //    @PostMapping("/listing/create")
 //    public String postNewListing(){
 //
-//    }
-//
-//
+
     @GetMapping("/listings/{id}")
     public String singleListing(@PathVariable long id, Model model){
         Property property = propertyDao.getById(id);
@@ -76,6 +102,7 @@ public class ListingController {
         model.addAttribute("isPropertyOwner", isPropertyOwner);
         return "/listings/show";
     }
+
 
 //    // listings/show
 //

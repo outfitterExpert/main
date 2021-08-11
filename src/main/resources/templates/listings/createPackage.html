@@ -5,8 +5,9 @@
     <title>Package Form</title>
 </head>
 <body>
-<form>
-    <form th:action="@{/listings/package/create}" method="POST" th:object="${property}">
+<header th:replace="partials/styles :: styles"></header>
+<nav th:replace="partials/navbar :: navbar"/>
+    <form th:action="@{/listings/package/create}" method="POST" th:object="${listPackage}">
         <label for="price">Price</label>
         <input id="price" th:field="*{price}" />
 
@@ -15,31 +16,22 @@
 
         <label for="description">Description</label>
         <textarea id="description" th:field="*{description}" placeholder="Activities provided"></textarea>
-        <div class="btn-group">
-            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Small button
-            </button>
-            <div class="dropdown-menu">0
-
 
         <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="outfitter" />
-            <label class="form-check-label" for="outfitter" th:field="*{outfitter}"
-            >Outfitter?</label
-            >
+            <input class="form-check-input" name="guided" type="checkbox" id="listing-guided" th:value="*{guided}" th:field="*{guided}">
+            <label class="form-check-label" for="listing-guided">
+                Guided
+            </label>
         </div>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" name="guided" type="checkbox" id="listing-guided" th:value="*{guided}" th:field="*{guided}">
-                    <label class="form-check-label" for="listing-guided">
-                        Guided
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" name="lodging" type="checkbox" id="listing-lodging" th:value="*{lodging}" th:field="*{lodging}">
-                    <label class="form-check-label" for="listing-lodging">
-                        Lodging
-                    </label>
-                </div>
-</form>
+        <div class="form-check">
+            <input class="form-check-input" name="lodging" type="checkbox" id="listing-lodging" th:value="*{lodging}" th:field="*{lodging}">
+            <label class="form-check-label" for="listing-lodging">
+                Lodging
+            </label>
+        </div>
+        <h4>Expiration date</h4>
+        <input type="date" th:field="*{post_exp}">
+        <input type="submit">
+    </form>
 </body>
 </html>
