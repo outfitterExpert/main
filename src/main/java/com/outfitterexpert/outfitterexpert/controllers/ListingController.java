@@ -61,11 +61,6 @@ public class ListingController {
         return "redirect:/listings";
     }
 
-    @GetMapping("/listings")
-    public String viewPackages(Model model) {
-        model.addAttribute("package", propertyDao.findAll());
-        return "listings/index";
-    }
     @GetMapping("/listings/package/create")
     public String createPackage(Model model){
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -92,9 +87,6 @@ public class ListingController {
 
 //    @PostMapping("/listing/create")
 //    public String postNewListing(){
-//
-//    }
-//
 //
 //    @GetMapping("/listings/{id}")
 //    // listings/show
