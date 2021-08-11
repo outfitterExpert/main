@@ -5,19 +5,37 @@
     <title>View listings</title>
 </head>
 <body>
+<header th:replace="partials/styles :: styles"></header>
+<nav th:replace="partials/navbar :: navbar"/>
 <h1>Show all available listings</h1>
 <div th:each="listing : ${listings}">
     <div>
-        <div class="card-content preview-post">
-            <h4 class="card-title" th:text="${listing.title}" />
-            <h5 th:text="${listing.slots}"> </h5>
-            <h5 th:text="${listing.guided}"> </h5>
-            <h5 th:text="${listing.lodging}"> </h5>
-            <h5 th:text="${listing.method}"> </h5>
-
-
-
-
+<!--        <div class="card-content preview-post">-->
+<!--            -->
+<!--        </div>-->
+        <div class="card text-center">
+            <div class="card-header">
+                <h5 class="card-title" th:text="${listing.title}"></h5>
+            </div>
+            <div class="card-body">
+                <div style="width: 75%; height: 75%; ">
+                    <img src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}" /><span class="bottom-img img-text" th:text="${listing.location}"></span>
+                </div>
+                <a href="/listings/${listing.id}" class="btn btn-primary" style="width: 100%">View post</a>
+            </div>
+            <div class="card-footer text-muted">
+                <div class="row">
+                    <div class="card-text col-4">Lodging:
+                        <p class="card-text" th:text="${listing.lodging}"></p>
+                    </div>
+                    <div class="card-text col-4">Guided:
+                        <p class="card-text" th:text="${listing.guided}"></p>
+                    </div>
+                    <div class="card-text col-4">Method:
+                        <p class="card-text" th:text="${listing.method}"></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
