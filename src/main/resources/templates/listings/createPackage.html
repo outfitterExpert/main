@@ -8,7 +8,7 @@
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
 <form>
-    <form th:action="@{/listings/package/create}" method="POST" th:object="${package}">
+    <form th:action="@{/listings/package/create}" method="POST" th:object="${listPackage}">
         <label for="price">Price</label>
         <input id="price" th:field="*{price}" />
 
