@@ -8,7 +8,9 @@
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
 <h1>Show all available listings</h1>
-    <div class="listing-pg" th:each="listing : ${listings}">
+
+    <div class="row">
+    <div class="listing-pg col-6" th:each="listing : ${listings}">
 
         <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
         <button type="submit" class="benny-button">
@@ -45,6 +47,8 @@
         </form>
 
     </div>
-</div>
+    </div>
+
+
 </body>
 </html>

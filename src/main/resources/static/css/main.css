@@ -277,14 +277,9 @@ label{
 }
 
 .listing-pg {
-    display: flex;
-    justify-content: center;
+    /*display: flex;*/
+    /*justify-content: center;*/
     background-color: white;
 }
 
 
-
-/*#listing-page {*/
-/*    margin: auto;*/
-
-/*}*/
