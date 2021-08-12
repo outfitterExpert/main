@@ -8,6 +8,8 @@
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
 <h1>Create an account</h1>
+<div class="card-body">
+    <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />
 <form th:action="@{/sign-up}" method="POST" th:object="${user}">
     <label for="username">Username</label>
     <input id="username" th:field="*{username}" />
@@ -29,7 +31,8 @@
         <label class="form-check-label" for="outfitter" >Outfitter?</label>
     </div>
 
-    <input value="Sign me up!" type="submit" />
+    <input class="custom-button" value="Sign me up!" type="submit" />
 </form>
+</div>
 </body>
 </html>
