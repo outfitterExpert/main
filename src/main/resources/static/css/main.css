@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap');
+
 :root{
     --background-color: rgb(42, 45, 49);
     --mustard-color: rgb(190, 161, 82);
     --hover-color: #ADD8E6;
 }
+
+
 img{
     border-radius: 50px;
 }
@@ -215,6 +219,14 @@ input{
     color: white;
 }
 
+.benny-button{
+    border: none;
+    margin-top: 40px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    color: white;
+}
+
 #listing-page {
     margin: 3%;
     position: relative;
@@ -222,18 +234,39 @@ input{
 
 .first-txt {
     position: absolute;
+    /*flex-direction: row-reverse;*/
+    /*display: flex;*/
+    /*justify-content: flex-end;*/
+    /*padding-left: 70%;*/
+    font-family: 'Noto Serif', serif;
+    font-size: 50px;
     top: 17px;
-    left: 50px;
+    right: 5px;
 }
 
 .second-txt {
     position: absolute;
+    font-size: 75px;
+    font-family: 'Noto Serif', serif;
+    padding: 3%;
     bottom: 20px;
     left: 10px;
-
     margin-top: 40px;
     border-radius: 20px;
-    background-color: #037171;
+    background-color: rgba(119, 136, 153, .4);
     color: white;
 
 }
+
+.listing-pg {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+
+
+/*#listing-page {*/
+/*    margin: auto;*/
+
+/*}*/
