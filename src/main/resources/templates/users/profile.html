@@ -5,14 +5,22 @@
     <title>User Profile</title>
 </head>
 <body>
+<header th:replace="partials/styles :: styles"></header>
+<nav th:replace="partials/navbar :: navbar"/>
 <div>
-    <h3 th:text="${user.firstName}"></h3>
-    <h3 th:text="${user.lastName}"></h3>
+
+    <div class="row" style="padding-left: 15px">
+        <h3 th:text="${user.firstName}"></h3>
+        <h3 th:text="${user.lastName}"></h3>
+    </div>
+
 <!--    how do you do the if else in html with thyme leaf-->
     <h3 th:text="${user.outfitter}"></h3>
 </div>
 <div th:each="listing : ${listings}">
-    <h3 th:text="${listing}"></h3>
+    <h3 th:text="${listing.location}"></h3>
+    <h3 th:text="${listing.title}"></h3>
+    <hr>
 </div>
 <h1>Bookings:</h1>
 <h1>Listings:</h1>
