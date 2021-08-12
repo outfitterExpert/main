@@ -192,3 +192,20 @@ input{
     border: none;
     border-radius: 5em;
 }
+
+#listing-page {
+    margin: 3%;
+    position: relative;
+}
+
+.first-txt {
+    position: absolute;
+    top: 17px;
+    left: 50px;
+}
+
+.second-txt {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+}
