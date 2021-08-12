@@ -8,6 +8,12 @@ VALUES  ('austin_user', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYh
         ('irvin_user', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Irvin', 'Buendia', 'admin1@email.com', true),
         ('benny_user', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Benny', 'Alvarez', 'admin1@email.com', true);
 
+INSERT INTO properties(title, location, acres, slots, guided, lodging, method, owner_id)
+VALUES ('West-end King ranch', 'South Texas', 100000, 125, true, true, 'rifle', 1),
+       ('Texas Exotic Hunts', 'Texas', 798, 1, true, false, 'rifle', 3),
+       ('Waterfowl package - all inclusive', 'Manitoba, Canada', 345, 1, true, false, 'shotgun', 2),
+       ('Late Season Bow Whitetail Hunt', 'British Columbia, Canada', 3763, 6, true, true, 'bow', 4);
+
 INSERT INTO animals (id, name)
 VALUES (1, 'Bear'),
        (2, 'Black Bear'),
@@ -246,6 +252,3 @@ VALUES (1, 'Bear'),
        (235, 'Wilson''s Snipe'),
        (236, 'Tundra Swan'),
        (237, 'Woodcock');
-
-
-
