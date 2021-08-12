@@ -15,12 +15,13 @@
     You have been logged out.
 </div>
 
-<form th:action="@{/login}" method="post">
+<form class="card-body m-5" th:action="@{/login}" method="post">
     <label for="username">Username</label>
     <input id="username" name="username" type="text" />
     <label for="password">Password</label>
     <input id="password" name="password" type="password" />
-    <input type="submit" value="Log In" />
+    <br/>
+    <input class="custom-button" type="submit" value="Log In" />
     <a class="blue" href="/sign-up">Not a member? Sign up to join OutfitterExpert</a>
 </form>
 </body>
