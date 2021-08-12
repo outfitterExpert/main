@@ -21,6 +21,7 @@ CREATE TABLE properties (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     title VARCHAR(100) NOT NULL,
     location TEXT NOT NULL,
+    acres INT NOT NULL,
     slots INT NOT NULL,
     guided BOOL NOT NULL,
     lodging BOOL NOT NULL,
