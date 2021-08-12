@@ -12,29 +12,39 @@
 
         <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
         <button type="submit" class="custom-button">
-        <div  class="card text-center">
-            <div class="card-header">
-                <h5 class="card-title" th:text="${listing.title}"></h5>
-            </div>
-            <div class="card">
-                <div style="width: 75%; height: 75%; ">
-                    <img src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}" /><span class="img-text ui-corner-top" th:text="${listing.location}"></span><span class="bottom-img img-text" th:text="${listing.title}"></span>
-                </div>
-            </div>
-            <div class="card-footer text-muted">
-                <div class="row">
-                    <div class="card-text col-4">Lodging:
-                        <p class="card-text" th:text="${listing.lodging}"></p>
-                    </div>
-                    <div class="card-text col-4">Guided:
-                        <p class="card-text" th:text="${listing.guided}"></p>
-                    </div>
-                    <div class="card-text col-4">Method:
-                        <p class="card-text" th:text="${listing.method}"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--        <div  class="card text-center">-->
+<!--            <div class="card-header">-->
+<!--                <h5 class="card-title" th:text="${listing.title}"></h5>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <div style="width: 75%; height: 75%; ">-->
+<!--                    <img src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}" /><span class="img-text ui-corner-top" th:text="${listing.location}"></span><span class="bottom-img img-text" th:text="${listing.title}"></span>-->
+<!--            <img src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}" /><span class="img-text ui-corner-top" th:text="${listing.location}"></span><span class="bottom-img img-text" th:text="${listing.title}"></span>-->
+           <div id="listing-page">
+            <img src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}"/>
+               <h3 class="first-txt">
+                   Duck Hunt
+               </h3>
+               <h3 class="second-txt">
+                   San Antonio, TX
+               </h3>
+           </div>
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card-footer text-muted">-->
+<!--                <div class="row">-->
+<!--                    <div class="card-text col-4">Lodging:-->
+<!--                        <p class="card-text" th:text="${listing.lodging}"></p>-->
+<!--                    </div>-->
+<!--                    <div class="card-text col-4">Guided:-->
+<!--                        <p class="card-text" th:text="${listing.guided}"></p>-->
+<!--                    </div>-->
+<!--                    <div class="card-text col-4">Method:-->
+<!--                        <p class="card-text" th:text="${listing.method}"></p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
         </button>
         </form>
 
