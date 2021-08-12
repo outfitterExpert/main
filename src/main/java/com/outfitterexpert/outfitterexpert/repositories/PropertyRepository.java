@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface PropertyRepository extends JpaRepository<Property, Long> {
     Property findById(long id);
 
-//    @Query("from outfitter")
+    Property findByUserId(long id);
 
 }
