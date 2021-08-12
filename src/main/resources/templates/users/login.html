@@ -7,14 +7,14 @@
 <body>
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
-<div th:if="${param.error}">
-    Invalid Username and Password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
+<div class="error" th:if="${param.logout}">
+    You have been logged out
 </div>
 <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />
 <form class="card-body m-5" th:action="@{/login}" method="post">
+    <div class="error" th:if="${param.error}">
+        Invalid Username and Password
+    </div>
     <label for="username">Username</label>
     <input id="username" name="username" type="text" />
     <label for="password">Password</label>

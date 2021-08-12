@@ -27,7 +27,8 @@ img{
     font-weight: bold;
 }
 .body{
-    font-family: sans-serif;
+    /*font-family: sans-serif;*/
+    font-family: 'Noto Sans Sero', serif;
     margin: 0;
     overflow: hidden;
 }
@@ -209,8 +210,24 @@ a:hover{
 }
 /*naysa edits*/
 .logo{
-    width: 40%;
-    margin-left: 30%;
+    width: 20em;
+    margin-left: 40em;
+}
+.title {
+    position:relative;
+    justify-content: center;
+    font-family: 'Noto Sans Sero', serif;
+}
+
+.error{
+    color: red;
+    font-weight: bolder;
+}
+.h1, h1 {
+    font-size: 2.5rem;
+    flex: initial;
+    margin-left: 16em;
+    font-family: 'Noto Sans Sero', serif;
 }
 textarea {
     border-radius: 4px;
@@ -226,6 +243,7 @@ label{
     display: inline-block;
     margin-bottom: 1rem;
     margin-top: 1rem;
+    font-family: 'Noto Serif JP', serif;
 }
 
 .custom-button{
