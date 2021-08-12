@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>User Profile!</title>
+    <title>User Profile</title>
 </head>
 <body>
+<div>
+    <h3 th:text="${user.firstName}"></h3>
+    <h3 th:text="${user.lastName}"></h3>
+<!--    how do you do the if else in html with thyme leaf-->
+    <h3 th:text="${user.outfitter}"></h3>
+</div>
+<div th:each="listing : ${listings}">
+    <h3 th:text="${listing}"></h3>
+</div>
 <h1>Bookings:</h1>
 <h1>Listings:</h1>
-
 
 </body>
 </html>
