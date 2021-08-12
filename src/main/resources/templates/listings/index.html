@@ -16,11 +16,10 @@
             <div class="card-header">
                 <h5 class="card-title" th:text="${listing.title}"></h5>
             </div>
-            <div class="card-body">
+            <div class="card">
                 <div style="width: 75%; height: 75%; ">
-                    <img src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}" /><span class="bottom-img img-text" th:text="${listing.location}"></span>
+                    <img src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}" /><span class="img-text ui-corner-top" th:text="${listing.location}"></span><span class="bottom-img img-text" th:text="${listing.title}"></span>
                 </div>
-                <a href="#" class="btn btn-primary" style="width: 100%">View post</a>
             </div>
             <div class="card-footer text-muted">
                 <div class="row">
