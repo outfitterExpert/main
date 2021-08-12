@@ -2,19 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Log In</title>
+    <title>Login</title>
 </head>
 <body>
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
-<h1>Log In</h1>
 <div th:if="${param.error}">
     Invalid Username and Password.
 </div>
 <div th:if="${param.logout}">
     You have been logged out.
 </div>
-
+<img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />
 <form class="card-body m-5" th:action="@{/login}" method="post">
     <label for="username">Username</label>
     <input id="username" name="username" type="text" />
