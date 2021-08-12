@@ -18,6 +18,9 @@ public class Property {
     private String location;
 
     @Column(nullable = false)
+    private int acres;
+
+    @Column(nullable = false)
     private int slots;
 
     @Column(nullable = false)
@@ -53,9 +56,10 @@ public class Property {
     public Property (){
     }
 
-    public Property(String title, String location, int slots, boolean guided, boolean lodging, String method, User user, List<Review> reviews, List<Booking> bookings, List<ListingPackage> packages, List<Animal> animals) {
+    public Property(String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user, List<Review> reviews, List<Booking> bookings, List<ListingPackage> packages, List<Animal> animals) {
         this.title = title;
         this.location = location;
+        this.acres = acres;
         this.slots = slots;
         this.guided = guided;
         this.lodging = lodging;
@@ -66,9 +70,10 @@ public class Property {
         this.animals = animals;
     }
 
-    public Property(String title, String location, int slots, boolean guided, boolean lodging, String method, User user) {
+    public Property(String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user) {
         this.title = title;
         this.location = location;
+        this.acres = acres;
         this.slots = slots;
         this.guided = guided;
         this.lodging = lodging;
@@ -76,10 +81,11 @@ public class Property {
         this.user = user;
     }
 
-    public Property(long id, String title, String location, int slots, boolean guided, boolean lodging, String method, User user) {
+    public Property(long id, String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user) {
         this.id = id;
         this.title = title;
         this.location = location;
+        this.acres = acres;
         this.slots = slots;
         this.guided = guided;
         this.lodging = lodging;
@@ -109,6 +115,14 @@ public class Property {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public int getAcres() {
+        return acres;
+    }
+
+    public void setAcres(int acres) {
+        this.acres = acres;
     }
 
     public int getSlots() {
@@ -174,14 +188,6 @@ public class Property {
     public void setPackages(List<ListingPackage> packages) {
         this.packages = packages;
     }
-
-//    public List<Property> getProperties() {
-//        return properties;
-//    }
-//
-//    public void setProperties(List<Property> properties) {
-//        this.properties = properties;
-//    }
 
     public List<Animal> getAnimals() {
         return animals;
