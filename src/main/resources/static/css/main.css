@@ -3,7 +3,13 @@
     --mustard-color: rgb(190, 161, 82);
     --hover-color: #ADD8E6;
 }
-
+img{
+    border-radius: 50px;
+}
+.top-right{
+    margin: 3%;
+    position: relative;
+}
 .navbar{
     font-size: 120%;
     background-color: var(--background-color) !important;
@@ -35,6 +41,9 @@ main>h1{
 .image-container{
     display: flex;
     justify-content: space-evenly;
+}
+.blue {
+    color: blue;
 }
 .center-vh{
     position: relative;
