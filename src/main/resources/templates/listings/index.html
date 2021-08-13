@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>View listings</title>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
+<script th:replace="partials/scripts :: scripts"/>
+
 <h1>Show all available listings</h1>
+
+<!--Map please work!-->
+<div id='map' style='width: 80vw; height: 80vh; margin: auto;'></div>
 
     <div class="row">
     <div class="listing-pg col-6" th:each="listing : ${listings}">
@@ -48,7 +54,5 @@
 
     </div>
     </div>
-
-
 </body>
 </html>
