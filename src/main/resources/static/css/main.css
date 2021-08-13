@@ -300,7 +300,18 @@ label{
 .listing-pg {
     /*display: flex;*/
     /*justify-content: center;*/
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-evenly;
     background-color: white;
+
+}
+
+@media screen and (max-width: 500px) {
+    .column {
+        width: 100%;
+    }
 }
 
 
