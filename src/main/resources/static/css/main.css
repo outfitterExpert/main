@@ -257,7 +257,7 @@ label{
     margin-bottom: 1rem;
 }
 
-.benny-button{
+.benjamin-button{
     border: none;
     margin-top: 40px;
     border-radius: 20px;
@@ -277,14 +277,14 @@ label{
     /*justify-content: flex-end;*/
     /*padding-left: 70%;*/
     font-family: 'Noto Serif', serif;
-    font-size: 50px;
+    font-size: 35px;
     top: 17px;
-    right: 5px;
+    right: 20px;
 }
 
 .second-txt {
     position: absolute;
-    font-size: 75px;
+    font-size: 40px;
     font-family: 'Noto Serif', serif;
     padding: 3%;
     bottom: 20px;
@@ -304,17 +304,19 @@ label{
 }
 
 .buck {
+    margin-top: 20px;
     width: 100%;
 }
 
-.navbar {
+
+
+.navstyle {
     overflow: hidden;
     position: fixed;
     top:0;
     width: 100%;
     z-index: 2;
 }
-
 
 
 @media screen and (max-width: 500px) {

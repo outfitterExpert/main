@@ -8,7 +8,7 @@
 <body>
 <header th:replace="partials/styles :: styles"></header>
 
-<div class="navbar">
+<div class="navstyle">
 <nav th:replace="partials/navbar :: navbar"/>
 </div>
 <!--Map please work!-->
@@ -18,7 +18,7 @@
     <div class="listing-pg" th:each="listing : ${listings}">
 
         <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
-        <button type="submit" class="benny-button">
+        <button type="submit" class="benjamin-button">
            <div id="listing-page">
             <img class="buck" src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}"/>
                <h3 class="first-txt" th:text="${listing.location}"/>
@@ -26,12 +26,16 @@
            </div>
         </button>
         </form>
+
         <input type="hidden" class="listings-info" th:value="${listing.location}"/>
 
+        <hr style="height:1px;border:none;color:#333;background-color:#333;" />
     </div>
 </div>
     <div class="map col-5">
-        <div id='map' style='width: 50vw; height: 92vh; margin: 35px;'></div>
+        <div class="navstyle">
+        <div id='map' style='width: 50vw; height: 92vh; margin: 60px;'></div>
+        </div>
     </div>
     <script th:replace="partials/scripts :: scripts"/>
 </div>
