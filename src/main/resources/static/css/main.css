@@ -296,16 +296,26 @@ label{
 
 }
 
-.listing-pg {
-    /*display: flex;*/
-    /*justify-content: center;*/
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: space-evenly;
-    background-color: white;
 
+.whole {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
 }
+
+.buck {
+    width: 100%;
+}
+
+.navbar {
+    overflow: hidden;
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index: 2;
+}
+
+
 
 @media screen and (max-width: 500px) {
     .column {

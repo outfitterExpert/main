@@ -7,61 +7,32 @@
 </head>
 <body>
 <header th:replace="partials/styles :: styles"></header>
+
+<div class="navbar">
 <nav th:replace="partials/navbar :: navbar"/>
-
-
-<h1>Show all available listings</h1>
-
+</div>
 <!--Map please work!-->
-<div id='map' style='width: 80vw; height: 80vh; margin: auto;'></div>
-
-<div class="row">
-<div class="listing-pg col-6" th:each="listing : ${listings}">
-
-<div class="row">
-    <div class="listing-pg col-md-6" th:each="listing : ${listings}">
-
-
+<div class="container">
+<div class="whole row">
+<div class="listings-group col-7">
+    <div class="listing-pg" th:each="listing : ${listings}">
         <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
         <button type="submit" class="benny-button">
-<!--        <div  class="card text-center">-->
-<!--            <div class="card-header">-->
-<!--                <h5 class="card-title" th:text="${listing.title}"></h5>-->
-<!--            </div>-->
-<!--            <div class="card">-->
-<!--                <div style="width: 75%; height: 75%; ">-->
-<!--                    <img src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}" /><span class="img-text ui-corner-top" th:text="${listing.location}"></span><span class="bottom-img img-text" th:text="${listing.title}"></span>-->
-<!--            <img src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}" /><span class="img-text ui-corner-top" th:text="${listing.location}"></span><span class="bottom-img img-text" th:text="${listing.title}"></span>-->
            <div id="listing-page">
             <img class="buck" src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}"/>
                <h3 class="first-txt" th:text="${listing.location}"/>
                <h3 class="second-txt" th:text="${listing.title}"/>
            </div>
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="card-footer text-muted">-->
-<!--                <div class="row">-->
-<!--                    <div class="card-text col-4">Lodging:-->
-<!--                        <p class="card-text" th:text="${listing.lodging}"></p>-->
-<!--                    </div>-->
-<!--                    <div class="card-text col-4">Guided:-->
-<!--                        <p class="card-text" th:text="${listing.guided}"></p>-->
-<!--                    </div>-->
-<!--                    <div class="card-text col-4">Method:-->
-<!--                        <p class="card-text" th:text="${listing.method}"></p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
         </button>
         </form>
 
     </div>
-
+</div>
+    <div class="map col-5">
+        <div id='map' style='width: 50vw; height: 92vh; margin: 35px;'></div>
     </div>
-
-  <script th:replace="partials/scripts :: scripts"/>
-
-  </div>
+    <script th:replace="partials/scripts :: scripts"/>
+</div>
+</div>
 </body>
 </html>
