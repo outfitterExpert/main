@@ -16,6 +16,7 @@
 <div class="whole row">
 <div class="listings-group col-7">
     <div class="listing-pg" th:each="listing : ${listings}">
+
         <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
         <button type="submit" class="benny-button">
            <div id="listing-page">
@@ -25,7 +26,8 @@
            </div>
         </button>
         </form>
-        <div id="listings-info" th:value="${listings}"></div>
+        <input type="hidden" class="listings-info" th:value="${listing.location}"/>
+
     </div>
 </div>
     <div class="map col-5">

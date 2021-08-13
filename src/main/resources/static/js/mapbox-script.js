@@ -1,5 +1,7 @@
 "use strict";
 
+let listingsArray = [];
+
 mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
 var map = new mapboxgl.Map({
     container: 'map', // container ID
@@ -9,7 +11,6 @@ var map = new mapboxgl.Map({
 });
 
 map.addControl(new mapboxgl.NavigationControl());
-
 
 
 $("#btn").click(function(){
@@ -46,6 +47,26 @@ var favRestaurants = [
     // {lngLat: [-97.3435765332706, 32.731558933402624], name: "Wabi House", color: "red", desc: "Best Ramen shop in DFW", img: "<img src=img/wabiHouse.jpeg>"},
     // {lngLat: [-97.11563934491117, 32.69188796621224], name: "Sushi Domo", color: "blue", desc: "Best sushi joint in DFW", img: "<img src=img/sushiDomo.jpeg>"}
 ]
+
+function createMarkers(databaseString){
+    let unpackDatabaseString = databaseString.split("|");
+    let listingArray = [];
+    for (let i = 0; i < unpackDatabaseString.length; i++){
+        listingArray.push(unpackDatabaseString[i].split(","));
+    }
+    console.log(listingArray);
+    return listingArray;
+}
+
+$(document).ready(function (){
+    let listingsString = $(".listings-info");
+    for(let i of listingsString){
+        // console.log(i.value);
+        listingsArray = createMarkers(i.value);
+        //this is pushing array
+    }
+
+})
 
 function displayRestaurants (restaurant){
     var markerMaker  = new mapboxgl.Marker({
