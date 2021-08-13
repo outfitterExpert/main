@@ -15,8 +15,12 @@
 <!--Map please work!-->
 <div id='map' style='width: 80vw; height: 80vh; margin: auto;'></div>
 
-    <div class="row">
-    <div class="listing-pg col-6" th:each="listing : ${listings}">
+<div class="row">
+<div class="listing-pg col-6" th:each="listing : ${listings}">
+
+<div class="row">
+    <div class="listing-pg col-md-6" th:each="listing : ${listings}">
+
 
         <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
         <button type="submit" class="benny-button">
@@ -53,6 +57,10 @@
         </form>
 
     </div>
+
     </div>
+
+</div>
+
 </body>
 </html>

@@ -6,7 +6,6 @@
     --hover-color: #ADD8E6;
 }
 
-
 img{
     border-radius: 50px;
 }
@@ -210,9 +209,12 @@ a:hover{
 }
 /*naysa edits*/
 .logo{
-    width: 20em;
-    margin-left: 40em;
+
+    /*width: 20em;*/
+    /*margin-left: 40em;*/
 }
+
+
 .title {
     position:relative;
     justify-content: center;
@@ -297,7 +299,18 @@ label{
 .listing-pg {
     /*display: flex;*/
     /*justify-content: center;*/
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-evenly;
     background-color: white;
+
+}
+
+@media screen and (max-width: 500px) {
+    .column {
+        width: 100%;
+    }
 }
 
 
