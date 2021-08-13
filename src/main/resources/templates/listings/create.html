@@ -8,7 +8,7 @@
 
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"></nav>
-<img class="logo2" alt="outfitter expert logo" src="../../static/img/oeLogo.png" th:src="@{/img/oeLogo.png}" />
+<img class="logo" alt="outfitter expert logo" src="../../static/img/oeLogo.png" th:src="@{/img/oeLogo.png}" />
 <div class="card-body m-4">
 <form th:action="@{/listings/create}" method="POST" th:object="${listing}">
         <label for="listing-title">Title:</label>
