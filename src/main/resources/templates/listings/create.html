@@ -5,10 +5,12 @@
     <title>Create listing</title>
 </head>
 <body>
+
 <header th:replace="partials/styles :: styles"></header>
-<nav th:replace="partials/navbar :: navbar"/>
-<h1>Create a new listing form</h1>
-    <form th:action="@{/listings/create}" method="POST" th:object="${listing}">
+<nav th:replace="partials/navbar :: navbar"></nav>
+<img class="logo2" alt="outfitter expert logo" src="../../static/img/oeLogo.png" th:src="@{/img/oeLogo.png}" />
+<div class="card-body m-4">
+<form th:action="@{/listings/create}" method="POST" th:object="${listing}">
         <label for="listing-title">Title:</label>
         <input id="listing-title" type="text" th:field="*{title}" />
         <br/>
@@ -21,7 +23,6 @@
         <label for="listing-slots">Slots:</label>
         <input id="listing-slots" type="text" th:field="*{slots}" />
         <br/>
-
         <div class="form-check form-switch">
             <input class="form-check-input" name="guided" type="checkbox" id="listing-guided" th:field="*{guided}">
             <label class="form-check-label" for="listing-guided">
@@ -35,7 +36,6 @@
             </label>
         </div>
         <br/>
-
         <select class="form-select" aria-label="Default select example" name="method" th:field="*{method}" >
             <option value="blinds">Blinds</option>
             <option value="bow">Bow</option>
@@ -45,7 +45,8 @@
             <option value="trapping">Trapping</option>
         </select>
         <br/>
-        <input type="submit" />
+        <input class="custom-button" type="submit" value="Log In" />
     </form>
+</div>
 </body>
 </html>

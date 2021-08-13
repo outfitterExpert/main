@@ -5,7 +5,10 @@
     --mustard-color: rgb(190, 161, 82);
     --hover-color: #ADD8E6;
 }
-
+.logo2{
+    width:5%;
+    border-color: hotpink;
+}
 
 img{
     border-radius: 50px;
