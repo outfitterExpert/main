@@ -213,9 +213,12 @@ a:hover{
 }
 /*naysa edits*/
 .logo{
-    width: 20em;
-    margin-left: 40em;
+
+    /*width: 20em;*/
+    /*margin-left: 40em;*/
 }
+
+
 .title {
     position:relative;
     justify-content: center;
