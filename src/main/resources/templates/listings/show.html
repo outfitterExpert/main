@@ -8,9 +8,10 @@
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
 <h1>Viewing a single listing page</h1>
+<div class="container">
 <div class="card-body">
     <div style="width: 75%; height: 75%; ">
-        <img class="logo" src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}" /><span class="img-text ui-corner-top" th:text="${listing.location}"></span><span class="bottom-img img-text" th:text="${listing.title}"></span>
+        <img class="logo" src="../../static/img/buck-img.jpg" alt="pretty buck" th:src="@{/img/buck-img.jpg}" /><span class="img-text ui-corner-top" th:text="${listing.location}"></span><span class="bottom-img img-text" th:text="${listing.title}"></span>
     </div>
     <div class="card-footer text-muted">
         <div class="row">
@@ -24,6 +25,7 @@
                 <p class="card-text" th:text="${listing.method}"></p>
             </div>
         </div>
+    </div>
     </div>
 <!--<div th:if="${isPostOwner}">-->
 <!--    <form th:action="@{/posts/{id}/delete(id = ${post.id})}" method="post">-->
