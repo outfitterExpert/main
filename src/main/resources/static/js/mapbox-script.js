@@ -41,9 +41,10 @@ $("#btn").click(function(){
 });
 
 var favRestaurants = [
-    {lngLat: [-97.10399646025414, 32.735453629457915], name: "Twisted Root", color: "green", desc: "Best Burger stop in DFW", img: "<img src=img/twistedRoot.jpeg>"},
-    {lngLat: [-97.3435765332706, 32.731558933402624], name: "Wabi House", color: "red", desc: "Best Ramen shop in DFW", img: "<img src=img/wabiHouse.jpeg>"},
-    {lngLat: [-97.11563934491117, 32.69188796621224], name: "Sushi Domo", color: "blue", desc: "Best sushi joint in DFW", img: "<img src=img/sushiDomo.jpeg>"}
+    //This is how we will format our listing markers
+    // {lngLat: [-97.10399646025414, 32.735453629457915], name: "Twisted Root", color: "green", desc: "Best Burger stop in DFW", img: "<img src=img/twistedRoot.jpeg>"},
+    // {lngLat: [-97.3435765332706, 32.731558933402624], name: "Wabi House", color: "red", desc: "Best Ramen shop in DFW", img: "<img src=img/wabiHouse.jpeg>"},
+    // {lngLat: [-97.11563934491117, 32.69188796621224], name: "Sushi Domo", color: "blue", desc: "Best sushi joint in DFW", img: "<img src=img/sushiDomo.jpeg>"}
 ]
 
 function displayRestaurants (restaurant){
