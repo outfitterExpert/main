@@ -40,19 +40,21 @@ public class ListingController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(currentUser != null){
             model.addAttribute("listing", new Property());
+            model.addAttribute("animals", "");
             return "listings/create";
         }
         return "redirect:/listings";
     }
 
     @PostMapping("/listings/create")
-    public String submitListing(@ModelAttribute Property listing){
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User u = userDao.findById(1L);
+    public String submitListing(@ModelAttribute Property listing, @ModelAttribute String animals){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User u = userDao.findById(1L);
 
-        listing.setUser(u);
+        listing.setUser(currentUser);
         propertyDao.save(listing);
 
+        System.out.println(animals);
         System.out.println(listing.getTitle());
         System.out.println(listing.getLocation());
         System.out.println(listing.getSlots());

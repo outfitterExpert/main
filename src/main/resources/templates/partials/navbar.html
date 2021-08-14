@@ -17,30 +17,62 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/listings/create">Create Listing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="outfitterExpert-team.html">Our Team</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Merch</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Blog</a>
-            </li>
-        </ul>
+
         <form class="form-inline my-2 my-lg-0">
             <a class="navbar-icon" href="https://www.facebook.com/OutfitterExpert-101138728768176/"><i class="fab fa-facebook-square"></i></a>
             <a class="navbar-icon" href="https://www.instagram.com/_outfitterexpert_/?igshid=7ltyhidmj6hd"><i class="fab fa-instagram"></i></a>
             <a class="navbar-icon" href="https://www.linkedin.com/company/outfitter-expert"><i class="fab fa-linkedin"></i></a>
         </form>
+<!--==========SEARCHBAR============-->
         <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-        <a class="text-secondary" href="/login"><i class="fas fa-user-alt"></i> Login</a>
+
+<!--================================PROFILE BUTTON==================================-->
+        <div class="pen-wrapper">
+            <div class="pen-wrapper__inner">
+                <nav class="nav">
+
+                    <input type="checkbox" id="menu-button"  class="menu-button__input" />
+                    <label for="menu-button" class="menu-button">
+        <span class="menu-button__icon">
+          <span class="menu-button__icon-strip"></span>
+        </span>
+                        </label>
+
+                        <div class="nav__inner">
+                            <figure class="nav__avatar">
+                                <img src="http://www.foolproof.co.uk/media/466535/Luke-Burroughs.jpg" alt="" />
+                            </figure>
+                            <ul class="nav-list">
+<!--=======================================BUTTONS=======================================-->
+                                <li class="nav-list__item">
+                                    <a href="/login" class="nav-list__url">
+                                        Login
+                                    </a>
+                                </li>
+                                <li class="nav-list__item">
+                                    <a href="/sign-up" class="nav-list__url">
+                                        Sign up
+                                    </a>
+                                </li>
+                                <li class="nav-list__item">
+                                    <a href="/listings/create" class="nav-list__url">
+                                        Create a listing
+                                    </a>
+                                </li>
+                                <li class="nav-list__item">
+                                    <a href="#" class="nav-list__url">
+                                        <svg class="icon nav-list__icon"><use xlink:href="#icon-user"></use></svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </nav>
+                </div>
+            </div>
     </div>
 </nav>
 </body>
