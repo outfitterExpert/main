@@ -7,7 +7,6 @@
 <body>
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
-<h1>Create an account</h1>
 <div class="card-body">
     <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />
 <form th:action="@{/sign-up}" method="POST" th:object="${user}">
