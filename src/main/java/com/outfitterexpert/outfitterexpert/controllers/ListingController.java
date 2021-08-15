@@ -1,31 +1,34 @@
 package com.outfitterexpert.outfitterexpert.controllers;
 
 
+import com.outfitterexpert.outfitterexpert.models.Animal;
 import com.outfitterexpert.outfitterexpert.models.ListingPackage;
 import com.outfitterexpert.outfitterexpert.models.Property;
 import com.outfitterexpert.outfitterexpert.models.User;
+import com.outfitterexpert.outfitterexpert.repositories.AnimalRepository;
 import com.outfitterexpert.outfitterexpert.repositories.PackageRepository;
 import com.outfitterexpert.outfitterexpert.repositories.PropertyRepository;
 import com.outfitterexpert.outfitterexpert.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class ListingController {
     private final PropertyRepository propertyDao;
     private final UserRepository userDao;
     private final PackageRepository packageDao;
+    private final AnimalRepository animalDao;
 
 
-    public ListingController(PropertyRepository propDao, UserRepository userDao, PackageRepository packageDao) {
+    public ListingController(PropertyRepository propDao, UserRepository userDao, PackageRepository packageDao, AnimalRepository animalDao) {
         this.propertyDao = propDao;
         this.userDao = userDao;
         this.packageDao = packageDao;
+        this.animalDao = animalDao;
     }
 
 
@@ -40,27 +43,65 @@ public class ListingController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(currentUser != null){
             model.addAttribute("listing", new Property());
-            model.addAttribute("animals", "");
             return "listings/create";
         }
         return "redirect:/listings";
     }
 
     @PostMapping("/listings/create")
-    public String submitListing(@ModelAttribute Property listing, @ModelAttribute String animals){
+    public String submitListing(@ModelAttribute Property listing, @RequestParam(name="user-animal-list") String userAnimals){
+        //get the user that's logged in
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User u = userDao.findById(1L);
-
         listing.setUser(currentUser);
+
+        //figure out the next post id so we can save the animals to the id that will be next in line (the new --yet to be saved-- post id)
+        Property findLastProp = propertyDao.findTopByOrderByIdDesc();
+        long newPostId = findLastProp.getId() + 1;
+
+        //split up the animals the user has selected
+        String[] animalList = userAnimals.split(",");
+
+        System.out.println("===================================");
+        System.out.println(newPostId);
+
+        new Animal();
+        Animal userAnimal;
+
+        try {
+            for (int i = 0; i < animalList.length; i++) {
+
+
+                if(i == 0) {
+                    userAnimal = animalDao.findByName(animalList[i]);
+                }else{
+                    userAnimal = animalDao.findByName(animalList[i].substring(1));
+                }
+
+
+                System.out.println("user entered: ");
+                System.out.println(animalList[i]);
+
+                if(userAnimal != null){
+                    System.out.println("Database found: ");
+                    System.out.println(userAnimal.getId());
+                    System.out.println(userAnimal.getName());
+                }else{
+                    System.out.println("Could not be found in the database");
+                }
+
+            }
+        }catch( NullPointerException npe){
+            System.out.println("Animal not found");
+        }
+        System.out.println("===================================");
+
+        //save the animals to the post-animal table
+        for(String animal : animalList){
+            //how can we save(insert into the post_animal DB) without a repository
+        }
+
+        //save the final product
         propertyDao.save(listing);
-
-        System.out.println(animals);
-        System.out.println(listing.getTitle());
-        System.out.println(listing.getLocation());
-        System.out.println(listing.getSlots());
-        System.out.println(listing.isLodging());
-        System.out.println(listing.getUser().getId());
-
         return "redirect:/listings";
     }
 
