@@ -58,6 +58,7 @@ public class ReviewController {
         review.setUser(userDao.getById(1L));
         reviewDao.save(review);
         return "redirect:/review";
+
     }
 
     @PostMapping("/reviews/{id}/create")
