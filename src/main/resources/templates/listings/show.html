@@ -7,20 +7,19 @@
 <body>
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
-<h1>Viewing a single listing page</h1>
 <div class="container">
 <div class="card-body">
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="..." alt="First slide">
+                <img class="d-block w-100" src="../../static/img/buck-img.jpg" th:src="@{/img/buck-img.jpg}" alt="First slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="..." alt="Second slide">
+                <img class="d-block w-100" src="../../static/img/buck-img.jpg" th:src="@{/img/buck-img.jpg}"  alt="Second slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="..." alt="Third slide">
+                <img class="d-block w-100" src="../../static/img/buck-img.jpg" th:src="@{/img/buck-img.jpg}"  alt="Third slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -33,11 +32,15 @@
         </a>
     </div>
 
-    <div  class="show-pic" style="width: 80%; height: 75%; ">
-        <img class="logo" src="../../static/img/buck-img.jpg" alt="pretty buck" th:src="@{/img/buck-img.jpg}" /><span class="img-text ui-corner-top" th:text="${listing.location}"></span><span class="bottom-img img-text" th:text="${listing.title}"></span>
-    </div>
+
     <div class="card-footer text-muted">
         <div class="row">
+            <div class="card-text col-4">Title:
+                <p class="card-text" th:text="${listing.title}"></p>
+            </div>
+            <div class="card-text col-4">Location:
+                <p class="card-text" th:text="${listing.location}"></p>
+            </div>
             <div class="card-text col-4">Lodging:
                 <p class="card-text" th:text="${listing.lodging}"></p>
             </div>
