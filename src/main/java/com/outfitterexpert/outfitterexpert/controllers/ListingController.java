@@ -38,13 +38,14 @@ public class ListingController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(currentUser != null){
             model.addAttribute("listing", new Property());
+            model.addAttribute("package", new ListingPackage());
             return "listings/create";
         }
         return "redirect:/listings";
     }
 
     @PostMapping("/listings/create")
-    public String submitListing(@ModelAttribute Property listing, @RequestParam(name="user-animal-list") String userAnimals){
+    public String submitListing(@ModelAttribute Property listing, @ModelAttribute ListingPackage listingPackage, @RequestParam(name="user-animal-list") String userAnimals){
         //get the user that's logged in
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         listing.setUser(currentUser);
@@ -78,7 +79,11 @@ public class ListingController {
 
         //push the final list to the listing
         listing.setAnimals(listingAnimals);
+
         propertyDao.save(listing);
+
+        listingPackage.setProperty_id(listing.getId());
+        packageDao.save(listingPackage);
 
         return "redirect:/listings";
     }

@@ -7,7 +7,10 @@
 <body>
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
-    <form th:action="@{/listings/package/create}" method="POST" th:object="${listPackage}">
+
+<img class="logo" alt="outfitter expert logo" src="../../static/img/oeLogo.png" th:src="@{/img/oeLogo.png}" />
+
+<form class="form-section" th:action="@{/listings/package/create}" method="POST" th:object="${listPackage}">
         <label for="price">Price</label>
         <input id="price" th:field="*{price}" />
 
@@ -17,21 +20,24 @@
         <label for="description">Description</label>
         <textarea id="description" th:field="*{description}" placeholder="Activities provided"></textarea>
 
-        <div class="form-check form-switch">
+        <div class="form-checkmark form-switch">
             <input class="form-check-input" name="guided" type="checkbox" id="listing-guided" th:value="*{guided}" th:field="*{guided}">
             <label class="form-check-label" for="listing-guided">
                 Guided
             </label>
         </div>
-        <div class="form-check">
+        <div class="form-checkmark">
             <input class="form-check-input" name="lodging" type="checkbox" id="listing-lodging" th:value="*{lodging}" th:field="*{lodging}">
             <label class="form-check-label" for="listing-lodging">
                 Lodging
             </label>
         </div>
-        <h4>Expiration date</h4>
+    <div class="date">
+        <label>Expiration date</label>
         <input type="date" th:field="*{post_exp}">
-        <input type="submit">
+        <input class="custom-button" type="submit" value="Create">
+    </div>
     </form>
+
 </body>
 </html>
