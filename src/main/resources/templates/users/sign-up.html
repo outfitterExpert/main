@@ -9,7 +9,7 @@
 <nav th:replace="partials/navbar :: navbar"/>
 <div class="card-body">
     <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />
-<form th:action="@{/sign-up}" method="POST" th:object="${user}">
+<form  class="form-section" th:action="@{/sign-up}" method="POST" th:object="${user}">
     <label for="username">Username</label>
     <input id="username" th:field="*{username}" />
 
