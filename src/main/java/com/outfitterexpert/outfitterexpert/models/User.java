@@ -185,4 +185,8 @@ public class User {
     public void setBookmarks(List<Property> bookmarks) {
         this.bookmarks = bookmarks;
     }
+
+
 }
+
+
