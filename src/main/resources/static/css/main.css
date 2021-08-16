@@ -575,10 +575,6 @@
         font-size: 30px;
     }
 
- .show-pic {
-     display: flex;
-     justify-content: center;
- }
 
 @media screen and (max-width: 1024px) {
 
