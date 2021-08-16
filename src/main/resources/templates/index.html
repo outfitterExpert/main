@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
     <title>OutfitterExpert</title>
@@ -29,6 +32,14 @@
         </div>
     </div>
 </div>
+<!--<div sec:authorize="isAuthenticated()" class="nav-item m-0">-->
+<!--    <form th:action="@{/logout}" th:method="post">-->
+<!--        <button style="color: #bbbbbb" class="btn-link btn nav-link icon navIconLink">-->
+<!--            <i class="fas fa-sign-out-alt"></i>-->
+<!--            <span>Logout</span>-->
+<!--        </button>-->
+<!--    </form>-->
+<!--</div>-->
 
 </body>
 </html>

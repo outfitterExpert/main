@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org/" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="UTF-8"/>
     <title></title>
@@ -9,7 +11,7 @@
 <script src="https://kit.fontawesome.com/968ac4e7b1.js" crossorigin="anonymous"></script>
 
 <!--<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">-->
-<!--sec:authorized="isAuthenticated()" add this line if you do not want guest users to see-->
+<!--sec:authorize="isAuthenticated()" add this line if you do not want guest users to see-->
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">OutfitterExpert</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,25 +49,35 @@
                             </figure>
                             <ul class="nav-list">
 <!--=======================================BUTTONS=======================================-->
-                                <li class="nav-list__item">
-                                    <a href="/login" class="nav-list__url">
-                                        Login
-                                    </a>
+                                <li sec:authorize="!isAuthenticated()" class="nav-list__item">
+                                    <a class="nav-list__url" th:href="@{/login}">Login</a>
                                 </li>
-                                <li class="nav-list__item">
-                                    <a href="/sign-up" class="nav-list__url">
+                                <li sec:authorize="!isAuthenticated()" class="nav-list__item">
+                                    <a class="nav-list__url" href="/sign-up">
                                         Sign up
                                     </a>
                                 </li>
-                                <li class="nav-list__item">
+                                <li sec:authorize="isAuthenticated()" class="nav-list__item">
                                     <a href="/listings/create" class="nav-list__url">
                                         Create a listing
                                     </a>
                                 </li>
+<!--                                <li class="nav-list__item">-->
+<!--                                    <a href="#" class="nav-list__url">-->
+<!--                                        <svg class="icon nav-list__icon"><use xlink:href="#icon-user"></use></svg>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+
                                 <li class="nav-list__item">
-                                    <a href="#" class="nav-list__url">
-                                        <svg class="icon nav-list__icon"><use xlink:href="#icon-user"></use></svg>
+                                    <a href="/listings" class="nav-list__url">
+                                        View listings
                                     </a>
+                                </li>
+                                <li sec:authorize="isAuthenticated()" class="nav-list__item">
+                                    <form th:action="@{/logout}" th:method="post">
+<!--                                        <button class="btn-link btn1" style="margin-top: 8px">Logout</button>-->
+                                        <button class="btn1" style="margin-top: 8px">Logout</button>
+                                    </form>
                                 </li>
                             </ul>
                         </div>

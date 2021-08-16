@@ -2,6 +2,7 @@ package com.outfitterexpert.outfitterexpert;
 
 
 import com.outfitterexpert.outfitterexpert.services.UserDetailsLoader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,6 +19,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public SecurityConfiguration(UserDetailsLoader usersLoader) {
         this.usersLoader = usersLoader;
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
