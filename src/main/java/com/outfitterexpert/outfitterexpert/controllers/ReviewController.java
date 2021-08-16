@@ -9,10 +9,7 @@ import com.outfitterexpert.outfitterexpert.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ReviewController {
@@ -32,12 +29,6 @@ public class ReviewController {
         return "/postReview/index";
     }
 
-    @GetMapping("/reviews/{id}/create")
-    public String showCreateForm(@PathVariable long id, Model model) {
-        model.addAttribute("review", new Review());
-        model.addAttribute("id", id);
-        return "/postReview/create";
-    }
 
     @GetMapping("/review/{id}")
     public String singleReview(@PathVariable long id, Model model) {
@@ -50,27 +41,25 @@ public class ReviewController {
         model.addAttribute("review", review);
         model.addAttribute("isReviewOwner", isReviewOwner);
         return "/postReview/review";
-
     }
 
-    @PostMapping("/reviews/create")
-    public String createAd(@ModelAttribute Review review) {
-        review.setUser(userDao.getById(1L));
-        reviewDao.save(review);
-        return "redirect:/review";
-
+    @GetMapping("/reviews/{id}/create")
+    public String showCreateForm(@PathVariable long id, Model model) {
+        model.addAttribute("review", new Review());
+        model.addAttribute("id", id);
+        return "/postReview/create";
     }
 
     @PostMapping("/reviews/{id}/create")
-    public String createReview(@ModelAttribute long landId, @ModelAttribute Review review){
-        System.out.println(landId);
+    public String createReview(@PathVariable long id, @ModelAttribute Review review){
+        System.out.println(id);
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        Property property = propertyDao.findById(id);
 //        System.out.println(property.getTitle());
 //        System.out.println(property.getId());
 
         review.setUser(user);
-        review.setProperty(propertyDao.findById(landId));
+        review.setProperty(propertyDao.findById(id));
         reviewDao.save(review);
         return "redirect:/listings";
     }
