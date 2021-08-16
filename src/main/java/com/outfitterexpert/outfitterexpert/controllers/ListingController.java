@@ -106,6 +106,7 @@ public class ListingController {
         Property property = propertyDao.findById(id);
         listPackage.setProperty(property);
         System.out.println(listPackage.getDate_exp());
+        // fix this error parsing string to date
         try {
             Date postExpirationDate = new SimpleDateFormat("yyyy-MM-dd").parse(date_exp);
             listPackage.setDate_exp(postExpirationDate);
