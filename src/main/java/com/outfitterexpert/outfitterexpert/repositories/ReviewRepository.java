@@ -14,7 +14,5 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
     @Query("FROM Review r where r.property.id = ?1")
     List<Review> findByPropertyId(long id);
 
-    Review save(Review r);
-
 
 }

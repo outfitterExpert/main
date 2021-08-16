@@ -55,8 +55,12 @@
         </div>
     </div>
 
-    <form method="GET" action="/reviews/{id}/create/">
-        <button th:value="${listing.id}">Leave a review</button>
+<!--    <form method="GET" action="/reviews/{id}/create/">-->
+<!--        <button th:value="${listing.id}">Leave a review</button>-->
+<!--    </form>-->
+
+    <form th:action="@{/reviews/{id}/create(id = ${listing.id})}" method="GET">
+    <button class="waves-effect waves-purple btn-small indigo accent-3">Write Review</button>
     </form>
 
 

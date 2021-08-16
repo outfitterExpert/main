@@ -36,7 +36,7 @@ public class Property {
     @JoinColumn(name="owner_id")
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
     private List<Review> reviews;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
