@@ -11,7 +11,7 @@
     You have been logged out
 </div>
 <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />
-<form class="card-body m-5" th:action="@{/login}" method="post">
+<form class="form-section" th:action="@{/login}" method="post">
     <div class="error" th:if="${param.error}">
         Invalid Username and Password
     </div>
