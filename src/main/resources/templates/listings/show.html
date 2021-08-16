@@ -31,6 +31,8 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+</div>
+</div>
 
 
     <div class="card-footer text-muted">
@@ -50,25 +52,41 @@
             <div class="card-text col-4">Method:
                 <p class="card-text" th:text="${listing.method}"></p>
             </div>
-
-            <form th:action="@{/reviews/{id}/create (id = ${listing.id})}" method="GET" >
-                <button th:value="${listing.id}">Leave a review</button>
-            </form>
-
-            <div class="listing-pg" th:each="review : ${reviews}">
-            </div>
-
         </div>
     </div>
+
+    <form method="GET" action="/reviews/{id}/create/">
+        <button th:value="${listing.id}">Leave a review</button>
+    </form>
+
+
+
+    <div class="listing-pg" th:each="review : ${reviews}">
+        <div class="card-content">
+        <div class="card-footer text-muted">
+        <div class="row">
+        <div class="card-text col-4">Title:
+        <h3 class="card-title" th:text="${review.title}"/></h3>
+        <div class="card-text col-4">Description:
+        <p  class="card-text"  th:text="${review.body}"/></p>
+        <div class="card-text col-4">Rating:
+        <p  class="card-text" th:text="${review.rating}"/></p>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
     </div>
-<!--<div th:if="${isPostOwner}">-->
-<!--    <form th:action="@{/posts/{id}/delete(id = ${post.id})}" method="post">-->
-<!--        <button class="waves-effect waves-purple btn-small indigo accent-3">Delete Post</button>-->
-<!--    </form>-->
-<!--    <a th:href="@{/posts/{id}/edit(id = ${post.id})}"-->
-<!--       class="waves-effect waves-purple btn-small indigo accent-3">Edit Post</a>-->
-</div>
-<br/>
-<h1>Viewing listing's reviews</h1>
+    <br/>
+<!--    <div th:if="${isPostOwner}">-->
+<!--        <form th:action="@{/posts/{id}/delete(id = ${post.id})}" method="post">-->
+<!--            <button class="waves-effect waves-purple btn-small indigo accent-3">Delete Post</button>-->
+<!--        </form>-->
+<!--        <a th:href="@{/posts/{id}/edit(id = ${post.id})}"-->
+<!--           class="waves-effect waves-purple btn-small indigo accent-3">Edit Post</a>-->
+<!--    </div>-->
+<!--</div>-->
 </body>
 </html>
