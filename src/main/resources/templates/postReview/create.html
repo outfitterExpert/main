@@ -8,16 +8,17 @@
 <body>
     <h1>Write a Review on a Listing</h1>
         <h1>Don't lose hope!</h1>
-                <form th:action="@{/reviews/create}" method="POST" th:object="${review}">
+                <form action="/review/create" th:action="@{/reviews/{id}/create (id=${review.id})}" method="POST" th:object="${review}">
                     <input id="title" name="title" type="text" class="validate" th:field="*{title}">
                     <label for="title">Title</label>
                     <textarea id="body" name="body" class="materialize-textarea" th:field="*{body}"></textarea>
                     <label for="body">Body</label>
-
                     <input id="rating" name="rating" type="number" class="validate" th:field="*{rating}">
                     <label for="rating">Rating</label>
+                    <input type="hidden" name="landId" th:value="${id}">
 
                     <button type="submit" value="submit" class="waves-effect waves-purple btn-small indigo accent-3">Submit</button>
                 </form>
+
 </body>
 </html>    
