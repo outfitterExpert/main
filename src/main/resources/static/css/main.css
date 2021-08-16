@@ -575,16 +575,21 @@
         font-size: 30px;
     }
 
-@media screen and (max-width: 1200px) {
+ .show-pic {
+     display: flex;
+     justify-content: center;
+ }
+
+@media screen and (max-width: 1024px) {
 
     #map {
-        z-index: -5;
         visibility: visible;
         display: none;
     }
     .container {
         display: flex;
     }
+
     .listings-group {
 
     }
