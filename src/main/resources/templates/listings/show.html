@@ -51,7 +51,7 @@
                 <p class="card-text" th:text="${listing.method}"></p>
             </div>
 
-            <form method="GET" action="/reviews/{id}/create/">
+            <form th:action="@{/reviews/{id}/create (id = ${listing.id})}" method="GET" >
                 <button th:value="${listing.id}">Leave a review</button>
             </form>
 

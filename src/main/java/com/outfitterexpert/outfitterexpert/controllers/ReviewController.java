@@ -32,7 +32,7 @@ public class ReviewController {
         return "/postReview/index";
     }
 
-    @GetMapping("/reviews/create")
+    @GetMapping("/reviews/{id}/create")
     public String showCreateForm(Model model) {
         model.addAttribute("review", new Review());
         return "/postReview/create";
@@ -52,16 +52,16 @@ public class ReviewController {
 
     }
 
-    @PostMapping("/reviews/create")
-    public String createReview(@ModelAttribute Review review){
+    @PostMapping("/reviews/{id}/create")
+    public String createReview(@PathVariable long id, @ModelAttribute Review review){
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Property property = propertyDao.findById(1L);
+        Property property = propertyDao.findById(id);
 
         review.setUser(user);
         review.setProperty(property);
         reviewDao.save(review);
-        return "redirect:/reviews";
+        return "redirect:/listings";
     }
 
 
