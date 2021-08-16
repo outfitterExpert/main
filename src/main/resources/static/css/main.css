@@ -54,6 +54,7 @@
     .image-container {
         display: flex;
         justify-content: space-evenly;
+
     }
 
     input {
@@ -423,11 +424,12 @@
     .nav__inner {
         position: absolute;
         top: 0;
+        margin-top: 5px;
         right: 15px;
         width: 150px;
         height: 50px;
         padding: 15px;
-        border-radius: 75px;
+        border-radius: 25px;
         overflow: hidden;
         background: #fff;
         box-shadow: inset 0px 0px 12px rgba(0, 0, 0, 0.15);
@@ -442,6 +444,7 @@
     .nav__avatar {
         position: relative;
         overflow: hidden;
+
     }
 
     .nav__avatar,
@@ -463,11 +466,13 @@
         height: 50px;
         border-radius: 50%;
         box-shadow: inset 0px 0px 11px 0px white;
-        background: linear-gradient(#ff4184 0%, #ff005a 100%, #ff005a 100%);
+        background: linear-gradient(grey 0%, lightslategray 100%, #808080 100%);
         transform: scale(0.1);
         opacity: 0;
         transition: transform 0.3s ease-in, opacity 0.3s ease-in;
         cursor: pointer;
+
+        margin-top: 3px;
     }
 
     .touch .menu-button, .nav:hover .menu-button, input:checked + .menu-button {
@@ -540,6 +545,7 @@
         opacity: 0;
         text-align: center;
         transition: opacity 0.3s ease-in;
+        list-style: none;
     }
 
     input:checked + .menu-button + .nav__inner .nav-list__item {
@@ -565,6 +571,19 @@
     .nav-list__url {
         color: #6d6e76;
         transition: color 0.3s ease;
+    }
+
+    /*this is for Logout Button on Navbar*/
+    .btn1{
+        color: #6d6e76;
+        transition: color 0.3s ease;
+        border: none;
+        background: none;
+    }
+
+    .btn1:hover{
+        color: #ff0b61;
+
     }
 
     .nav-list__url:hover {

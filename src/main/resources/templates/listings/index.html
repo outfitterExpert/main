@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>View listings</title>
@@ -8,9 +9,9 @@
 <body>
 <header th:replace="partials/styles :: styles"></header>
 
-<div class="navstyle">
+<!--<div class="navstyle">-->
 <nav th:replace="partials/navbar :: navbar"/>
-</div>
+<!--</div>-->
 <!--Map please work!-->
 <div class="container">
 <div class="whole row">
