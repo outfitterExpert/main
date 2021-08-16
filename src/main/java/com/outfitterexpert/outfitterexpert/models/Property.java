@@ -48,8 +48,8 @@ public class Property {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name="post_animals",
-            joinColumns = {@JoinColumn(name="animal_id")},
-            inverseJoinColumns = {@JoinColumn(name="property_id")}
+            joinColumns = {@JoinColumn(name="property_id")},
+            inverseJoinColumns = {@JoinColumn(name="animal_id")}
     )
     private List<Animal> animals;
 
@@ -70,7 +70,7 @@ public class Property {
         this.animals = animals;
     }
 
-    public Property(String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user) {
+    public Property(String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user, List<Animal> animals) {
         this.title = title;
         this.location = location;
         this.acres = acres;
@@ -79,6 +79,7 @@ public class Property {
         this.lodging = lodging;
         this.method = method;
         this.user = user;
+        this.animals = animals;
     }
 
     public Property(long id, String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user) {
