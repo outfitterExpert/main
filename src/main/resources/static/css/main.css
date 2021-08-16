@@ -165,6 +165,14 @@
         display: block;
     }
 
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+
     .hover-1-content {
         position: absolute;
         top: 55%;
