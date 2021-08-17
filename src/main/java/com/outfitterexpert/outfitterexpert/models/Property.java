@@ -40,9 +40,6 @@ public class Property {
     private List<Review> reviews;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
-    private List<Booking> bookings;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
     private List<ListingPackage> packages;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -172,14 +169,6 @@ public class Property {
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
-    }
-
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
     }
 
     public List<ListingPackage> getPackages() {

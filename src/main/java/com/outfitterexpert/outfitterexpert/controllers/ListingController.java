@@ -1,6 +1,5 @@
 package com.outfitterexpert.outfitterexpert.controllers;
 
-
 import com.outfitterexpert.outfitterexpert.models.*;
 import com.outfitterexpert.outfitterexpert.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -124,8 +123,6 @@ public class ListingController {
         return "redirect:/listings";
     }
 
-
-
     @GetMapping("/listings/{id}")
     public String singleListing(@PathVariable long id, Model model){
         Property property = propertyDao.getById(id);
@@ -143,18 +140,5 @@ public class ListingController {
         model.addAttribute("listOfPackage", listOfPackage);
         return "/listings/show";
     }
-
-
-
-//    // listings/show
-//
-//    @GetMapping("/listings/{id}/edit")
-//    // listings/edit
-//
-//    @GetMapping("/listings/create")
-//    // listings/create
-//
-//    @GetMapping("/listings/delete/{id}")
-//    // redirect:/listings
 
 }
