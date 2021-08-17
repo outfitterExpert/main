@@ -430,15 +430,16 @@
         width: 150px;
     }
 
+    /*Drop Down Menu Navbar*/
     .nav__inner {
         position: absolute;
         top: 0;
         margin-top: 5px;
-        right: 15px;
-        width: 150px;
+        /*right: 15px;*/
+        width: 135px;
         height: 50px;
         padding: 15px;
-        border-radius: 25px;
+        border-radius: 15px;
         overflow: hidden;
         background: #fff;
         box-shadow: inset 0px 0px 12px rgba(0, 0, 0, 0.15);
@@ -467,7 +468,7 @@
 
     .menu-button {
         position: absolute;
-        right: 0;
+        right: 25px;
         top: 0;
         z-index: 5;
         display: block;
@@ -543,6 +544,11 @@
         transform: rotate(-45deg);
     }
 
+    .nav-logo {
+        height: 40px;
+        width: auto;
+    }
+
     .nav-list {
         width: 30px;
         /*margin: auto;*/
@@ -612,10 +618,20 @@
     }
     .container {
         display: flex;
+
     }
 
     .listings-group {
 
     }
+
+    .search-box{
+        position: absolute;
+        top: 0;
+        right: 0;
+
+    }
+
+
 }
 
