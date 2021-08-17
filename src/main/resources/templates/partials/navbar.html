@@ -14,7 +14,7 @@
 
 <nav th:fragment="navbar" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">
-    <img src="../static/img/OE_transparent.jpg" th:src="@{img/OE_transparent.jpg}" class="nav-logo" alt="OE Logo"/>
+    <img src="../static/img/OE_transparent.jpg" th:src="@{/img/OE_transparent.jpg}" class="nav-logo" alt="OE Logo"/>
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,6 +84,11 @@
                                     </a>
                                 </li>
                                 <li sec:authorize="isAuthenticated()" class="nav-list__item">
+                                    <a href="profile/{id}" class="nav-list__url">
+                                        Profile
+                                    </a>
+                                </li>
+                                <li sec:authorize="isAuthenticated()" class="nav-list__item">
                                     <a href="/listings/create" class="nav-list__url">
                                         Create a listing
                                     </a>
@@ -93,6 +98,12 @@
 <!--                                        <svg class="icon nav-list__icon"><use xlink:href="#icon-user"></use></svg>-->
 <!--                                    </a>-->
 <!--                                </li>-->
+
+                                <li sec:authorize="isAuthenticated()" class="nav-list__item">
+                                    <a href="/bookmarks" class="nav-list__url">
+                                        Bookmarks
+                                    </a>
+                                </li>
 
                                 <li class="nav-list__item">
                                     <a href="/listings" class="nav-list__url">
