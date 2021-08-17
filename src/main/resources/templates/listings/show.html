@@ -77,22 +77,15 @@
     </div>
 </div>
     <div class="listing-pg" th:each="review : ${reviews}">
-        <div class="card-content">
-        <div class="card-footer text-muted">
-        <div class="row">
-        <div class="card-text col-4">Title:
-        <h3 class="card-title" th:text="${review.title}"/></h3>
-        <div class="card-text col-4">Description:
-        <p  class="card-text"  th:text="${review.body}"/></p>
-        <div class="card-text col-4">Rating:
-        <p  class="card-text" th:text="${review.rating}"/></p>
+        <div class="card w-75">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h5 class="card-title" th:text="${review.title}"></h5>
+                    <p class="card-text" th:text="${review.rating}">/10</p>
+                </div>
+                <p class="card-text" th:text="${review.body}"></p>
+            </div>
         </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-
     </div>
     <br/>
 <!--    <div th:if="${isPostOwner}">-->

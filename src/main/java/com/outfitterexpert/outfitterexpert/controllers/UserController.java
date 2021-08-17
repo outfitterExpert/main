@@ -40,6 +40,21 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @GetMapping("/profile")
+    public String viewYourProfile(Model model){
+
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
+            return "redirect:/login";
+        }
+
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        model.addAttribute("user", currentUser);
+        model.addAttribute("listings", propertyDao.findByUserId(currentUser.getId()));
+
+        return "users/profile";
+    }
+
     @GetMapping("/profile/{id}")
     public String viewProfile(@PathVariable long id, Model model){
         User user = userDao.findById(id);
@@ -58,6 +73,7 @@ public class UserController {
 
         return "users/profile";
     }
+    //take the user to their profile when they click on the nav "profile button"
 
 
 }
