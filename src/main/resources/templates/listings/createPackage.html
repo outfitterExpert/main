@@ -11,7 +11,7 @@
 
 <img class="logo" alt="outfitter expert logo" src="../../static/img/oeLogo.png" th:src="@{/img/oeLogo.png}" />
 
-<form class="form-section" th:action="@{/listings/package/create}" method="POST" th:object="${listPackage}">
+<form class="form-section" th:action="@{/listings/{id}/package/create (id=${id})}" method="POST" th:object="${listPackage}">
         <label for="price">Price</label>
         <input id="price" th:field="*{price}" />
 
@@ -35,7 +35,7 @@
         </div>
     <div class="date">
         <label>Expiration date</label>
-        <input type="date" th:field="*{post_exp}">
+        <input type="date" name="date_exp">
         <input class="custom-button" type="submit" value="Create">
     </div>
     </form>
