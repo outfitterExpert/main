@@ -3,6 +3,7 @@ package com.outfitterexpert.outfitterexpert.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "booking")
@@ -17,8 +18,8 @@ public class Booking {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "property_id")
-    private Property property;
+    @JoinColumn(name = "package_id")
+    private ListingPackage listPackage;
 
     @Column(nullable = false)
     private Date start_date;
@@ -29,17 +30,17 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(long id, User user, Property property, Date start_date, Date end_date) {
+    public Booking(long id, User user, ListingPackage listPackage, Date start_date, Date end_date) {
         this.id = id;
         this.user = user;
-        this.property = property;
+        this.listPackage = listPackage;
         this.start_date = start_date;
         this.end_date = end_date;
     }
 
-    public Booking(User user, Property property, Date start_date, Date end_date) {
+    public Booking(User user, ListingPackage listPackage, Date start_date, Date end_date) {
         this.user = user;
-        this.property = property;
+        this.listPackage = listPackage;
         this.start_date = start_date;
         this.end_date = end_date;
     }
@@ -60,12 +61,12 @@ public class Booking {
         this.user = user;
     }
 
-    public Property getProperty() {
-        return property;
+    public ListingPackage getPackage() {
+        return listPackage;
     }
 
-    public void setProperty(Property property) {
-        this.property = property;
+    public void setPackage(ListingPackage listPackage) {
+        this.listPackage = listPackage;
     }
 
     public Date getStart_date() {

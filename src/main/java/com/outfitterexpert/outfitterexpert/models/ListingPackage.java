@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "package")
@@ -35,6 +36,8 @@ public class ListingPackage {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_exp;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "listPackage")
+    private List<Booking> bookings;
 
     @ManyToOne
     @JoinColumn(name="property_id")
@@ -106,6 +109,14 @@ public class ListingPackage {
         this.date_exp = date_exp;
     }
 
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
     public Property getProperty() {
         return property;
     }
@@ -137,4 +148,5 @@ public class ListingPackage {
     public void setLodging(boolean lodging) {
         this.lodging = lodging;
     }
+
 }
