@@ -48,12 +48,14 @@ public class UserController {
         model.addAttribute("listings", propertyDao.findByUserId(id));
 
         //check to see if the current user has the same id as the account
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(currentUser.getId() == id){
-            model.addAttribute("isUserAccount", true);
-        }else if(currentUser.getId() != id){
-            model.addAttribute("isUserAccount", false);
+        boolean isUserAccount = false;
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            isUserAccount = currentUser.getId() == user.getId();
         }
+
+        model.addAttribute("isUserAccount", isUserAccount);
+
         return "users/profile";
     }
 
