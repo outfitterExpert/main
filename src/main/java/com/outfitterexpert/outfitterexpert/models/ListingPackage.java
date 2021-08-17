@@ -32,7 +32,7 @@ public class ListingPackage {
     @Column(nullable = false)
     private boolean lodging;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_exp;
 
 
