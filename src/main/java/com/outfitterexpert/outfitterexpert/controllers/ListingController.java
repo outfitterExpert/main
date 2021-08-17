@@ -8,7 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -45,7 +48,7 @@ public class ListingController {
     }
 
     @PostMapping("/listings/create")
-    public String submitListing(@ModelAttribute Property listing, @ModelAttribute ListingPackage listingPackage, @RequestParam(name="user-animal-list") String userAnimals){
+    public String submitListing(@ModelAttribute Property listing, @RequestParam(name="user-animal-list") String userAnimals){
         //get the user that's logged in
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         listing.setUser(currentUser);
@@ -82,26 +85,35 @@ public class ListingController {
 
         propertyDao.save(listing);
 
-        listingPackage.setProperty_id(listing.getId());
-        packageDao.save(listingPackage);
-
         return "redirect:/listings";
     }
 
-    @GetMapping("/listings/package/create")
-    public String createPackage(Model model){
+    @GetMapping("/listings/{id}/package/create")
+    public String createPackageForm(@PathVariable long id, Model model){
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             if(currentUser != null){
                 model.addAttribute("listPackage", new ListingPackage());
+                model.addAttribute("id", id);
                 return "listings/createPackage";
             }
-            return "redirect:/listings/index";
+            return "redirect:/listings/createPackage";
     }
 
-    @PostMapping("/listings/package/create")
-    public String submitPackage(@ModelAttribute ListingPackage listPackage) {
-        Property property = propertyDao.findById(1L);
+    @PostMapping("/listings/{id}/package/create")
+    public String createPackage(@PathVariable long id, @ModelAttribute ListingPackage listPackage, @RequestParam String date_exp) {
+
+        System.out.println(id);
+        Property property = propertyDao.findById(id);
         listPackage.setProperty(property);
+        System.out.println(listPackage.getDate_exp());
+        // fix this error parsing string to date
+        try {
+            Date postExpirationDate = new SimpleDateFormat("yyyy-MM-dd").parse(date_exp);
+            listPackage.setDate_exp(postExpirationDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         packageDao.save(listPackage);
 
         System.out.println(listPackage.getProperty_id());
@@ -109,13 +121,16 @@ public class ListingController {
         System.out.println(listPackage.getDuration());
         System.out.println(listPackage.isGuided());
 
-        return "redirect:/listings/package";
+        return "redirect:/listings";
     }
+
+
 
     @GetMapping("/listings/{id}")
     public String singleListing(@PathVariable long id, Model model){
         Property property = propertyDao.getById(id);
         List<Review> reviews = reviewDao.findByPropertyId(id);
+        List<ListingPackage> listOfPackage = packageDao.findByPropertyId(id);
 
         boolean isPropertyOwner = false;
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
@@ -125,6 +140,7 @@ public class ListingController {
         model.addAttribute("listing", property);
         model.addAttribute("reviews", reviews);
         model.addAttribute("isPropertyOwner", isPropertyOwner);
+        model.addAttribute("listOfPackage", listOfPackage);
         return "/listings/show";
     }
 

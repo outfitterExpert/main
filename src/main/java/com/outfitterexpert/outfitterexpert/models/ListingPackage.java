@@ -1,6 +1,8 @@
 package com.outfitterexpert.outfitterexpert.models;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -30,8 +32,9 @@ public class ListingPackage {
     @Column(nullable = false)
     private boolean lodging;
 
-    @Column(nullable = false)
-    private Date post_exp;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date date_exp;
+
 
     @ManyToOne
     @JoinColumn(name="property_id")
@@ -40,18 +43,18 @@ public class ListingPackage {
     public ListingPackage() {
     }
 
-    public ListingPackage(long property_id, double price, int duration, String description, boolean guided, boolean lodging, Date post_exp, Property property) {
+    public ListingPackage(long property_id, double price, int duration, String description, boolean guided, boolean lodging, Date date_exp, Property property) {
         this.property_id = property_id;
         this.price = price;
         this.duration = duration;
         this.description = description;
         this.guided = guided;
         this.lodging = lodging;
-        this.post_exp = post_exp;
+        this.date_exp = date_exp;
         this.property = property;
     }
 
-    public ListingPackage(long id, long property_id, double price, int duration, String description, boolean guided, boolean lodging, Date post_exp, Property property) {
+    public ListingPackage(long id, long property_id, double price, int duration, String description, boolean guided, boolean lodging, Date date_exp, Property property) {
         this.id = id;
         this.property_id = property_id;
         this.price = price;
@@ -59,7 +62,7 @@ public class ListingPackage {
         this.description = description;
         this.guided = guided;
         this.lodging = lodging;
-        this.post_exp = post_exp;
+        this.date_exp = date_exp;
         this.property = property;
     }
 
@@ -95,12 +98,12 @@ public class ListingPackage {
         this.duration = duration;
     }
 
-    public Date getPost_exp() {
-        return post_exp;
+    public Date getDate_exp() {
+        return date_exp;
     }
 
-    public void setPost_exp(Date post_exp) {
-        this.post_exp = post_exp;
+    public void setDate_exp(Date date_exp) {
+        this.date_exp = date_exp;
     }
 
     public Property getProperty() {
