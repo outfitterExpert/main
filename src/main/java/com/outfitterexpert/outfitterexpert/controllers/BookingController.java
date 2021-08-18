@@ -1,13 +1,18 @@
 package com.outfitterexpert.outfitterexpert.controllers;
 
 import com.outfitterexpert.outfitterexpert.models.Booking;
+import com.outfitterexpert.outfitterexpert.models.ListingPackage;
+import com.outfitterexpert.outfitterexpert.models.User;
 import com.outfitterexpert.outfitterexpert.repositories.PackageRepository;
 import com.outfitterexpert.outfitterexpert.repositories.PropertyRepository;
 import com.outfitterexpert.outfitterexpert.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class BookingController {
@@ -21,14 +26,23 @@ public class BookingController {
         this.propertyDao = propertyDao;
     }
 
-    @GetMapping("/listing/package/{id}/book")
-    public String bookPackage(@PathVariable long id, Model model){
+    @GetMapping("/listing/package/book")
+    public String bookPackage(@RequestParam long package_id, Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(currentUser != null){
+            model.addAttribute("package", packageDao.findById(package_id));
+            return "listings/bookListing";
+        }
+        return "redirect:/login";
 
-        model.addAttribute("id", id); //package id
-        model.addAttribute("booking", new Booking());
-
-        return "listings/bookListing";
     }
 
     //create a post mapping that will handle the booking process
+    @PostMapping("/listing/package/book")
+    public String submitBooking(){
+        //get parameters from the page
+        //save booking
+        //return user to their profile to view active bookings
+        return "redirect:/listings";
+    }
 }
