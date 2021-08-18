@@ -7,5 +7,19 @@
 </head>
 <body>
 <h1>Book this listing form/process page</h1>
+<h3 th:text="${package.price}"></h3>
+<h3 th:text="${package.description}"></h3>
+<h3 th:text="${package.guided}"></h3>
+<h3 th:text="${package.lodging}"></h3>
+<h3 th:text="${package.duration}"></h3>
+<form th:action="@{/listing/package/book}" method="post">
+    <label for="date_start">Start date</label>
+    <input id="date_start" name="date_start" type="date">
+
+    <label for="date_end">End date</label>
+    <input id="date_end" name="date_end" type="date">
+
+    <button type="submit">Book Package!</button>
+</form>
 </body>
 </html>

@@ -74,6 +74,10 @@
         <h3 th:text="${package.guided}"></h3>
         <h3 th:text="${package.lodging}"></h3>
         <h3 th:text="${package.duration}"></h3>
+        <form th:action="@{/listing/package/book}" method="get">
+            <input type="hidden" name="package_id" th:value="${package.id}">
+            <button type="submit">Book</button>
+        </form>
     </div>
 </div>
     <div class="listing-pg" th:each="review : ${reviews}">
