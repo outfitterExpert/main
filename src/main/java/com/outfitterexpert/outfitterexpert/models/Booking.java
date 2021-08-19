@@ -1,6 +1,8 @@
 package com.outfitterexpert.outfitterexpert.models;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -21,28 +23,28 @@ public class Booking {
     @JoinColumn(name = "package_id")
     private ListingPackage listPackage;
 
-    @Column(nullable = false)
-    private Date start_date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date date_start;
 
-    @Column(nullable = false)
-    private Date end_date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date date_end;
 
     public Booking() {
     }
 
-    public Booking(long id, User user, ListingPackage listPackage, Date start_date, Date end_date) {
+    public Booking(long id, User user, ListingPackage listPackage, Date date_start, Date date_end) {
         this.id = id;
         this.user = user;
         this.listPackage = listPackage;
-        this.start_date = start_date;
-        this.end_date = end_date;
+        this.date_start = date_start;
+        this.date_end = date_end;
     }
 
-    public Booking(User user, ListingPackage listPackage, Date start_date, Date end_date) {
+    public Booking(User user, ListingPackage listPackage, Date date_start, Date date_end) {
         this.user = user;
         this.listPackage = listPackage;
-        this.start_date = start_date;
-        this.end_date = end_date;
+        this.date_start = date_start;
+        this.date_end = date_end;
     }
 
     public long getId() {
@@ -69,19 +71,19 @@ public class Booking {
         this.listPackage = listPackage;
     }
 
-    public Date getStart_date() {
-        return start_date;
+    public Date getDate_start() {
+        return date_start;
     }
 
-    public void setStart_date(Date start_date) {
-        this.start_date = start_date;
+    public void setDate_start(Date date_start) {
+        this.date_start = date_start;
     }
 
-    public Date getEnd_date() {
-        return end_date;
+    public Date getDate_end() {
+        return date_end;
     }
 
-    public void setEnd_date(Date end_date) {
-        this.end_date = end_date;
+    public void setDate_end(Date date_end) {
+        this.date_end = date_end;
     }
 }

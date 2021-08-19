@@ -45,9 +45,14 @@ public class ReviewController {
 
     @GetMapping("/reviews/{id}/create")
     public String showCreateForm(@PathVariable long id, Model model) {
-        model.addAttribute("review", new Review());
-        model.addAttribute("id", id);
-        return "/postReview/create";
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser"){
+            model.addAttribute("review", new Review());
+            model.addAttribute("id", id);
+            return "/postReview/create";
+        }else{
+            return "redirect:/login";
+        }
+
     }
 
     @PostMapping("/reviews/{id}/create")

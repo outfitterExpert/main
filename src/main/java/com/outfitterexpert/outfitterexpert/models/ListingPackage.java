@@ -15,9 +15,6 @@ public class ListingPackage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, insertable = false, updatable = false)
-    private long property_id;
-
     @Column(nullable = false)
     private double price;
 
@@ -46,8 +43,7 @@ public class ListingPackage {
     public ListingPackage() {
     }
 
-    public ListingPackage(long property_id, double price, int duration, String description, boolean guided, boolean lodging, Date date_exp, Property property) {
-        this.property_id = property_id;
+    public ListingPackage(double price, int duration, String description, boolean guided, boolean lodging, Date date_exp, Property property) {
         this.price = price;
         this.duration = duration;
         this.description = description;
@@ -57,9 +53,8 @@ public class ListingPackage {
         this.property = property;
     }
 
-    public ListingPackage(long id, long property_id, double price, int duration, String description, boolean guided, boolean lodging, Date date_exp, Property property) {
+    public ListingPackage(long id, double price, int duration, String description, boolean guided, boolean lodging, Date date_exp, Property property) {
         this.id = id;
-        this.property_id = property_id;
         this.price = price;
         this.duration = duration;
         this.description = description;
@@ -75,14 +70,6 @@ public class ListingPackage {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public long getProperty_id() {
-        return property_id;
-    }
-
-    public void setProperty_id(long property_id) {
-        this.property_id = property_id;
     }
 
     public double getPrice() {

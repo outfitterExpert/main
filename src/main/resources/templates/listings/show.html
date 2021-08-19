@@ -59,7 +59,7 @@
 <!--    <form method="GET" action="/reviews/{id}/create/">-->
 <!--        <button th:value="${listing.id}">Leave a review</button>-->
 <!--    </form>-->
-<form th:action="@{/listings/{id}/package/create(id = ${listing.id})}" method="GET">
+<form th:action="@{/listings/{id}/package/create (id = ${listing.id})}" method="GET">
     <button class="custom-button">Create a Package</button>
 </form>
     <form th:action="@{/reviews/{id}/create(id = ${listing.id})}" method="GET">
@@ -74,8 +74,7 @@
         <h3 th:text="${package.guided}"></h3>
         <h3 th:text="${package.lodging}"></h3>
         <h3 th:text="${package.duration}"></h3>
-        <form th:action="@{/listing/package/book}" method="get">
-            <input type="hidden" name="package_id" th:value="${package.id}">
+        <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">
             <button type="submit">Book</button>
         </form>
     </div>
