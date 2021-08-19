@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface PackageRepository extends JpaRepository<ListingPackage, Long> {
+
     ListingPackage findById(long id);
+
     ListingPackage save(ListingPackage p);
 
     @Query("FROM ListingPackage p where p.property.id = ?1")
