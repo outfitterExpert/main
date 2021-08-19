@@ -10,12 +10,18 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
     Property findById(long id);
 
 
-//    @Query("SELECT p FROM Property p where p.location = ?1")
-//    @Query("SELECT p FROM Property p where p.animals = ?1")
+    @Query("FROM Property p where p.user.id = ?1")
+    List<Property> findByUserId(long id);
 
+    @Query("FROM Property p where p.location LIKE %?1%")
+    List<Property> findPropertyByLocation(String location);
+
+    @Query("FROM Property p inner join p.animals a WHERE a.name LIKE %:animals%")
+    List<Property> findAllLikeAnimalName(String animals);
 
     @Query("FROM Property p where p.user.id = ?1")
     List<Property> findByUserId(long id);
+
 
     Property findTopByOrderByIdDesc();
 
