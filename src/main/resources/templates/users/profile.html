@@ -31,12 +31,15 @@
     <p th:text="${review.rating}"></p>
     <p th:text="${review.body}"></p>
 
+
+    <div th:if="${isUserAccount}">
     <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
         <button>Delete Review</button>
     </form>
-    <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="post">
-        <button>Edit Review</button>
+    <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">
+        <button type="submit">Edit Review</button>
     </form>
+    </div>
 </div>
 </body>
 </html>

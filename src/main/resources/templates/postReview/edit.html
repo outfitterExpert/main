@@ -9,7 +9,7 @@
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
     <h2>Edit A Review on this Listing</h2>
-                <form th:action="@{/reviews/{id}/edit}" method="post" th:object="${review.id}">
+                <form th:action="@{/reviews/{id}/edit}" method="post" th:object="${review}">
                             <input id="title" name="title" type="text" class="validate" th:field="{title}" th:value="{title}" />
                             <label for="title">Title</label>
                             <textarea id="body" name="body" class="materialize-textarea" th:field="{body}" th:value="{body}"></textarea>

@@ -72,12 +72,12 @@ public class ReviewController {
     @GetMapping("/reviews/{id}/edit")
     public String editReviewForm(@PathVariable long id, Model model ){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Review review = reviewDao.getById(id);
+        Review review = reviewDao.findById(id);
         if(currentUser.getId() == review.getUser().getId()) {
             model.addAttribute("review", review);
-            return "review/edit";
-        } else {
-            return "redirect:/profile/";
+            return "/postReview/create";
+        }else{
+            return "redirect:/login";
         }
     }
 
@@ -85,13 +85,23 @@ public class ReviewController {
     @PostMapping("/reviews/{id}/edit")
     public String editReview(@PathVariable long id, @ModelAttribute Review review ){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Review reviewFromDB = reviewDao.getById(id);
+        Review reviewFromDB = reviewDao.findById(id);
         if(user.getId() == reviewFromDB.getUser().getId()) {
             review.setUser(user);
             reviewDao.save(review);
         }
         return "redirect:/profile/";
 
+    }
+
+    @PostMapping("/reviews/{id}/delete")
+    public String deleteReview(@PathVariable long id) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Review post = reviewDao.getById(id);
+        if (currentUser.getId() == post.getUser().getId()) {
+            reviewDao.delete(post);
+        }
+        return "redirect:/profile/" + currentUser.getId();
     }
 
 

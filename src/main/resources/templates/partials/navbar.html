@@ -85,9 +85,10 @@
                                     </a>
                                 </li>
                                 <li sec:authorize="isAuthenticated()" class="nav-list__item">
-                                    <a href="/profile" class="nav-list__url">
-                                        Profile
-                                    </a>
+
+                                    <form th:action="@{/profile/{id}(id=${#authentication.principal.id})}" th:method="get">
+                                        <button>Profile</button>
+                                    </form>
                                 </li>
                                 <li sec:authorize="isAuthenticated()" class="nav-list__item">
                                     <a href="/listings/create" class="nav-list__url">

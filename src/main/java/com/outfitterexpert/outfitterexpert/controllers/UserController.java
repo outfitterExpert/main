@@ -75,8 +75,8 @@ public class UserController {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             isUserAccount = currentUser.getId() == user.getId();
         }
-
         model.addAttribute("isUserAccount", isUserAccount);
+
 
         return "users/profile";
     }
