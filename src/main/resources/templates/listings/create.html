@@ -54,6 +54,11 @@
             <option value="tracking">Tracking</option>
             <option value="trapping">Trapping</option>
         </select>
+        <label for="type">Type of Listing</label>
+        <select id="type" class="form-section" th:field="*{type}">
+            <option value="1">Hunting</option>
+            <option value="0">Fishing</option>
+        </select>
         <br/>
         <input class="custom-button" type="submit" id="submitForm" value="Create" />
     </form>

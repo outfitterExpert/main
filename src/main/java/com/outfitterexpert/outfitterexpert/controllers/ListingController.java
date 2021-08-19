@@ -1,5 +1,6 @@
 package com.outfitterexpert.outfitterexpert.controllers;
 
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import com.outfitterexpert.outfitterexpert.models.*;
 import com.outfitterexpert.outfitterexpert.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -7,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,10 +32,56 @@ public class ListingController {
         this.animalDao = animalDao;
     }
 
-
     @GetMapping("/listings")
-    public String viewPosts(Model model) {
-        model.addAttribute("listings", propertyDao.findAll());
+    public String viewPosts(@CookieValue(value = "type", defaultValue = "true") String strType, Model model) {
+        boolean type = Boolean.parseBoolean(strType);
+
+        List<Property> retrievedProperties = propertyDao.findAll();
+        List<Property> sendToIndex = new ArrayList<>();
+        if(type){
+            for(Property p : retrievedProperties){
+                if(p.isType()){ //This populates an array for hunting trips
+                    sendToIndex.add(p);
+                }
+            }
+        }else{
+            for(Property p : retrievedProperties){
+                if(!p.isType()){ //This populates an array for fishing trips
+                    sendToIndex.add(p);
+                }
+            }
+        }
+        model.addAttribute("listings", sendToIndex);
+        return "listings/index";
+    }
+
+
+    @GetMapping("/listings/hunting")
+    public String viewHuntingPosts(Model model) {
+        Cookie typeCookie = new Cookie("type", "true");
+        List<Property> retrievedProperties = propertyDao.findAll();
+        List<Property> sendToIndex = new ArrayList<>();
+        for(Property p : retrievedProperties){
+            if(p.isType()){ //This populates an array for hunting trips
+                sendToIndex.add(p);
+            }
+        }
+        model.addAttribute("listings", sendToIndex);
+        return "listings/index";
+    }
+
+    @GetMapping("/listings/fishing")
+    public String viewFishingPosts(Model model) {
+        Cookie typeCookie = new Cookie("type", "false");
+        List<Property> retrievedProperties = propertyDao.findAll();
+        List<Property> sendToIndex = new ArrayList<>();
+
+        for(Property p : retrievedProperties){
+            if(!p.isType()){ //This populates an array for fishing trips
+                sendToIndex.add(p);
+            }
+        }
+        model.addAttribute("listings", sendToIndex);
         return "listings/index";
     }
 

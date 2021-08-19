@@ -11,8 +11,6 @@ public class Property {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
-
     @Column
     private String imgUrl;
 
@@ -37,6 +35,10 @@ public class Property {
     @Column(nullable = false)
     private String method;
 
+//true is hunting - false is fishing
+    @Column(nullable = false)
+    private boolean type;
+
     @ManyToOne
     @JoinColumn(name="owner_id")
     private User user;
@@ -58,7 +60,7 @@ public class Property {
     public Property (){
     }
 
-    public Property(String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user, List<Review> reviews, List<Booking> bookings, List<ListingPackage> packages, List<Animal> animals, String imgUrl) {
+    public Property(String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user, List<Review> reviews, List<Booking> bookings, List<ListingPackage> packages, List<Animal> animals, String imgUrl, boolean type) {
         this.title = title;
         this.location = location;
         this.acres = acres;
@@ -71,9 +73,10 @@ public class Property {
         this.packages = packages;
         this.animals = animals;
         this.imgUrl = imgUrl;
+        this.type = type;
     }
 
-    public Property(String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user, List<Animal> animals) {
+    public Property(String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user, List<Animal> animals, boolean type) {
         this.title = title;
         this.location = location;
         this.acres = acres;
@@ -83,9 +86,10 @@ public class Property {
         this.method = method;
         this.user = user;
         this.animals = animals;
+        this.type = type;
     }
 
-    public Property(long id, String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user) {
+    public Property(long id, String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user, boolean type) {
         this.id = id;
         this.title = title;
         this.location = location;
@@ -95,6 +99,7 @@ public class Property {
         this.lodging = lodging;
         this.method = method;
         this.user = user;
+        this.type = type;
     }
 
     public long getId() {
@@ -198,5 +203,13 @@ public class Property {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public boolean isType() {
+        return type;
+    }
+
+    public void setType(boolean type) {
+        this.type = type;
     }
 }
