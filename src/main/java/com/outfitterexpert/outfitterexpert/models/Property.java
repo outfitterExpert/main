@@ -11,6 +11,11 @@ public class Property {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+
+
+    @Column
+    private String imgUrl;
+
     @Column(nullable = false)
     private String title;
 
@@ -53,7 +58,7 @@ public class Property {
     public Property (){
     }
 
-    public Property(String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user, List<Review> reviews, List<Booking> bookings, List<ListingPackage> packages, List<Animal> animals) {
+    public Property(String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user, List<Review> reviews, List<Booking> bookings, List<ListingPackage> packages, List<Animal> animals, String imgUrl) {
         this.title = title;
         this.location = location;
         this.acres = acres;
@@ -65,6 +70,7 @@ public class Property {
         this.reviews = reviews;
         this.packages = packages;
         this.animals = animals;
+        this.imgUrl = imgUrl;
     }
 
     public Property(String title, String location, int acres, int slots, boolean guided, boolean lodging, String method, User user, List<Animal> animals) {
@@ -185,5 +191,12 @@ public class Property {
 
     public void setAnimals(List<Animal> animals) {
         this.animals = animals;
+    }
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }
