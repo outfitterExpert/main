@@ -15,23 +15,34 @@
 
 <!--IMAGES SIDE BY SIDE-->
 <div class="image-container">
-    <div class="card center-vh hover hover-1" style="width: 48%;"><a href="/listings">
-        <img src="../static/img/huntingOutfitter.jpg" th:src="@{img/huntingOutfitter.jpg}" class="card-img-top" alt="Man walking though water carrying ducks"/><span class="center-img img-text">Hunting</span>
-        <div class="hover-overlay"></div>
-        <div class="hover-1-content">
-            <h5 class="card-title text-light hover-1-description">Hunting listings</h5>
-            <p class="card-text text-light hover-1-description">View listings and book hunting trips!</p>
-        </div></a>
-    </div>
 
-    <div class="card center-vh hover hover-1" style="width: 48%;">
-        <img src="../../static/img/fishingOutfitter.jpg" th:src="@{img/fishingOutfitter.jpg}" class="card-img-top" alt="man standing in lake fishing"/><span class="center-img img-text">Fishing</span>
-        <div class="hover-overlay"></div>
-        <div class="hover-1-content">
-            <h5 class="card-title text-light hover-1-description">Fishing listings</h5>
-            <p class="card-text text-light hover-1-description">View listings and book fishing trips!</p>
+    <form th:action="@{/listings/hunting}" method="GET" >
+        <input type="hidden" name="type" value="1">
+        <button type="submit" class="benjamin-button">
+        <div class="card center-vh hover hover-1" style="width: 48%;"><a href="/listings">
+            <img src="../static/img/huntingOutfitter.jpg" th:src="@{img/huntingOutfitter.jpg}" class="card-img-top" alt="Man walking though water carrying ducks"/><span class="center-img img-text">Hunting</span>
+            <div class="hover-overlay"></div>
+            <div class="hover-1-content">
+                <h5 class="card-title text-light hover-1-description">Hunting listings</h5>
+                <p class="card-text text-light hover-1-description">View listings and book hunting trips!</p>
+            </div></a>
         </div>
-    </div>
+        </button>
+    </form>
+
+    <form th:action="@{/listings/fishing}" method="GET" >
+        <input type="hidden" name="type" value="0">
+        <button type="submit" class="benjamin-button">
+        <div class="card center-vh hover hover-1" style="width: 48%;">
+            <img src="../../static/img/fishingOutfitter.jpg" th:src="@{img/fishingOutfitter.jpg}" class="card-img-top" alt="man standing in lake fishing"/><span class="center-img img-text">Fishing</span>
+            <div class="hover-overlay"></div>
+            <div class="hover-1-content">
+                <h5 class="card-title text-light hover-1-description">Fishing listings</h5>
+                <p class="card-text text-light hover-1-description">View listings and book fishing trips!</p>
+            </div>
+        </div>
+        </button>
+    </form>
 </div>
 <!--<div sec:authorize="isAuthenticated()" class="nav-item m-0">-->
 <!--    <form th:action="@{/logout}" th:method="post">-->
