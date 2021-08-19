@@ -12,12 +12,13 @@
 <h3 th:text="${package.guided}"></h3>
 <h3 th:text="${package.lodging}"></h3>
 <h3 th:text="${package.duration}"></h3>
-<form th:action="@{/listing/package/book}" method="post">
+<form th:action="@{/listing/package/{id}/book (id=${id})}" method="post" th:object="${booking}">
+
     <label for="date_start">Start date</label>
-    <input id="date_start" name="date_start" type="date">
+    <input id="date_start" name="date_start" type="date" th:field="*{date_start}">
 
     <label for="date_end">End date</label>
-    <input id="date_end" name="date_end" type="date">
+    <input id="date_end" name="date_end" type="date" th:field="*{date_end}">
 
     <button type="submit">Book Package!</button>
 </form>

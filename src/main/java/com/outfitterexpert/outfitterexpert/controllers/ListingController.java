@@ -92,17 +92,17 @@ public class ListingController {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             if(currentUser != null){
                 model.addAttribute("listPackage", new ListingPackage());
-                model.addAttribute("id", id);
+                model.addAttribute("listing_id", id);
                 return "listings/createPackage";
             }
             return "redirect:/listings/createPackage";
     }
 
-    @PostMapping("/listings/{id}/package/create")
-    public String createPackage(@PathVariable long id, @ModelAttribute ListingPackage listPackage, @RequestParam String date_exp) {
+    @PostMapping("/listings/{listing_id}/package/create")
+    public String createPackage(@PathVariable long listing_id, @ModelAttribute ListingPackage listPackage, @RequestParam String date_exp) {
 
-        System.out.println(id);
-        Property property = propertyDao.findById(id);
+        System.out.println(listing_id);
+        Property property = propertyDao.findById(listing_id);
         listPackage.setProperty(property);
         System.out.println(listPackage.getDate_exp());
         // fix this error parsing string to date
@@ -115,7 +115,6 @@ public class ListingController {
 
         packageDao.save(listPackage);
 
-        System.out.println(listPackage.getProperty_id());
         System.out.println(listPackage.getDescription());
         System.out.println(listPackage.getDuration());
         System.out.println(listPackage.isGuided());
