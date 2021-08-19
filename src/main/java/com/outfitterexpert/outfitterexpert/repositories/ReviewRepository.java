@@ -1,5 +1,6 @@
 package com.outfitterexpert.outfitterexpert.repositories;
 
+import com.outfitterexpert.outfitterexpert.models.Property;
 import com.outfitterexpert.outfitterexpert.models.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,6 +14,9 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     @Query("FROM Review r where r.property.id = ?1")
     List<Review> findByPropertyId(long id);
+
+    @Query("FROM Review p where p.user.id = ?1")
+    List<Review> findByUserId(long id);
 
 
 }

@@ -2,6 +2,7 @@ package com.outfitterexpert.outfitterexpert.controllers;
 
 import com.outfitterexpert.outfitterexpert.models.User;
 import com.outfitterexpert.outfitterexpert.repositories.PropertyRepository;
+import com.outfitterexpert.outfitterexpert.repositories.ReviewRepository;
 import com.outfitterexpert.outfitterexpert.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,11 +20,14 @@ public class UserController {
     private final UserRepository userDao;
     private final PasswordEncoder passwordEncoder;
     private final PropertyRepository propertyDao;
+    private final ReviewRepository reviewDao;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PropertyRepository propertyDao) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PropertyRepository propertyDao, ReviewRepository reviewDao) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.propertyDao = propertyDao;
+        this.reviewDao = reviewDao;
+
     }
 
     @GetMapping("/sign-up")
@@ -51,6 +55,7 @@ public class UserController {
 
         model.addAttribute("user", currentUser);
         model.addAttribute("listings", propertyDao.findByUserId(currentUser.getId()));
+        model.addAttribute("reviews", reviewDao.findByUserId(currentUser.getId()));
 
         return "users/profile";
     }
@@ -61,6 +66,8 @@ public class UserController {
 
         model.addAttribute("user", user);
         model.addAttribute("listings", propertyDao.findByUserId(id));
+        model.addAttribute("reviews", reviewDao.findByUserId(id));
+
 
         //check to see if the current user has the same id as the account
         boolean isUserAccount = false;
