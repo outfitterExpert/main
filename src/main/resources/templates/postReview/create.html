@@ -9,11 +9,11 @@
     <h1>Write a Review on a Listing</h1>
         <h1>Don't lose hope!</h1>
                 <form action="/review/create" th:action="@{/reviews/{id}/create (id=${id})}" method="POST" th:object="${review}">
-                    <input id="title" name="title" type="text" class="validate" th:field="*{title}">
+                    <input id="title" name="title" type="text" class="validate" th:value="*{title}" th:field="*{title}">
                     <label for="title">Title</label>
-                    <textarea id="body" name="body" class="materialize-textarea" th:field="*{body}"></textarea>
+                    <textarea id="body" name="body" class="materialize-textarea" th:value="*{body}" th:field="*{body}"></textarea>
                     <label for="body">Body</label>
-                    <input id="rating" name="rating" type="number" class="validate" th:field="*{rating}">
+                    <input id="rating" name="rating" type="number" class="validate" th:value="*{rating}" th:field="*{rating}">
                     <label for="rating">Rating</label>
 
                     <button type="submit" value="submit" class="waves-effect waves-purple btn-small indigo accent-3">Submit</button>
