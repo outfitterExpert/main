@@ -26,6 +26,17 @@
 </div>
 <h1>Bookings:</h1>
 <h1>Listings:</h1>
+<div th:each="review : ${reviews}">
+    <h5  th:text="${review.title}"></h5>
+    <p th:text="${review.rating}"></p>
+    <p th:text="${review.body}"></p>
 
+    <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
+        <button>Delete Review</button>
+    </form>
+    <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="post">
+        <button>Edit Review</button>
+    </form>
+</div>
 </body>
 </html>

@@ -69,6 +69,33 @@ public class ReviewController {
         return "redirect:/listings";
     }
 
+    @GetMapping("/reviews/{id}/edit")
+    public String editReviewForm(@PathVariable long id, Model model ){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Review review = reviewDao.getById(id);
+        if(currentUser.getId() == review.getUser().getId()) {
+            model.addAttribute("review", review);
+            return "review/edit";
+        } else {
+            return "redirect:/profile/";
+        }
+    }
+
+
+    @PostMapping("/reviews/{id}/edit")
+    public String editReview(@PathVariable long id, @ModelAttribute Review review ){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Review reviewFromDB = reviewDao.getById(id);
+        if(user.getId() == reviewFromDB.getUser().getId()) {
+            review.setUser(user);
+            reviewDao.save(review);
+        }
+        return "redirect:/profile/";
+
+    }
+
+
+
 
 
 }
