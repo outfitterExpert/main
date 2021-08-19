@@ -49,6 +49,7 @@ public class ListingController {
     @PostMapping("/listings/create")
     public String submitListing(@ModelAttribute Property listing, @RequestParam(name="user-animal-list") String userAnimals){
         //get the user that's logged in
+        System.out.println(listing.getImgUrl());
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         listing.setUser(currentUser);
 
@@ -81,7 +82,7 @@ public class ListingController {
 
         //push the final list to the listing
         listing.setAnimals(listingAnimals);
-
+//        listing.setImgURL(listing.getImgURL());
         propertyDao.save(listing);
 
         return "redirect:/listings";
