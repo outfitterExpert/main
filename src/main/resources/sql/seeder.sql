@@ -459,7 +459,7 @@ VALUES  ('African Pompano'),
         ('Kamloops rainbow trout'),
         ('Lake trout'),
         ('Rainbow trout'),
-        ('Westslope cutthroat trout')
+        ('Westslope cutthroat trout'),
         ('Walleye'),
         ('Warmouth'),
         ('Warpaint shiner'),
