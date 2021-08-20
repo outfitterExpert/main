@@ -449,7 +449,8 @@
     }
 
     input:checked + .menu-button + .nav__inner {
-        height: 400px;
+        height: 600px;
+
     }
 
     .nav__avatar {
@@ -610,6 +611,9 @@
         font-size: 30px;
     }
 
+    .hidden {
+        display: none;
+    }
 
 @media screen and (max-width: 1024px) {
 
@@ -632,6 +636,7 @@
         right: 0;
 
     }
+
 
 
 }

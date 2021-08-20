@@ -85,6 +85,7 @@ public class ListingController {
         return "listings/index";
     }
 
+    //This is for hunting listings
     @GetMapping("/listings/create")
     public String createListing(Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -92,6 +93,18 @@ public class ListingController {
             model.addAttribute("listing", new Property());
             model.addAttribute("package", new ListingPackage());
             return "listings/create";
+        }
+        return "redirect:/listings";
+    }
+
+    //This is for fishing listings
+    @GetMapping("/listings/create-fish")
+    public String createFishListing(Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(currentUser != null){
+            model.addAttribute("listing", new Property());
+            model.addAttribute("package", new ListingPackage());
+            return "listings/create-fish";
         }
         return "redirect:/listings";
     }
@@ -190,5 +203,44 @@ public class ListingController {
         model.addAttribute("listOfPackage", listOfPackage);
         return "/listings/show";
     }
+
+    @GetMapping("/listings/{id}/edit")
+    public String editListingForm(@PathVariable long id, Model model ){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Property property = propertyDao.getById(id);
+        if(currentUser.getId() == property.getUser().getId()) {
+            model.addAttribute("listing", property);
+            return "/listings/create";
+        }else{
+            return "redirect:/login";
+        }
+    }
+
+
+    @PostMapping("/listings/{id}/edit")
+    public String editListing(@PathVariable long id, @ModelAttribute Property property ){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Property propertyFromDB = propertyDao.findById(id);
+        if(user.getId() == propertyFromDB.getUser().getId()) {
+            property.setUser(user);
+            propertyDao.save(property);
+        }
+        return "redirect:/profile/";
+
+    }
+
+    @PostMapping("/listings/{id}/delete")
+    public String deleteProperty(@PathVariable long id) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Property post = propertyDao.getById(id);
+        if (currentUser.getId() == post.getUser().getId()) {
+            propertyDao.delete(post);
+        }
+        return "redirect:/profile/" + currentUser.getId();
+    }
+
+
+
+
 
 }
