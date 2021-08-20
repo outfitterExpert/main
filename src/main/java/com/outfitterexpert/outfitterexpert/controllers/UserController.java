@@ -1,5 +1,6 @@
 package com.outfitterexpert.outfitterexpert.controllers;
 
+import com.outfitterexpert.outfitterexpert.models.Property;
 import com.outfitterexpert.outfitterexpert.models.User;
 import com.outfitterexpert.outfitterexpert.repositories.PropertyRepository;
 import com.outfitterexpert.outfitterexpert.repositories.ReviewRepository;
@@ -81,6 +82,46 @@ public class UserController {
         return "users/profile";
     }
     //take the user to their profile when they click on the nav "profile button"
+
+
+    @GetMapping("/profile/{id}/edit")
+    public String editProfileForm(@PathVariable long id, Model model ){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.getById(id);
+        if(currentUser.getId() == user.getId()) {
+            model.addAttribute("user", user);
+
+            return "users/sign-up";
+
+        }else{
+            return "redirect:/login";
+        }
+    }
+
+
+    @PostMapping("/profile/{id}/edit")
+    public String editProfile(@PathVariable long id, @ModelAttribute User user ){
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User profileFromDB = userDao.findById(id);
+        if(user.getId() == profileFromDB.getId()) {
+            userDao.save(user);
+        }
+        return "redirect:/profile/";
+
+    }
+
+    @PostMapping("/profile/{id}/delete")
+    public String deleteProfile(@PathVariable long id) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.getById(id);
+        if (currentUser.getId() == user.getId()) {
+            userDao.delete(user);
+        }
+        return "redirect:/login";
+    }
+
+
+
 
 
 }

@@ -10,24 +10,24 @@
 <nav th:replace="partials/navbar :: navbar"/>
 <div class="card-body">
     <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />
-<form  class="form-section" th:action="@{/sign-up}" method="POST" th:object="${user}">
+<form action="/profile/create" class="form-section" th:action="@{/sign-up (id=${user.id})}" method="post" th:object="${user}">
     <label for="username">Username</label>
-    <input id="username" th:field="*{username}" />
+    <input id="username" name="username" type="text" class="validate" th:value="*{username}" th:field="*{username}" />
 
     <label for="email">Email</label>
-    <input id="email" th:field="*{email}" />
+    <input id="email" th:value="*{email}" th:field="*{email}" />
 
     <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" />
+    <input id="password" value="" type="password" th:field="*{password}" />
 
     <label for="first_name">First Name:</label>
-    <input id="first_name" type="text" th:field="*{firstName}" />
+    <input id="first_name" th:value="*{firstName}" type="text" th:field="*{firstName}" />
 
     <label for="last_name">Last Name:</label>
-    <input id="last_name" type="text" th:field="*{lastName}" />
+    <input id="last_name" th:value="*{lastName}" type="text" th:field="*{lastName}" />
 
     <div class="form-check form-switch">
-        <input class="form-check-input" name="outfitter" th:field="*{outfitter}" type="checkbox" id="outfitter" />
+        <input class="form-check-input" value="" name="outfitter" th:field="*{outfitter}" type="checkbox" id="outfitter" />
         <label class="form-check-label" for="outfitter" >Outfitter?</label>
     </div>
 
