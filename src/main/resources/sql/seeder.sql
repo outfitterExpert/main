@@ -361,7 +361,7 @@ VALUES  ('African Pompano'),
         ('Greenside darter'),
         ('Gulf Coast pygmy sunfish'),
         ('Headwater chub'),
-        ('Hiodon tergisus'),'),'
+        ('Hiodon tergisus'),
         ('Hornyhead chub'),
         ('Ichthyomyzon unicuspis'),
         ('Ictaluridae'),
