@@ -58,6 +58,8 @@ function createMarkers(databaseString){
     return listingArray;
 }
 
+
+
 $(document).ready(function (){
     let listingsString = $(".listings-info");
     for(let i of listingsString){
@@ -67,6 +69,26 @@ $(document).ready(function (){
     }
 
 })
+// mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+// let id = $(".listing-id");
+// let addresses = $(".listing-location");
+// let titles = $(".listing-title");
+// for(let i = 0; i < addresses.length; i++) {
+//     let loc = addresses[i].innerText;
+//     let titleText = titles[i].innerText;
+//     geocode(loc, MAPBOX_ACCESS_TOKEN).then(function (address) {
+//         let popup = new mapboxgl.Popup(popupOptions)
+//             .setHTML(
+//                 '<p style="font-size: 15px; font-weight: bold;">' + titleText + '</p>' +
+//                 '<p>' + loc + '</p>'
+//             );
+//         let marker = new mapboxgl.Marker({
+//             color: '#007c6f',
+//         })
+//             .setLngLat(address)
+//             .setPopup(popup)
+//             .addTo(map);
+//     })
 
 function displayRestaurants (restaurant){
     var markerMaker  = new mapboxgl.Marker({
@@ -83,11 +105,34 @@ function displayRestaurants (restaurant){
     markerMaker.setPopup(markerPopup);
 
 }
+var popupOptions = {
+    anchor: "top",
+}
 favRestaurants.forEach(displayRestaurants);
 
+// let ids = $(".listing-id"); // not needed
+let addresses = $(".listing-location");
+let titles = $(".listing-title");
+for(let i = 0; i < addresses.length; i++) {
+    let loc = addresses[i].innerText;
+    let titleText = titles[i].innerText;
+    geocode(loc, MAPBOX_ACCESS_TOKEN).then(function (address) {
+        let popup = new mapboxgl.Popup(popupOptions)
+            .setHTML(
+                '<p style="font-size: 15px; font-weight: bold;">' + titleText + '</p>' +
+                '<p>' + loc + '</p>'
+            );
+        let marker = new mapboxgl.Marker({
+            color: '#007c6f',
+        })
+            .setLngLat(address)
+            .setPopup(popup)
+            .addTo(map);
+    })
 
 //zoom by multiples of 5
-$("#change-zoom").click(function(){
-    var zoomLevel = $("#zoom-level").val();
-    map.setZoom(zoomLevel);
-})
+    $("#change-zoom").click(function () {
+        var zoomLevel = $("#zoom-level").val();
+        map.setZoom(zoomLevel);
+    })
+}
