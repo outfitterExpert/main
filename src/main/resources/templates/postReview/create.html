@@ -8,7 +8,7 @@
 <body>
     <h1>Write a Review on a Listing</h1>
         <h1>Don't lose hope!</h1>
-                <form action="/review/create" th:action="@{/reviews/{id}/create (id=${id})}" method="POST" th:object="${review}">
+                <form action="/review/create" th:action="@{/reviews/{id}/create (id=${listing_id})}" method="POST" th:object="${review}">
                     <input id="title" name="title" type="text" class="validate" th:value="*{title}" th:field="*{title}">
                     <label for="title">Title</label>
                     <textarea id="body" name="body" class="materialize-textarea" th:value="*{body}" th:field="*{body}"></textarea>

@@ -43,11 +43,11 @@ public class ReviewController {
         return "/postReview/review";
     }
 
-    @GetMapping("/reviews/{id}/create")
-    public String showCreateForm(@PathVariable long id, Model model) {
+    @GetMapping("/reviews/{listing_id}/create")
+    public String showCreateForm(@PathVariable long listing_id, Model model) {
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser"){
             model.addAttribute("review", new Review());
-            model.addAttribute("id", id);
+            model.addAttribute("listing_id", listing_id);
             return "/postReview/create";
         }else{
             return "redirect:/login";
@@ -55,16 +55,16 @@ public class ReviewController {
 
     }
 
-    @PostMapping("/reviews/{id}/create")
-    public String createReview(@PathVariable long id, @ModelAttribute Review review){
-        System.out.println(id);
+    @PostMapping("/reviews/{listing_id}/create")
+    public String createReview(@PathVariable long listing_id, @ModelAttribute Review review){
+        System.out.println(listing_id);
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        Property property = propertyDao.findById(id);
 //        System.out.println(property.getTitle());
 //        System.out.println(property.getId());
 
         review.setUser(user);
-        review.setProperty(propertyDao.findById(id));
+        review.setProperty(propertyDao.findById(listing_id));
         reviewDao.save(review);
         return "redirect:/listings";
     }
