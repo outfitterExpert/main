@@ -3,16 +3,17 @@ USE outfitter_db;
 # TRUNCATE TABLE users;
 
 INSERT INTO users (username, password, first_name, last_name, email, outfitter)
-VALUES  ('austin_user', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Austin', 'Whitley', 'admin1@email.com', true),
-        ('naysa_user', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Naysa', 'Moreno', 'admin1@email.com', true),
-        ('irvin_user', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Irvin', 'Buendia', 'admin1@email.com', true),
-        ('benny_user', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Benny', 'Alvarez', 'admin1@email.com', true);
+VALUES  ('austin', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Austin', 'Whitley', 'admin1@email.com', true),
+        ('naysa', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Naysa', 'Moreno', 'admin1@email.com', true),
+        ('irvin', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Irvin', 'Buendia', 'admin1@email.com', true),
+        ('benny', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Benny', 'Alvarez', 'admin1@email.com', true);
 
 INSERT INTO properties(title, location, acres, slots, guided, lodging, method, owner_id, img_url, type)
 VALUES ('West-end King ranch', 'South Texas', 100000, 125, true, true, 'rifle', 1, 'https://cdn.filestackcontent.com/Ktwfy5keSHaze3YmzsiJ', 1),
        ('Texas Exotic Hunts', 'Texas', 798, 1, true, false, 'rifle', 3, 'https://cdn.filestackcontent.com/Ktwfy5keSHaze3YmzsiJ', 1),
        ('Waterfowl package - all inclusive', 'Manitoba, Canada', 345, 1, true, false, 'shotgun', 2, 'https://cdn.filestackcontent.com/Ktwfy5keSHaze3YmzsiJ', 1),
-       ('Late Season Bow Whitetail Hunt', 'British Columbia, Canada', 3763, 6, true, true, 'bow', 4, 'https://cdn.filestackcontent.com/Ktwfy5keSHaze3YmzsiJ', 1);
+       ('Late Season Bow Whitetail Hunt', 'British Columbia, Canada', 3763, 6, true, true, 'bow', 4, 'https://cdn.filestackcontent.com/Ktwfy5keSHaze3YmzsiJ', 1),
+       ('Open Water fishing trip', 'Destin, Florida', 1, 3, true, false, 'Charter fishing', 1, 'https://cdn.filestackcontent.com/Ktwfy5keSHaze3YmzsiJ', 0);
 
 INSERT INTO animals (id, name)
 VALUES (1, 'Bear'),

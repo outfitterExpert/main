@@ -21,7 +21,8 @@
         <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
         <button type="submit" class="benjamin-button">
            <div id="listing-page">
-            <img class="buck" src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}"/>
+<!--            <img class="buck" src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}"/>-->
+               <img class="buck" src="../../static/img/buck-img.jpg" th:src="${listing.imgUrl}"/>
                <h3 class="first-txt" th:text="${listing.location}"/>
                <h3 class="second-txt" th:text="${listing.title}"/>
            </div>
