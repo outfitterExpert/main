@@ -9,6 +9,7 @@
 <body>
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
+<script th:replace="partials/scripts :: scripts"></script>
 <div>
 
     <div class="row" style="padding-left: 15px">
@@ -26,8 +27,13 @@
 
 <!--    how do you do the if else in html with thyme leaf-->
     <h3 th:text="${user.outfitter}"></h3>
-</div>
 
+
+</div>
+<hr>
+
+
+<h1>Listings:</h1>
 <div th:each="listing : ${listings}">
     <h3 th:text="${listing.location}"></h3>
     <h3 th:text="${listing.title}"></h3>
@@ -41,8 +47,12 @@
     </div>
 </div>
 
-<h1>Bookings:</h1>
-<h1>Listings:</h1>
+<!--<h1>Bookings:</h1>-->
+<!--<h1>Listings:</h1>-->
+<hr>
+<h2>Reviews</h2>
+<br>
+
 <div th:each="review : ${reviews}">
     <h5  th:text="${review.title}"></h5>
     <p th:text="${review.rating}"></p>
