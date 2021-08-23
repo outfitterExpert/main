@@ -10,9 +10,12 @@
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
 <script th:replace="partials/scripts :: scripts"></script>
-<div>
-
+<div style="padding-left: 15px">
+    <br>
+    <h2>Profile:</h2>
+    <br>
     <div class="row" style="padding-left: 15px">
+
         <h3 th:text="${user.firstName}"></h3>
         <h3 th:text="${user.lastName}"></h3>
         <div th:if="${isUserAccount}">
@@ -29,11 +32,12 @@
     <h3 th:text="${user.outfitter}"></h3>
 
 
-</div>
+
 <hr>
 
 
-<h1>Listings:</h1>
+<h2>Listings:</h2>
+<br>
 <div th:each="listing : ${listings}">
     <h3 th:text="${listing.location}"></h3>
     <h3 th:text="${listing.title}"></h3>
@@ -50,12 +54,12 @@
 <!--<h1>Bookings:</h1>-->
 <!--<h1>Listings:</h1>-->
 <hr>
-<h2>Reviews</h2>
+<h2>Reviews:</h2>
 <br>
 
 <div th:each="review : ${reviews}">
-    <h5  th:text="${review.title}"></h5>
-    <p th:text="${review.rating}"></p>
+    <h3  th:text="${review.title}"></h3>
+    <p th:text="${review.rating}">Rating:</p>
     <p th:text="${review.body}"></p>
 
 
@@ -69,6 +73,7 @@
     </form>
 
     </div>
+</div>
 </div>
 <script th:replace="partials/scripts :: scripts"></script>
 </body>
