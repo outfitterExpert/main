@@ -6,13 +6,13 @@
     <title>Create listing</title>
 </head>
 <body>
-
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"></nav>
+
 <img class="logo" alt="outfitter expert logo" src="../../static/img/oeLogo.png" th:src="@{/img/oeLogo.png}" />
 <div class="card-body">
 
-    <form class="form-section" th:action="@{/listings/create  }" method="POST" th:object="${listing}">
+    <form class="form-section" th:action="@{/listings/create }" method="POST" th:object="${listing}">
         <label for="fileupload">Select a file to upload</label>
         <input th:field="*{imgUrl}" value="" type="hidden" id="fileupload">
         <button id="picker" type="button">Pick file</button>
@@ -52,11 +52,8 @@
             <option value="deep-sea-fishing" selected>Deep Sea Fishing</option>
             <option value="other">Other</option>
         </select>
-        <label for="type">Type of Listing</label>
-        <select id="type" class="form-section hidden" value="0" th:field="*{type}">
-            <option value="1">Hunting</option>
-            <option value="0">Fishing</option>
-        </select>
+
+        <input type="hidden" id="type" class="form-section" value="0" th:field="*{type}">
         <br/>
         <input class="custom-button" type="submit" id="submitForm" value="Create" />
     </form>

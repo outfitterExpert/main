@@ -6,6 +6,9 @@
     <title></title>
 </head>
 <body>
+<header th:replace="partials/styles :: styles"></header>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
 <h1>Book this listing form/process page</h1>
 <h3 th:text="${package.price}"></h3>
 <h3 th:text="${package.description}"></h3>
@@ -22,5 +25,7 @@
 
     <button type="submit">Book Package!</button>
 </form>
+
+<script th:replace="partials/scripts :: scripts"></script>
 </body>
 </html>
