@@ -7,7 +7,7 @@ var map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
     center: [-97.109, 32.738], // starting position [lng, lat]
-    zoom: 10 // starting zoom
+    zoom: 3 // starting zoom
 });
 
 map.addControl(new mapboxgl.NavigationControl());
@@ -123,7 +123,7 @@ for(let i = 0; i < addresses.length; i++) {
                 '<p>' + loc + '</p>'
             );
         let marker = new mapboxgl.Marker({
-            color: '#007c6f',
+            color: '#808080',
         })
             .setLngLat(address)
             .setPopup(popup)
