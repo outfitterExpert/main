@@ -99,6 +99,7 @@ public class UserController {
     }
 
 
+
     @PostMapping("/profile/{id}/edit")
     public String editProfile(@PathVariable long id, @ModelAttribute User user ){
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

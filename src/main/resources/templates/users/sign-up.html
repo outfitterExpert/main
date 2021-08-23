@@ -31,7 +31,14 @@
         <label class="form-check-label" for="outfitter" >Outfitter?</label>
     </div>
 
+    <div sec:authorize="!isAuthenticated()">
     <input class="custom-button" value="Sign me up!" type="submit" />
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <input class="custom-button" value="Submit" type="submit" />
+    </div>
+
+
 </form>
 </div>
 </body>
