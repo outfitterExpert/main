@@ -59,6 +59,7 @@
     <p th:text="${review.body}"></p>
 
 
+
     <div th:if="${isUserAccount}">
     <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
         <button>Delete Review</button>
