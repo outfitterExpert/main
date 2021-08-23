@@ -12,17 +12,18 @@
     You have been logged out
 </div>
 <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />
-<form class="form-section" th:action="@{/login}" method="post">
-    <div class="error" th:if="${param.error}">
-        Invalid Username and Password
-    </div>
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <br/>
-    <input class="custom-button" type="submit" value="Log In" />
-    <a class="blue" href="/sign-up">Not a member? Sign up to join OutfitterExpert</a>
-</form>
+    <form class="form-section" th:action="@{/login}" method="post">
+        <div class="error" th:if="${param.error}">
+            Invalid Username and Password
+        </div>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" />
+        <br/>
+        <input class="custom-button" type="submit" value="Log In" />
+        <a class="blue" href="/sign-up">Not a member? Sign up to join OutfitterExpert</a>
+    </form>
+<script th:replace="partials/scripts :: scripts"></script>
 </body>
 </html>
