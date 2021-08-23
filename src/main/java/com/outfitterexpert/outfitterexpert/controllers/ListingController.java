@@ -145,9 +145,12 @@ public class ListingController {
 
         //push the final list to the listing
         listing.setAnimals(listingAnimals);
-//        listing.setImgURL(listing.getImgURL());
-        propertyDao.save(listing);
 
+        if(listing.getImgUrl().equals("")){
+            listing.setImgUrl("https://cdn.filestackcontent.com/Ktwfy5keSHaze3YmzsiJ");
+        }
+
+        propertyDao.save(listing);
         return "redirect:/listings";
     }
 
