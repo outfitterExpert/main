@@ -1,24 +1,26 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org"-->
-<!--      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8"/>-->
-<!--    <title>Edit Review</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<header th:replace="partials/styles :: styles"></header>-->
-<!--<nav th:replace="partials/navbar :: navbar"/>-->
-<!--    <h2>Edit A Review on this Listing</h2>-->
-<!--                <form th:action="@{/reviews/{id}/edit}" method="post" th:object="${review}">-->
-<!--                            <input id="title" name="title" type="text" class="validate" th:field="{title}" th:value="{title}" />-->
-<!--                            <label for="title">Title</label>-->
-<!--                            <textarea id="body" name="body" class="materialize-textarea" th:field="{body}" th:value="{body}"></textarea>-->
-<!--                            <label for="body">Body</label>-->
-<!--                            <input id="rating" name="rating" type="text" class="validate" th:field="{rating}" th:value="{rating}" />-->
-<!--                            <label for="title">Title</label>-->
 
-<!--                    <button type="submit" value="submit">Submit</button>-->
-<!--                </form>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit Review</title>
+</head>
+<body>
+<header th:replace="partials/styles :: styles"></header>
+<nav th:replace="partials/navbar :: navbar"/>
+<h2>Edit A Review on this Listing</h2>
+<form th:action="@{/reviews/{id}/edit}" method="post" th:object="${review}">
+    <input id="title" name="title" type="text" class="validate" th:field="{title}" th:value="{title}" />
+    <label for="title">Title</label>
+    <textarea id="body" name="body" class="materialize-textarea" th:field="{body}" th:value="{body}"></textarea>
+    <label for="body">Body</label>
+    <input id="rating" name="rating" type="text" class="validate" th:field="{rating}" th:value="{rating}" />
+    <label for="title">Title</label>
 
-<!--</body>-->
-<!--</html>-->
+    <button type="submit" value="submit">Submit</button>
+</form>
+
+</body>
+</html>
+
