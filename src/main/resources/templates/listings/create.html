@@ -11,13 +11,12 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 <img class="logo" alt="outfitter expert logo" src="../../static/img/oeLogo.png" th:src="@{/img/oeLogo.png}" />
 <div class="card-body">
-<form class="form-section" th:action="@{/listings/create (id=${id}) }" method="POST" th:object="${listing}">
+<form class="form-section" th:action="@{/listings/create}" method="POST" th:object="${listing}">
 
         <label for="fileupload">Select a file to upload</label>
         <input th:field="*{imgUrl}" value="" type="hidden" id="fileupload">
         <button id="picker" type="button">Pick file</button>
         <br>
-
 
         <label for="listing-title">Title:</label>
         <input id="listing-title" th:value="*{title}" type="text" th:field="*{title}" />
@@ -51,21 +50,17 @@
             <option value="blinds">Blinds</option>
             <option value="bow">Bow</option>
             <option value="decoy">Decoy</option>
-            <option value="rifle" selected>Rifle</option>
+            <option value="rifle" selected >Rifle</option>
             <option value="tracking">Tracking</option>
             <option value="trapping">Trapping</option>
         </select>
-        <label for="type">Type of Listing</label>
-        <select id="type" class="form-section" value="" th:field="*{type}">
-            <option value="1">Hunting</option>
-            <option value="0">Fishing</option>
-        </select>
+
+        <input type="hidden" id="type" class="form-section" value="1" th:field="*{type}">
         <br/>
         <input class="custom-button" type="submit" id="submitForm" value="Create" />
     </form>
 </div>
 <script th:replace="partials/scripts :: scripts"></script>
 <script th:src="@{/js/filestack-script.js}"></script>
-
 </body>
 </html>
