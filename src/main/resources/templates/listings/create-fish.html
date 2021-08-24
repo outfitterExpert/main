@@ -53,13 +53,13 @@
             <option value="other">Other</option>
         </select>
 
-        <input type="hidden" id="type" class="form-section" value="0" th:field="*{type}">
+        <input type="hidden" id="type" class="form-section" name="post-type" value="false">
         <br/>
         <input class="custom-button" type="submit" id="submitForm" value="Create" />
     </form>
 </div>
-<script th:src="@{/js/filestack-script.js}"></script>
 <script th:replace="partials/scripts :: scripts"></script>
+<script th:src="@{/js/filestack-script.js}"></script>
 </body>
 </html>
 

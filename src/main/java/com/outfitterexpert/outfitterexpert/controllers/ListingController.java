@@ -90,7 +90,11 @@ public class ListingController {
     public String createListing(Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(currentUser != null){
-            model.addAttribute("listing", new Property());
+
+            Property listing  = new Property();
+            listing.setType(true);
+
+            model.addAttribute("listing", listing);
             model.addAttribute("package", new ListingPackage());
             return "listings/create";
         }
@@ -102,7 +106,10 @@ public class ListingController {
     public String createFishListing(Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(currentUser != null){
-            model.addAttribute("listing", new Property());
+            Property listing  = new Property();
+            listing.setType(false);
+
+            model.addAttribute("listing", listing);
             model.addAttribute("package", new ListingPackage());
             return "listings/create-fish";
         }
@@ -110,7 +117,7 @@ public class ListingController {
     }
 
     @PostMapping("/listings/create")
-    public String submitListing(@ModelAttribute Property listing, @RequestParam(name="user-animal-list") String userAnimals){
+    public String submitListing(@ModelAttribute Property listing, @RequestParam(name="user-animal-list") String userAnimals, @RequestParam(name = "post-type") String postType ){
         //get the user that's logged in
         System.out.println(listing.getImgUrl());
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -120,10 +127,8 @@ public class ListingController {
         String[] animalList = userAnimals.split(",");
         //this list will be populated when an animal is found in the DB
         List<Animal> listingAnimals = new ArrayList<>();
-
         new Animal();
         Animal userAnimal;
-
         try {
             for (int i = 0; i < animalList.length; i++) {
 
@@ -142,13 +147,15 @@ public class ListingController {
         }catch( NullPointerException npe){
             System.out.println("Animal not found");
         }
-
         //push the final list to the listing
         listing.setAnimals(listingAnimals);
 
         if(listing.getImgUrl().equals("")){
             listing.setImgUrl("https://cdn.filestackcontent.com/Ktwfy5keSHaze3YmzsiJ");
         }
+
+        boolean type = Boolean.parseBoolean(postType);
+        listing.setType(type);
 
         propertyDao.save(listing);
         return "redirect:/listings";

@@ -46,16 +46,22 @@
             </label>
         </div>
         <br/>
-        <select class="form-select" aria-label="Default select example" value="" name="method" th:field="*{method}" >
+    <label for="listing-method">Method of hunting</label>
+        <select id="listing-method" class="form-select" aria-label="Default select example" value="" name="method" th:field="*{method}" >
+            <option value="baiting">Baiting</option>
             <option value="blinds">Blinds</option>
             <option value="bow">Bow</option>
+            <option value="calling">Calling</option>
             <option value="decoy">Decoy</option>
+            <option value="High-seat">High-seat</option>
             <option value="rifle" selected >Rifle</option>
             <option value="tracking">Tracking</option>
             <option value="trapping">Trapping</option>
+            <option value="shotgun">Shotgun</option>
+            <option value="stalking">Stalking</option>
         </select>
 
-        <input type="hidden" id="type" class="form-section" value="1" th:field="*{type}">
+        <input type="hidden" id="type" class="form-section" name="post-type" value="true">
         <br/>
         <input class="custom-button" type="submit" id="submitForm" value="Create" />
     </form>
