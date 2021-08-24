@@ -682,6 +682,12 @@
     }
 
 
+    .user-img {
+        width: 75%;
+        border-radius: 50%;
+    }
+
+
 @media screen and (max-width: 1024px) {
 
     #map {
@@ -706,6 +712,8 @@
     .hidden-info{
         display: none;
     }
+
+
 
 
 

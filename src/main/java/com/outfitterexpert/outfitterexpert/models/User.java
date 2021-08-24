@@ -28,6 +28,16 @@ public class User {
     @Column(nullable = false)
     private boolean outfitter;
 
+    @Column
+    private String user_location;
+
+    @Column
+    private String img_user;
+
+    @Column
+    private String bio;
+
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Property> properties;
 
@@ -60,11 +70,16 @@ public class User {
         reviews = copy.reviews;
         bookings = copy.bookings;
         bookmarks = copy.bookmarks;
+        user_location = copy.user_location;
+        img_user = copy.img_user;
+        bio = copy.bio;
 
 //        review = copy.reviews;
     }
 
-    public User(long id, String username, String password, String email, String firstName, String lastName, boolean outfitter, List<Property> properties, List<Review> reviews, List<Booking> bookings, List<Property> bookmarks) {
+
+
+    public User(long id, String username, String password, String email, String firstName, String lastName, boolean outfitter, List<Property> properties, List<Review> reviews, List<Booking> bookings, List<Property> bookmarks, String user_location, String img_user, String bio) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -76,18 +91,24 @@ public class User {
         this.reviews = reviews;
         this.bookings = bookings;
         this.bookmarks = bookmarks;
+        this.user_location = user_location;
+        this.img_user = img_user;
+        this.bio = bio;
     }
 
-    public User(String username, String password, String email, String firstName, String lastName, boolean outfitter) {
+    public User(String username, String password, String email, String firstName, String lastName, boolean outfitter, String user_location, String bio) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.outfitter = outfitter;
+        this.user_location = user_location;
+        this.bio = bio;
     }
 
-    public User(long id, String username, String password, String email, String firstName, String lastName, boolean outfitter) {
+
+    public User(long id, String username, String password, String email, String firstName, String lastName, boolean outfitter, String user_location, String bio) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -95,6 +116,8 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.outfitter = outfitter;
+        this.user_location = user_location;
+        this.bio = bio;
     }
 
 
@@ -184,6 +207,30 @@ public class User {
 
     public void setBookmarks(List<Property> bookmarks) {
         this.bookmarks = bookmarks;
+    }
+
+    public String getUser_location() {
+        return user_location;
+    }
+
+    public void setUser_location(String user_location) {
+        this.user_location = user_location;
+    }
+
+    public String getImg_user() {
+        return img_user;
+    }
+
+    public void setImg_user(String img_user) {
+        this.img_user = img_user;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
 

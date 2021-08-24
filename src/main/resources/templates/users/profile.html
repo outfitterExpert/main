@@ -10,71 +10,88 @@
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
 <script th:replace="partials/scripts :: scripts"></script>
-<div style="padding-left: 15px">
-    <br>
-    <h2>Profile:</h2>
-    <br>
-    <div class="row" style="padding-left: 15px">
+<br>
+<div class="container" >
+    <div class="row">
+        <div class="col-4" style="padding-left: 15px">
+            <br>
+            <h2>Profile</h2>
+            <br>
+<!--            <div class="row" style="padding-left: 15px">-->
+                <img class="user-img" src="../../static/img/buck-img.jpg" th:src="${user.img_user}"/>
+                <h3 th:text="${user.firstName} "></h3>
+                <h3 th:text="${user.lastName}"></h3>
+            <!--    how do you do the if else in html with thyme leaf-->
+                <h3 th:text="${user.outfitter}"></h3>
+                <br>
+                <h3 th:text="${user.user_location}"></h3>
+                <br>
+                <h3 th:text="${user.bio}"></h3>
+                <br>
 
-        <h3 th:text="${user.firstName}"></h3>
-        <h3 th:text="${user.lastName}"></h3>
-        <div th:if="${isUserAccount}">
-            <form th:action="@{/profile/{id}/delete(id = ${user.id})}" method="post">
-                <button>Delete Profile</button>
-            </form>
-            <form th:action="@{/profile/{id}/edit(id = ${user.id})}" method="GET">
-                <button type="submit">Edit Profile</button>
-            </form>
+                <div th:if="${isUserAccount}">
+                    <form th:action="@{/profile/{id}/delete(id = ${user.id})}" method="post">
+                        <button>Delete Profile</button>
+                    </form>
+                    <form th:action="@{/profile/{id}/edit(id = ${user.id})}" method="GET">
+                        <button type="submit">Edit Profile</button>
+                    </form>
+                </div>
+
+                        <h2>Reviews:</h2>
+                        <br>
+
+                        <div th:each="review : ${reviews}">
+                            <h3  th:text="${review.title}"></h3>
+                            <p th:text="${review.rating}"></p>
+                            <p th:text="${review.body}"></p>
+
+
+
+                            <div th:if="${isUserAccount}">
+                                <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
+                                    <button>Delete Review</button>
+                                </form>
+                                <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">
+                                    <button type="submit">Edit Review</button>
+                                </form>
+                                <br>
+                            </div>
+                        </div>
+            </div>
+
+
+
+        <div class="col-8">
+        <h2>Listings:</h2>
+        <br>
+        <div th:each="listing : ${listings}">
+            <img class="buck" src="../../static/img/buck-img.jpg" th:src="${listing.imgUrl}"/>
+            <h3 th:text="${listing.location}"></h3>
+            <h3 th:text="${listing.title}"></h3>
+            <div th:if="${isUserAccount}">
+                <form th:action="@{/listings/{id}/delete(id = ${listing.id})}" method="post">
+                    <button>Delete Listing</button>
+                </form>
+                <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">
+                    <button type="submit">Edit Listing</button>
+                </form>
+                <br>
+            </div>
+
+            </div>
         </div>
-    </div>
 
-<!--    how do you do the if else in html with thyme leaf-->
-    <h3 th:text="${user.outfitter}"></h3>
-
-
-
-<hr>
-
-
-<h2>Listings:</h2>
-<br>
-<div th:each="listing : ${listings}">
-    <h3 th:text="${listing.location}"></h3>
-    <h3 th:text="${listing.title}"></h3>
-    <div th:if="${isUserAccount}">
-        <form th:action="@{/listings/{id}/delete(id = ${listing.id})}" method="post">
-            <button>Delete Listing</button>
-        </form>
-        <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">
-            <button type="submit">Edit Listing</button>
-        </form>
-    </div>
-</div>
-
-<!--<h1>Bookings:</h1>-->
-<!--<h1>Listings:</h1>-->
-<hr>
-<h2>Reviews:</h2>
-<br>
-
-<div th:each="review : ${reviews}">
-    <h3  th:text="${review.title}"></h3>
-    <p th:text="${review.rating}">Rating:</p>
-    <p th:text="${review.body}"></p>
+        <!--<h1>Bookings:</h1>-->
+        <!--<h1>Listings:</h1>-->
+        <hr>
 
 
 
-    <div th:if="${isUserAccount}">
-    <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
-        <button>Delete Review</button>
-    </form>
-    <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">
-        <button type="submit">Edit Review</button>
-    </form>
+        </div>
 
     </div>
-</div>
-</div>
-<script th:replace="partials/scripts :: scripts"></script>
+        <script th:replace="partials/scripts :: scripts"></script>
+
 </body>
 </html>
