@@ -11,6 +11,11 @@
 <div class="card-body">
     <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />
 <form action="/profile/create" class="form-section" th:action="@{/sign-up (id=${user.id})}" method="post" th:object="${user}">
+    <label for="fileupload">Select a file to upload</label>
+    <input th:field="*{img_user}" value="" type="hidden" id="fileupload">
+    <button id="picker" type="button">Pick file</button>
+    <br>
+
     <label for="username">Username</label>
     <input id="username" name="username" type="text" class="validate" th:value="*{username}" th:field="*{username}" />
 
@@ -25,6 +30,12 @@
 
     <label for="last_name">Last Name:</label>
     <input id="last_name" th:value="*{lastName}" type="text" th:field="*{lastName}" />
+
+    <label for="user_location">User Location:</label>
+    <input id="user_location" th:value="*{user_location}" type="text" th:field="*{user_location}" />
+
+    <label for="bio">Bio:</label>
+    <input id="bio" th:value="*{bio}" type="text" th:field="*{bio}" />
 
     <div class="form-check form-switch">
         <input class="form-check-input" value="" name="outfitter" th:field="*{outfitter}" type="checkbox" id="outfitter" />
@@ -42,5 +53,6 @@
 </div>
 
 <script th:replace="partials/scripts :: scripts"></script>
+<script th:src="@{/js/filestack-script.js}"></script>
 </body>
 </html>
