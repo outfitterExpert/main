@@ -5,6 +5,7 @@ import com.outfitterexpert.outfitterexpert.models.User;
 import com.outfitterexpert.outfitterexpert.repositories.PropertyRepository;
 import com.outfitterexpert.outfitterexpert.repositories.ReviewRepository;
 import com.outfitterexpert.outfitterexpert.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,12 @@ public class UserController {
     private final PropertyRepository propertyDao;
     private final ReviewRepository reviewDao;
 
+    @Value("${MAPBOX_ACCESS_TOKEN}")
+    private String MAPBOX_ACCESS_TOKEN;
+
+    @Value("${FILE_STACK_ACCESS_TOKEN}")
+    private String FILE_STACK_ACCESS_TOKEN;
+
     public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PropertyRepository propertyDao, ReviewRepository reviewDao) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
@@ -34,6 +41,7 @@ public class UserController {
     @GetMapping("/sign-up")
     public String showSignupForm(Model model){
         model.addAttribute("user", new User());
+        model.addAttribute("FILE_STACK_ACCESS_TOKEN", FILE_STACK_ACCESS_TOKEN);
         return "users/sign-up";
     }
 
@@ -57,6 +65,7 @@ public class UserController {
         model.addAttribute("user", currentUser);
         model.addAttribute("listings", propertyDao.findByUserId(currentUser.getId()));
         model.addAttribute("reviews", reviewDao.findByUserId(currentUser.getId()));
+        model.addAttribute("MAPBOX_ACCESS_TOKEN", MAPBOX_ACCESS_TOKEN);
 
         return "users/profile";
     }
@@ -90,7 +99,7 @@ public class UserController {
         User user = userDao.getById(id);
         if(currentUser.getId() == user.getId()) {
             model.addAttribute("user", user);
-
+            model.addAttribute("FILE_STACK_ACCESS_TOKEN", FILE_STACK_ACCESS_TOKEN);
             return "users/sign-up";
 
         }else{

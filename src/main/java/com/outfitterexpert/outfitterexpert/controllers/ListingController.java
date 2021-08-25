@@ -3,6 +3,7 @@ package com.outfitterexpert.outfitterexpert.controllers;
 import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import com.outfitterexpert.outfitterexpert.models.*;
 import com.outfitterexpert.outfitterexpert.repositories.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,11 @@ public class ListingController {
     private final PackageRepository packageDao;
     private final AnimalRepository animalDao;
 
+    @Value("${MAPBOX_ACCESS_TOKEN}")
+    private String MAPBOX_ACCESS_TOKEN;
+
+    @Value("${FILE_STACK_ACCESS_TOKEN}")
+    private String FILE_STACK_ACCESS_TOKEN;
 
     public ListingController(PropertyRepository propDao, ReviewRepository reviewDao, PackageRepository packageDao, AnimalRepository animalDao) {
         this.propertyDao = propDao;
@@ -52,6 +58,7 @@ public class ListingController {
             }
         }
         model.addAttribute("listings", sendToIndex);
+        model.addAttribute("MAPBOX_ACCESS_TOKEN", MAPBOX_ACCESS_TOKEN);
         return "listings/index";
     }
 
@@ -67,6 +74,7 @@ public class ListingController {
             }
         }
         model.addAttribute("listings", sendToIndex);
+        model.addAttribute("MAPBOX_ACCESS_TOKEN", MAPBOX_ACCESS_TOKEN);
         return "listings/index";
     }
 
@@ -82,6 +90,7 @@ public class ListingController {
             }
         }
         model.addAttribute("listings", sendToIndex);
+        model.addAttribute("MAPBOX_ACCESS_TOKEN", MAPBOX_ACCESS_TOKEN);
         return "listings/index";
     }
 
@@ -96,6 +105,7 @@ public class ListingController {
 
             model.addAttribute("listing", listing);
             model.addAttribute("package", new ListingPackage());
+            model.addAttribute("FILE_STACK_ACCESS_TOKEN", FILE_STACK_ACCESS_TOKEN);
             return "listings/create";
         }
         return "redirect:/listings";
@@ -111,6 +121,7 @@ public class ListingController {
 
             model.addAttribute("listing", listing);
             model.addAttribute("package", new ListingPackage());
+            model.addAttribute("FILE_STACK_ACCESS_TOKEN", FILE_STACK_ACCESS_TOKEN);
             return "listings/create-fish";
         }
         return "redirect:/listings";
@@ -210,6 +221,7 @@ public class ListingController {
         model.addAttribute("reviews", reviews);
         model.addAttribute("isPropertyOwner", isPropertyOwner);
         model.addAttribute("listOfPackage", listOfPackage);
+        model.addAttribute("MAPBOX_ACCESS_TOKEN", MAPBOX_ACCESS_TOKEN);
         return "/listings/show";
     }
 
@@ -233,9 +245,9 @@ public class ListingController {
         if(currentUser.getId() == property.getUser().getId()) {
             System.out.println(property.getAnimals());
 
-            model.addAttribute("animals", animals);
+            model.addAttribute("animal_list", animals);
             model.addAttribute("listing", property);
-
+            model.addAttribute("FILE_STACK_ACCESS_TOKEN", FILE_STACK_ACCESS_TOKEN);
             return "/listings/edit";
         }else{
             return "redirect:/login";
@@ -245,6 +257,7 @@ public class ListingController {
 
     @PostMapping("/listings/{id}/edit")
     public String editListing(@PathVariable long id,@RequestParam(name="user-animal-list") String userAnimals, @RequestParam(name = "post-type") String postType, @ModelAttribute Property listing ){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         String[] animalList = userAnimals.split(",");
         //this list will be populated when an animal is found in the DB
@@ -268,8 +281,13 @@ public class ListingController {
         }catch( NullPointerException npe){
             System.out.println("Animal not found");
         }
-        //push the final list to the listing
+
+        boolean type = Boolean.parseBoolean(postType);
+
+        //push the final instances of code to the listing to save
+        listing.setType(type);
         listing.setAnimals(listingAnimals);
+        listing.setUser(currentUser);
 
         propertyDao.save(listing);
 
@@ -285,9 +303,6 @@ public class ListingController {
         }
         return "redirect:/profile/" + currentUser.getId();
     }
-
-
-
 
 
 }
