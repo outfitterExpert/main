@@ -1,7 +1,8 @@
 "use strict";
 
 let listingsArray = [];
-
+let MAPBOX_ACCESS_TOKEN = $(".mapToken").val();
+console.log(MAPBOX_ACCESS_TOKEN);
 mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
 var map = new mapboxgl.Map({
     container: 'map', // container ID

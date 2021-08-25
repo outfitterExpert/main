@@ -46,6 +46,11 @@ public class UserController {
     public String saveUser(@ModelAttribute User user){
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
+
+        if(user.getImg_user().equals("")){
+            user.setImg_user("https://cdn.filestackcontent.com/X37zSRiv3Us9kRNMZALR");
+        }
+
         userDao.save(user);
         return "redirect:/login";
     }

@@ -1,3 +1,4 @@
+let FILE_STACK_ACCESS_TOKEN = $(".fileToken").val();
 const client = filestack.init(FILE_STACK_ACCESS_TOKEN);
     const options = {
         onUploadDone: updateForm,
