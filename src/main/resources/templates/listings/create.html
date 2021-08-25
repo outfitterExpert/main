@@ -13,9 +13,11 @@
 <div class="card-body">
 <form class="form-section" th:action="@{/listings/create}" method="POST" th:object="${listing}">
 
-        <label for="fileupload">Select a file to upload</label>
-        <input th:field="*{imgUrl}" value="" type="hidden" id="fileupload">
-        <button id="picker" type="button">Pick file</button>
+        <label for="fileupload">Upload file </label>
+        <input style="margin-left: 5px;" th:field="*{imgUrl}" value="" type="hidden" id="fileupload">
+        <button id="picker" class="custom-button" type="button">Pick file</button>
+        <br/>
+        <label style="font-weight: bold" id="nameBox"></label>
         <br>
 
         <label for="listing-title">Title:</label>
