@@ -131,7 +131,6 @@ public class ListingController {
         Animal userAnimal;
         try {
             for (int i = 0; i < animalList.length; i++) {
-
                 if(i == 0) {
                     userAnimal = animalDao.findByName(animalList[i]);
                 }else{
@@ -218,9 +217,26 @@ public class ListingController {
     public String editListingForm(@PathVariable long id, Model model ){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Property property = propertyDao.getById(id);
+        //extract the animals from the listing
+        StringBuilder animals = new StringBuilder();
+        List<Animal> listingsAnimals = property.getAnimals();
+        for(int i = 0; i < listingsAnimals.size(); i++ ){
+            if(i == 0){
+                animals.append(listingsAnimals.get(i).getName()).append(", ");
+            }else if(i > 0 && i < listingsAnimals.size() - 1){
+                animals.append(listingsAnimals.get(i).getName()).append(", ");
+            }else if(i == listingsAnimals.size() -1){
+                animals.append(listingsAnimals.get(i).getName());
+            }
+        }
+
         if(currentUser.getId() == property.getUser().getId()) {
+            System.out.println(property.getAnimals());
+
+            model.addAttribute("animals", animals);
             model.addAttribute("listing", property);
-            return "/listings/create";
+
+            return "/listings/edit";
         }else{
             return "redirect:/login";
         }
@@ -228,15 +244,36 @@ public class ListingController {
 
 
     @PostMapping("/listings/{id}/edit")
-    public String editListing(@PathVariable long id, @ModelAttribute Property property ){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Property propertyFromDB = propertyDao.findById(id);
-        if(user.getId() == propertyFromDB.getUser().getId()) {
-            property.setUser(user);
-            propertyDao.save(property);
-        }
-        return "redirect:/profile/";
+    public String editListing(@PathVariable long id,@RequestParam(name="user-animal-list") String userAnimals, @RequestParam(name = "post-type") String postType, @ModelAttribute Property listing ){
 
+        String[] animalList = userAnimals.split(",");
+        //this list will be populated when an animal is found in the DB
+        List<Animal> listingAnimals = new ArrayList<>();
+        new Animal();
+        Animal userAnimal;
+        try {
+            for (int i = 0; i < animalList.length; i++) {
+                if(i == 0) {
+                    userAnimal = animalDao.findByName(animalList[i]);
+                }else{
+                    userAnimal = animalDao.findByName(animalList[i].substring(1));
+                }
+                if(userAnimal != null){
+                    System.out.println("Added:" + userAnimal.getName() + " with an id of: " + userAnimal.getId() + " to the Animal list");
+                    listingAnimals.add(userAnimal);
+                }else{
+                    System.out.println("Could not be found in the database");
+                }
+            }
+        }catch( NullPointerException npe){
+            System.out.println("Animal not found");
+        }
+        //push the final list to the listing
+        listing.setAnimals(listingAnimals);
+
+        propertyDao.save(listing);
+
+        return "redirect:/profile";
     }
 
     @PostMapping("/listings/{id}/delete")

@@ -11,7 +11,7 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 <img class="logo" alt="outfitter expert logo" src="../../static/img/oeLogo.png" th:src="@{/img/oeLogo.png}" />
 <div class="card-body">
-<form class="form-section" th:action="@{/listings/create}" method="POST" th:object="${listing}">
+<form class="form-section" th:action="@{/listings/{id}/edit (id=${id})}" method="POST" th:object="${listing}">
 
         <label for="fileupload">Select a file to upload</label>
         <input th:field="*{imgUrl}" value="" type="hidden" id="fileupload">
@@ -31,7 +31,7 @@
         <input id="listing-slots" th:value="*{slots}" type="text" th:field="*{slots}" />
         <br/>
         <label for="listing-animals">Animals:</label>
-        <input id="listing-animals" th:value="*{animals}" name="user-animal-list" type="text" placeholder="Ex: White-tailed Deer, Bighorn Sheep, Fox" />
+        <input id="listing-animals" th:value="${animals}" name="user-animal-list" type="text" placeholder="Ex: White-tailed Deer, Bighorn Sheep, Fox" />
         <br/>
         <div class="form-check form-switch">
             <input class="form-check-input" th:value="*{guided}" name="guided" type="checkbox" id="listing-guided" th:field="*{guided}">
