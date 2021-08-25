@@ -11,6 +11,11 @@
 <nav th:replace="partials/navbar :: navbar"/>
 
     <h1>Leave a review</h1>
+<!--    suggestion to add listing title for review-->
+<!--    <h2 class="listing-title" th:text="${listing.title}"></h2>-->
+<!--    <h4 class="card-text" th:text="${listing.location}"></h4>-->
+
+
     <form class="form-section" action="/review/create" th:action="@{/reviews/{id}/create (id=${listing_id})}" method="POST" th:object="${review}">
         <label for="title">Title</label>
         <input id="title" name="title" type="text" class="validate" th:value="*{title}" th:field="*{title}">
