@@ -11,6 +11,7 @@
 <div class="card-body">
     <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />
 <form action="/profile/create" class="form-section" th:action="@{/sign-up (id=${user.id})}" method="post" th:object="${user}">
+    <input type="hidden" th:value="${FILE_STACK_ACCESS_TOKEN}" class="fileToken"/>
     <label for="fileupload">Upload file </label>
     <input style="margin-left: 5px;" th:field="*{img_user}" value="" type="hidden" id="fileupload">
     <button id="picker" class="custom-button" type="button">Pick file</button>
@@ -25,7 +26,7 @@
     <input id="email" th:value="*{email}" th:field="*{email}" />
 
     <label for="password">Password</label>
-    <input id="password" value="" type="password" th:field="*{password}" />
+    <input id="password" th:value="" type="password" th:field="*{password}" />
 
     <label for="first_name">First Name:</label>
     <input id="first_name" th:value="*{firstName}" type="text" th:field="*{firstName}" />
