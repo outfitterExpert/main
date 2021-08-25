@@ -49,7 +49,7 @@ public class Property {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
     private List<ListingPackage> packages;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name="post_animals",
             joinColumns = {@JoinColumn(name="property_id")},
