@@ -32,13 +32,17 @@
                 <br>
 
                 <div th:if="${isUserAccount}">
-                    <form th:action="@{/profile/{id}/delete(id = ${user.id})}" method="post">
-                        <button>Delete Profile</button>
-                    </form>
+
+                        <button class="btn-delete">Delete Profile</button>
+
+
+
                     <form th:action="@{/profile/{id}/edit(id = ${user.id})}" method="GET">
                         <button type="submit">Edit Profile</button>
                     </form>
                 </div>
+
+
                         <br>
                         <h2>Reviews:</h2>
                         <br>
@@ -54,6 +58,7 @@
                                 <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
                                     <button>Delete Review</button>
                                 </form>
+
                                 <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">
                                     <button type="submit">Edit Review</button>
                                 </form>
@@ -90,10 +95,40 @@
         <hr>
 
 
+        <!--                    TESTING MODAL HERE-->
+        <!-- Delete Profile Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title pull-right" id="myModalLabel">Warning</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
+
+                    </div>
+                    <div class="modal-body">
+
+                        <p class="alert alert-danger pull-right" type="submit">Are you sure you want to delete?</p>
+
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <form th:action="@{/profile/{id}/delete(id = ${user.id})}" method="post">
+                            <button type="submit" class="btn-danger" id="btnDelteYes">Yes I'm sure.</button>
+                        </form>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
 
+
     </div>
+        </div>
+
         <script th:replace="partials/scripts :: scripts"></script>
 
 </body>
