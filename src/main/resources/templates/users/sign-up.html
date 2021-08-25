@@ -11,9 +11,11 @@
 <div class="card-body">
     <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />
 <form action="/profile/create" class="form-section" th:action="@{/sign-up (id=${user.id})}" method="post" th:object="${user}">
-    <label for="fileupload">Select a file to upload</label>
-    <input th:field="*{img_user}" value="" type="hidden" id="fileupload">
-    <button id="picker" type="button">Pick file</button>
+    <label for="fileupload">Upload file </label>
+    <input style="margin-left: 5px;" th:field="*{img_user}" value="" type="hidden" id="fileupload">
+    <button id="picker" class="custom-button" type="button">Pick file</button>
+    <br/>
+    <label style="font-weight: bold" id="nameBox"></label>
     <br>
 
     <label for="username">Username</label>

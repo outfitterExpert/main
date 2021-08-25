@@ -12,8 +12,8 @@ const client = filestack.init(FILE_STACK_ACCESS_TOKEN);
     const form = document.getElementById('pick-form');
     const fileInput = document.getElementById('fileupload');
     const btn = document.getElementById('picker');
-// const nameBox = document.getElementById('nameBox');
-// const urlBox = document.getElementById('urlBox');
+const nameBox = document.getElementById('nameBox');
+const urlBox = document.getElementById('urlBox');
 
 // Add our event listeners
 
@@ -22,10 +22,10 @@ const client = filestack.init(FILE_STACK_ACCESS_TOKEN);
         picker.open();
     });
 
-    // form.addEventListener('submit', function (e) {
-    //     e.preventDefault();
-    //     alert('Submitting: ' + fileInput.value);
-    // });
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Submitting: ' + fileInput.value);
+    });
 
 // Helper to overwrite the field input value
 
@@ -34,13 +34,13 @@ const client = filestack.init(FILE_STACK_ACCESS_TOKEN);
         fileInput.value = fileData.url;
 
     // Some ugly DOM code to show some data.
-    // const name = document.createTextNode('Selected: ' + fileData.filename);
-    // const url = document.createElement('a');
-    // url.href = fileData.url;
-    // url.appendChild(document.createTextNode(fileData.url));
-    // nameBox.appendChild(name);
-    // urlBox.appendChild(document.createTextNode('Uploaded to: '));
-    // urlBox.appendChild(url);
+    const name = document.createTextNode('Selected: ' + fileData.filename);
+    const url = document.createElement('a');
+    url.href = fileData.url;
+    url.appendChild(document.createTextNode(fileData.url));
+    nameBox.appendChild(name);
+    urlBox.appendChild(document.createTextNode('Uploaded to: '));
+    urlBox.appendChild(url);
         $('#fileupload').val(fileData.url);
         console.log(fileData.url)
         // $('#submitForm').submit();
