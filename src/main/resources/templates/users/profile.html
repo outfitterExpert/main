@@ -55,9 +55,13 @@
 
 
                             <div th:if="${isUserAccount}">
+
                                 <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
                                     <button>Delete Review</button>
                                 </form>
+
+                                <!-- review delete test. if doesn't work uncommment.-->
+<!--                                <button class="btn-delete">Delete Review</button>-->
 
                                 <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">
                                     <button type="submit">Edit Review</button>
@@ -119,6 +123,15 @@
                         </form>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     </div>
+
+                <!--test deleting review button-->
+<!--                    <div class="modal-footer">-->
+<!--                        <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">-->
+<!--                            <button type="submit" class="btn-danger" id="btnDelteYes-review">Yes I'm sure.</button>-->
+<!--                        </form>-->
+<!--                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>-->
+<!--                    </div>-->
+
 
 
                 </div>
