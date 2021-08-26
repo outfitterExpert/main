@@ -9,9 +9,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ConcurrentModel;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.attribute.standard.PresentationDirection;
+import javax.validation.Valid;
 import java.awt.*;
 
 @Controller
@@ -43,14 +47,24 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user){
+    public String saveUser(@Valid @ModelAttribute User user, BindingResult result, @RequestParam(defaultValue = "false") boolean outfitter, @RequestParam String passwordConfirmation){
         String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-
-        if(user.getImg_user().equals("")){
-            user.setImg_user("https://cdn.filestackcontent.com/X37zSRiv3Us9kRNMZALR");
+        if(userDao.existsByUsername(user.getUsername())){
+            result.rejectValue("username", "user.username", "This username already exists.");
         }
-
+        if(userDao.existsByEmail(user.getEmail())){
+            result.rejectValue("email", "user.email", "This email already exists.");
+        }
+        if(!passwordConfirmation.equals(user.getPassword())){
+            result.rejectValue("password", "user.password", "Passwords dont match");
+        }
+        if(result.hasErrors()){
+            return "users/sign-up";
+        }
+        if(outfitter){
+            user.setOutfitter(true);
+        }
+        user.setPassword(hash);
         userDao.save(user);
         return "redirect:/login";
     }
