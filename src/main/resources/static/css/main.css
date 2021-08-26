@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap');
+/*navbar display font*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 
     :root {
@@ -627,7 +629,7 @@
         margin-top: 20px;
         opacity: 0;
         width: 140px;
-        font-size: 12px;
+        font-size: 20px;
         /* text-align: end; */
         /*transition: opacity 0.3s ease-in;*/
         list-style: none;
@@ -656,7 +658,7 @@
     .nav-list__url {
         color: #6d6e76;
         transition: color 0.3s ease;
-        font-size: 12px;
+        font-size: 20px;
         padding: 0px;
     }
 
@@ -703,6 +705,52 @@
 
 
     }
+
+    /*NAVBAR LOGIN/SIGN-UP and LOGOUT DISPLAY*/
+    .display-nav-list {
+        list-style: none;
+        margin-top: 5px;
+        margin-bottom: 1rem;
+        margin-right: -55px;
+    }
+
+    .display-nav-item {
+        display: inline-block;
+        font-family: "Montserrat", sans-serif;
+        font-size: 20px;
+        color: black;
+        padding: 10px 0px 0px 10px;
+    }
+
+    .display-nav-link {
+        font-family: "Montserrat", sans-serif;
+        font-size: 20px;
+        color: gray;
+        padding-top: 20px;
+
+    }
+
+    .display-nav-link:hover {
+        color: #ff0b61;
+    }
+
+    /*ABOUT US PAGE STYLING*/
+    .creators {
+        padding: 20px;
+    }
+
+    .logo-about {
+        width: 92%;
+        margin-top: 80px;
+    }
+
+    .meet-creators {
+
+        text-align: center;
+        padding: 20px;
+    }
+
+
 
 
 @media screen and (max-width: 1024px) {
