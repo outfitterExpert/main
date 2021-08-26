@@ -727,6 +727,21 @@ img {
 
 
     }
+/*profile image in show page*/
+.show-img {
+    width: 20%;
+    border-radius: 50%;
+    /*box-shadow: 5px 5px gray;*/
+
+    border: solid 1px #555;
+    background-color: #eed;
+    box-shadow:  0 0 10px  rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+    -o-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+
+
+}
 
     /*NAVBAR LOGIN/SIGN-UP and LOGOUT DISPLAY*/
     .display-nav-list {
