@@ -24,6 +24,7 @@ public class ListingController {
     private final ReviewRepository reviewDao;
     private final PackageRepository packageDao;
     private final AnimalRepository animalDao;
+    private final UserRepository userDao;
 
     @Value("${MAPBOX_ACCESS_TOKEN}")
     private String MAPBOX_ACCESS_TOKEN;
@@ -31,11 +32,12 @@ public class ListingController {
     @Value("${FILE_STACK_ACCESS_TOKEN}")
     private String FILE_STACK_ACCESS_TOKEN;
 
-    public ListingController(PropertyRepository propDao, ReviewRepository reviewDao, PackageRepository packageDao, AnimalRepository animalDao) {
+    public ListingController(PropertyRepository propDao, ReviewRepository reviewDao, PackageRepository packageDao, AnimalRepository animalDao, UserRepository userDao) {
         this.propertyDao = propDao;
         this.reviewDao = reviewDao;
         this.packageDao = packageDao;
         this.animalDao = animalDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("/listings")
@@ -210,6 +212,10 @@ public class ListingController {
     public String singleListing(@PathVariable long id, Model model){
         Property property = propertyDao.getById(id);
         List<Review> reviews = reviewDao.findByPropertyId(id);
+        List<User> users = new ArrayList<>();
+        for (Review review: reviews) {
+            users.add(review.getUser());
+        }
         List<ListingPackage> listOfPackage = packageDao.findByPropertyId(id);
 
         boolean isPropertyOwner = false;
@@ -218,6 +224,7 @@ public class ListingController {
             isPropertyOwner = currentUser.getId() == property.getUser().getId();
         }
         model.addAttribute("listing", property);
+        model.addAttribute("users", users);
         model.addAttribute("reviews", reviews);
         model.addAttribute("isPropertyOwner", isPropertyOwner);
         model.addAttribute("listOfPackage", listOfPackage);

@@ -107,12 +107,13 @@
         <div class="col-4">
             <label>Reviews:</label>
                 <div class="card">
+                <div class="listing-pg" th:each="review : ${reviews}">
                     <div class="list-group-item">
-
-                 <div class="listing-pg" th:each="review : ${reviews}">
-                     <h2>User Info:</h2>
+                <img class="show-img" src="../../static/img/user_profile_img.jpg" th:src="${review.user.img_user}"/>
+                <h5 class="card-title" th:text="${review.user.username}"></h5>
                 <h5 class="card-title" th:text="${review.title}"></h5>
                 <p class="card-text" th:text="${review.body}"></p>
+                </div>
             </div>
             </div>
             </div>
@@ -121,7 +122,7 @@
             </form>
         </div>
     </div>
-</div>
+
     <script th:replace="partials/scripts :: scripts"></script>
 </body>
 </html>
