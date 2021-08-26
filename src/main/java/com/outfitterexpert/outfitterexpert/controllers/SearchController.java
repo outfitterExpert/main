@@ -2,6 +2,7 @@ package com.outfitterexpert.outfitterexpert.controllers;
 
 import com.outfitterexpert.outfitterexpert.models.Property;
 import com.outfitterexpert.outfitterexpert.repositories.PropertyRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,9 @@ import java.util.List;
 @Controller
 public class SearchController {
     private PropertyRepository propertyDao;
+
+    @Value("${MAPBOX_ACCESS_TOKEN}")
+    private String MAPBOX_ACCESS_TOKEN;
 
     public SearchController(PropertyRepository propertyDao) {
         this.propertyDao = propertyDao;
@@ -49,6 +53,7 @@ public class SearchController {
                     }
                 }
                 model.addAttribute("listings", listings);
+                model.addAttribute("MAPBOX_ACCESS_TOKEN", MAPBOX_ACCESS_TOKEN);
                 return "listings/index";
             }
         }

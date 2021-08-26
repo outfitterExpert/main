@@ -3,10 +3,10 @@ USE outfitter_db;
 # TRUNCATE TABLE users;
 
 INSERT INTO users (username, password, first_name, last_name, email, outfitter, img_user, bio, user_location)
-VALUES  ('austin', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Austin', 'Whitley', 'admin1@email.com', true, 'https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/', 'Hello there!', 'Dallas, TX'),
-        ('naysa', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Naysa', 'Moreno', 'admin1@email.com', true, 'https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/', 'Hello there!', 'San Antonio, TX'),
-        ('irvin', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Irvin', 'Buendia', 'admin1@email.com', true,  'https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/', 'Hello there!', 'San Antonio, TX'),
-        ('benny', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Benny', 'Alvarez', 'admin1@email.com', true,  'https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/', 'Hello there!', 'San Antonio, TX');
+VALUES  ('austin', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Austin', 'Whitley', 'admin1@email.com', true, 'https://cdn.filestackcontent.com/X37zSRiv3Us9kRNMZALR', 'Hello there!', 'Dallas, TX'),
+        ('naysa', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Naysa', 'Moreno', 'admin2@email.com', true, 'https://cdn.filestackcontent.com/X37zSRiv3Us9kRNMZALR', 'Hello there!', 'San Antonio, TX'),
+        ('irvin', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Irvin', 'Buendia', 'admin3@email.com', true,  'https://cdn.filestackcontent.com/X37zSRiv3Us9kRNMZALR', 'Hello there!', 'San Antonio, TX'),
+        ('benny', '$2a$10$UJdkeUuxv/ijtvR6K0eAuehnV363r7f6HT.VZ3eHmXhhGKYhtALRK', 'Benny', 'Alvarez', 'admin4@email.com', true,  'https://cdn.filestackcontent.com/X37zSRiv3Us9kRNMZALR', 'Hello there!', 'San Antonio, TX');
 
 INSERT INTO properties(title, location, acres, slots, guided, lodging, method, owner_id, img_url, type)
 VALUES ('West-end King ranch', 'South Texas', 100000, 125, true, true, 'rifle', 1, 'https://cdn.filestackcontent.com/Ktwfy5keSHaze3YmzsiJ', 1),
