@@ -22,19 +22,19 @@
 <!--    Hunting card-->
     <form th:action="@{/listings/hunting}" method="GET" >
         <input type="hidden" name="type" value="1">
-        <button type="submit" class="naysa-button">
-        <div class="card center-vh">
-            <img src="../static/img/huntingOutfitter.jpg" th:src="@{img/huntingOutfitter.jpg}" class="card-img-top" alt="Man walking though water carrying ducks"/><span class="center-img img-text">Hunting</span>
+        <a type="submit" class="naysa-button">
+        <div class="center-vh">
+            <img src="../static/img/huntingOutfitter.jpg" th:src="@{img/huntingOutfitter.jpg}" class="card-img-top img-index" alt="Man walking though water carrying ducks"/><span class="center-img img-text">Hunting</span>
         </div>
-        </button>
+        </a>
     </form>
 
 <!--    Fishing card-->
     <form th:action="@{/listings/fishing}" method="GET" >
         <input type="hidden" name="type" value="0">
         <button type="submit" class="naysa-button">
-        <div class="card center-vh">
-            <img src="../../static/img/fishingOutfitter.jpg" th:src="@{img/fishingOutfitter.jpg}" class="card-img-top" alt="man standing in lake fishing"/><span class="center-img img-text">Fishing</span>
+        <div class="center-vh">
+            <img src="../../static/img/fishingOutfitter.jpg" th:src="@{img/fishingOutfitter.jpg}" class="card-img-top img-index" alt="man standing in lake fishing"/><span class="center-img img-text">Fishing</span>
         </div>
         </button>
     </form>
