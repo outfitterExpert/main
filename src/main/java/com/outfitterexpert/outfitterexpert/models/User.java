@@ -1,6 +1,7 @@
 package com.outfitterexpert.outfitterexpert.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.List;
 
 @Entity
@@ -10,19 +11,25 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 25, unique = true)
     private String username;
 
     @Column(nullable = false)
+    @NotBlank
+    @Size(min = 8, max = 50, message = "Password must be between 8 and 50 characters long")
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
+    @NotBlank
+    @Email
     private String email;
 
     @Column(nullable = false)
+    @NotBlank
     private String firstName;
 
     @Column(nullable = false)
+    @NotBlank
     private String lastName;
 
     @Column(nullable = false)

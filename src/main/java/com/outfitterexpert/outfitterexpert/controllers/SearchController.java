@@ -28,20 +28,24 @@ public class SearchController {
     public String getSearchForm() {
         return "listings/index";
     }
+
     @PostMapping("/search")
     public String search(@RequestParam String location, @RequestParam String animals, Model model) {
         System.out.println(animals);
         if (location.equals("") && animals.equals("")) {
             model.addAttribute("listings", propertyDao.findAll());
+            model.addAttribute("MAPBOX_ACCESS_TOKEN", MAPBOX_ACCESS_TOKEN);
         } else {
             List<Property> locationMatches = propertyDao.findPropertyByLocation(location);
             List<Property> animalMatches = propertyDao.findAllLikeAnimalName(animals);
-            if(locationMatches.isEmpty()) {
+            if(location.equals("")) {
                 model.addAttribute("listings", propertyDao.findAllLikeAnimalName(animals));
+                model.addAttribute("MAPBOX_ACCESS_TOKEN", MAPBOX_ACCESS_TOKEN);
                 return "listings/index";
-            } else if(animalMatches.isEmpty()) {
+            } else if(animals.equals("")) {
                 model.addAttribute("listings", propertyDao.findPropertyByLocation(location));
-            return "listings/index";
+                model.addAttribute("MAPBOX_ACCESS_TOKEN", MAPBOX_ACCESS_TOKEN);
+                return "listings/index";
             } else {
                 List<Property> listings = new ArrayList<>();
                 for(Property aMatch : animalMatches){
