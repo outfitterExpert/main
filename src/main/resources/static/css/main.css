@@ -5,19 +5,19 @@
 *{
     font-family:  'Noto Serif JP', serif;
 }
-body #index-page {
-    /*padding: 16px;*/
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    /*gap: 16px;*/
-    background: url(../img/oe-background.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+/*html, body {*/
+/*    !*padding: 16px;*!*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*    width: 100%;*/
+/*    !*gap: 16px;*!*/
+/*    background: url(../img/oe-background.jpg) no-repeat center center fixed;*/
+/*    -webkit-background-size: cover;*/
+/*    -moz-background-size: cover;*/
+/*    -o-background-size: cover;*/
+/*    background-size: cover;*/
+/*}*/
     :root {
         --background-color: rgb(42, 45, 49);
         --mustard-color: rgb(190, 161, 82);
@@ -77,6 +77,12 @@ img {
         display: flex;
         justify-content: space-evenly;
 
+    }
+    .img-index{
+        border-radius: 100px;
+        background: transparent;
+        overflow: hidden;
+        box-shadow: 8px 8px 7px #ccc;
     }
 
     input {
@@ -380,7 +386,7 @@ img {
     .naysa-button {
         border: none;
         margin-top: 40px;
-        border-radius: 50px;
+        border-radius: 200px;
     }
 
 
