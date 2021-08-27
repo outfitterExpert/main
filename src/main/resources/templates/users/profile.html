@@ -72,16 +72,23 @@
             </div>
 
 
-
         <div class="col-8">
         <br>
         <h2>Listings:</h2>
-        <br>
         <div th:each="listing : ${listings}">
+            <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
+                <button type="submit" class="benjamin-button">
             <img class="buck" src="../../static/img/buck-img.jpg" th:src="${listing.imgUrl}"/>
+                </button>
+            </form>
             <h3 th:text="${listing.location}"></h3>
             <h3 th:text="${listing.title}"></h3>
             <div th:if="${isUserAccount}">
+                <div th:if="${isUserAccount}">
+                    <form th:action="@{/listings/{id}/package/create (id = ${listing.id})}" method="GET">
+                        <button class="custom-button">Create a Package</button>
+                    </form>
+                </div>
                 <form th:action="@{/listings/{id}/delete(id = ${listing.id})}" method="post">
                     <button>Delete Listing</button>
                 </form>
@@ -90,12 +97,8 @@
                 </form>
                 <br>
             </div>
-
             </div>
         </div>
-
-        <!--<h1>Bookings:</h1>-->
-        <!--<h1>Listings:</h1>-->
         <hr>
 
 
