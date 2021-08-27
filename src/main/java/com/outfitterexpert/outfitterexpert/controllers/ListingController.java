@@ -229,7 +229,7 @@ public class ListingController {
         model.addAttribute("isPropertyOwner", isPropertyOwner);
         model.addAttribute("listOfPackage", listOfPackage);
         model.addAttribute("MAPBOX_ACCESS_TOKEN", MAPBOX_ACCESS_TOKEN);
-        return "/listings/show";
+        return "listings/show";
     }
 
     @GetMapping("/listings/{id}/edit")
@@ -255,7 +255,7 @@ public class ListingController {
             model.addAttribute("animal_list", animals);
             model.addAttribute("listing", property);
             model.addAttribute("FILE_STACK_ACCESS_TOKEN", FILE_STACK_ACCESS_TOKEN);
-            return "/listings/edit";
+            return "listings/edit";
         }else{
             return "redirect:/login";
         }

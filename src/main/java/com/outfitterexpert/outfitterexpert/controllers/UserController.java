@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ConcurrentModel;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.print.attribute.standard.PresentationDirection;
@@ -47,7 +47,7 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@Valid @ModelAttribute User user, BindingResult result, @RequestParam(defaultValue = "false") boolean outfitter, @RequestParam String passwordConfirmation){
+    public String saveUser(Model model, @Valid @ModelAttribute User user, Errors result, @RequestParam(defaultValue = "false") boolean outfitter, @RequestParam String signUpPasswordConfirm){
         String hash = passwordEncoder.encode(user.getPassword());
         if(userDao.existsByUsername(user.getUsername())){
             result.rejectValue("username", "user.username", "This username already exists.");
@@ -55,10 +55,12 @@ public class UserController {
         if(userDao.existsByEmail(user.getEmail())){
             result.rejectValue("email", "user.email", "This email already exists.");
         }
-        if(!passwordConfirmation.equals(user.getPassword())){
+        if(!signUpPasswordConfirm.equals(user.getPassword())){
             result.rejectValue("password", "user.password", "Passwords dont match");
         }
         if(result.hasErrors()){
+            model.addAttribute("errors", result);
+            model.addAttribute("user", user);
             return "users/sign-up";
         }
         if(outfitter){
@@ -146,9 +148,5 @@ public class UserController {
 
         return "redirect:/login";
     }
-
-
-
-
 
 }
