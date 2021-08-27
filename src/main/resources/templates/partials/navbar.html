@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8"/>
@@ -19,8 +18,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-<!--==========SEARCHBAR============-->
+        <!--==========SEARCHBAR============-->
         <div class="search-container">
             <form th:action="@{/search}" method="post" class="form-inline">
                 <input class="form-control" name="location" type="text" placeholder="location" aria-label="Search">
@@ -28,17 +26,12 @@
                 <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
             </form>
         </div>
-
-
-
         <!--================================SOCIAL MEDIA ICONS==================================-->
-
         <form class="d-flex row-1 my-2">
             <a class="navbar-icon" href="https://www.facebook.com/OutfitterExpert-101138728768176/"><i class="fab fa-facebook-square"></i></a>
             <a class="navbar-icon" href="https://www.instagram.com/_outfitterexpert_/?igshid=7ltyhidmj6hd"><i class="fab fa-instagram"></i></a>
             <a class="navbar-icon" href="https://www.linkedin.com/company/outfitter-expert"><i class="fab fa-linkedin"></i></a>
         </form>
-
         <!--  NAVBAR LOGIN AND LOGOUT TO DISPLAY, NOT IN HAMBURGER MENU-->
         <div class="display-nav-buttons">
             <ul class="display-nav-list">
@@ -55,9 +48,7 @@
                 </li>
             </ul>
         </div>
-<!--================================PROFILE BUTTON==================================-->
-<!--        <div class="pen-wrapper">-->
-<!--            <div class="pen-wrapper__inner">-->
+        <!--================================PROFILE BUTTON==================================-->
                 <nav class="nav">
                     <!-- NAVBAR DROPDOWN MENU BOX BUTTON-->
                     <input type="checkbox" id="menu-button"  class="menu-button__input" />
@@ -66,16 +57,10 @@
                           <span class="menu-button__icon-strip"></span>
                         </span>
                     </label>
-                            <!--=====NAVBAR DROPDOWN MENU LINKS=======-->
+                    <!--=====NAVBAR DROPDOWN MENU LINKS=======-->
                     <div class="nav__inner">
                         <br>
                             <ul class="nav-list">
-<!--                                <li sec:authorize="!isAuthenticated()" class="nav-list__item">-->
-<!--                                    <a class="nav-list__url" th:href="@{/login}">Login</a>-->
-<!--                                </li>-->
-<!--                                <li sec:authorize="!isAuthenticated()" class="nav-list__item">-->
-<!--                                    <a class="nav-list__url" href="/sign-up">Sign up</a>-->
-<!--                                </li>-->
                                 <li sec:authorize="isAuthenticated()" class="nav-list__item">
                                     <form th:action="@{/profile/{id}(id=${#authentication.principal.id})}" th:method="get">
                                         <button class="btn nav-list__url">Profile</button>
@@ -97,21 +82,10 @@
                                 <li class="nav-list__item">
                                     <a href="/about" class="nav-list__url">About Us</a>
                                 </li>
-<!--                                <li sec:authorize="isAuthenticated()" class="nav-list__item">-->
-<!--                                    <form th:action="@{/logout}" th:method="post">-->
-<!--&lt;!&ndash;                                        <button class="btn-link btn1" style="margin-top: 8px">Logout</button>&ndash;&gt;-->
-<!--                                        <button class="btn1" style="margin-top: 8px">Logout</button>-->
-<!--                                    </form>-->
-<!--                                </li>-->
                             </ul>
                         </div>
-
                     </nav>
-<!--                </div>-->
-<!--            </div>-->
     </div>
-
 </nav>
-
 </body>
 </html>
