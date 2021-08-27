@@ -42,7 +42,13 @@ img {
     .navbar-icon {
         font-size: 120%;
         padding: 0 10px;
+        transition: transform .3s; /* Animation */
     }
+
+    .navbar-icon:hover {
+        transform: scale(1.5);
+    }
+
 
     .font-header {
         font-size: 48px;
@@ -544,7 +550,7 @@ img {
     }
 
     input:checked + .menu-button + .nav__inner {
-        height: 460px;
+        height: 500px;
         width: 200px;
 
     }
@@ -646,6 +652,13 @@ img {
     .nav-logo {
         height: 70px;
         width: auto;
+        transition: transform .3s; /* Animation */
+    }
+
+    .nav-logo:hover {
+        transform: scale(1.1);
+
+
     }
 
     .nav-list {
@@ -744,16 +757,21 @@ img {
         padding: 10px 0px 0px 10px;
     }
 
+
+
     .display-nav-link {
+        transition: color 0.3s ease;
         font-family: "Montserrat", sans-serif;
         font-size: 20px;
         color: gray;
         padding-top: 20px;
 
+
     }
 
     .display-nav-link:hover {
         color: #ff0b61;
+
     }
 
     /*this is for Logout Button on Navbar*/
@@ -765,10 +783,12 @@ img {
         font-family: "Montserrat", sans-serif;
         font-size: 20px;
         color: gray;
+
     }
 
     .btn1:hover{
         color: #ff0b61;
+
 
 }
 
@@ -802,8 +822,9 @@ img {
         transition: transform .3s; /* Animation */
     }
 
-    a>.creator-img:hover {
+    .creator-img:hover {
         transform: scale(1.5); /* (150% zoom)*/
+        margin-bottom: 50px;
     }
 
     .creator-div {
