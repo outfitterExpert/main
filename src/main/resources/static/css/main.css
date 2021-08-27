@@ -66,12 +66,6 @@ img {
 
     }
 
-    .puppiness {
-        height: 100%;
-        width: 100%;
-        position: relative;
-        object-fit: cover;
-    }
 
     .image-container {
         display: flex;
@@ -747,7 +741,7 @@ img {
     .display-nav-link {
         font-family: "Montserrat", sans-serif;
         font-size: 20px;
-        color: gray;
+        color: rgb(53 54 58);
         padding-top: 20px;
 
     }
@@ -821,7 +815,16 @@ img {
         color: #ff0000;
         font-weight: bold;
     }
+    .carousel-item {
+        height: 50px;
+    }
 
+    .carousel-item img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        max-height: 50px;
+    }
 
 
 
