@@ -819,9 +819,9 @@ img {
     }
 
     .meet-creators {
-
         text-align: center;
-        padding: 20px;
+        padding: 10px;
+
     }
 
     .creator-img {
@@ -855,7 +855,19 @@ img {
     margin: 10px;
 }
 
+    /*SHOW PAGE CARDS*/
 
+    .card {
+        border-radius: 5%;
+    }
+
+    .list-group-item:first-child {
+        border-radius: 5%;
+    }
+
+    .list-group-item:last-child {
+        border-radius: 5%;
+    }
 
 @media screen and (max-width: 1024px) {
 
