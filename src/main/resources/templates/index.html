@@ -14,10 +14,11 @@
 
 <body>
 <script src="https://kit.fontawesome.com/968ac4e7b1.js" crossorigin="anonymous"></script>
+<div>
+<img src="../static/img/oe-background.jpg" th:src="@{img/oe-background.jpg}" class="background" style="border-radius: 0; z-index: -4;  -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;" alt="Man walking though water carrying ducks"/><span class="center-img img-text">Hunting</span>
 
-<!--<img alt="forrest" src="../static/img/oe-background.jpg" th:src="@{img/oe-background.jpg}"/>-->
 <!--IMAGES SIDE BY SIDE-->
-<div class="image-container">
+<!--<div class="image-container">-->
 
 <!--    Hunting card-->
     <form th:action="@{/listings/hunting}" method="GET" >
@@ -38,7 +39,7 @@
         </div>
         </button>
     </form>
-</div>
+<!--</div>-->
 <!--<div sec:authorize="isAuthenticated()" class="nav-item m-0">-->
 <!--    <form th:action="@{/logout}" th:method="post">-->
 <!--        <button style="color: #bbbbbb" class="btn-link btn nav-link icon navIconLink">-->
@@ -47,6 +48,6 @@
 <!--        </button>-->
 <!--    </form>-->
 <!--</div>-->
-
+</div>
 </body>
 </html>
