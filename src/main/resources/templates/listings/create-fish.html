@@ -12,7 +12,7 @@
 <img class="logo" alt="outfitter expert logo" src="../../static/img/oeLogo.png" th:src="@{/img/oeLogo.png}" />
 <div class="card-body">
 
-    <form class="form-section" th:action="@{/listings/create }" method="POST" th:object="${listing}">
+    <form class="form-section" th:action="@{/listings/create-fish}" method="POST" th:object="${listing}">
         <input type="hidden" th:value="${FILE_STACK_ACCESS_TOKEN}" class="fileToken"/>
         <label for="fileupload">Upload file </label>
         <input style="margin-left: 5px;" th:field="*{imgUrl}" value="" type="hidden" id="fileupload">
@@ -27,7 +27,7 @@
         <input id="listing-location" th:value="*{location}" type="text" th:field="*{location}" />
         <br/>
         <label class="hidden" for="listing-acreage">Size(acres):</label>
-        <input class="hidden"id="listing-acreage" value="0" type="text" th:field="*{acres}" />
+        <input class="hidden" id="listing-acreage" value="0" type="text" th:field="*{acres}" />
 
         <label class="hidden" for="listing-slots">Slots:</label>
         <input class="hidden" id="listing-slots" value="0" type="text" th:field="*{slots}" />
