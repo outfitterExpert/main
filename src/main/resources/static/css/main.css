@@ -855,7 +855,7 @@ img {
     margin: 10px;
 }
 
-    /*SHOW PAGE CARDS*/
+    /*SHOW PAGE CARDS - see if this is still necessary since we are using bootstrap cards now*/
 
     .card {
         border-radius: 5%;
@@ -868,6 +868,33 @@ img {
     .list-group-item:last-child {
         border-radius: 5%;
     }
+
+    /*review card image on listings*/
+    .card-img-tops {
+        border-radius: 5% 5% 0 0;
+    }
+
+    .reviewer {
+        margin-top: 15px;
+        /*margin-left: 10px;*/
+    }
+
+    .reviewer-pic {
+        margin-left: 15px;
+        margin-top: 0px;
+    }
+
+    .pkg-pg {
+        position: relative;
+        width: 100%;
+        padding-right: 100px;
+        padding-left: 100px;
+        margin-left: inherit;
+    }
+
+
+
+
 
 @media screen and (max-width: 1024px) {
 
