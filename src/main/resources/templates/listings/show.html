@@ -60,8 +60,8 @@
 
 
 <div class="container">
-    <div class="row">
-        <div class="col-8">
+    <div class="row justify-content-around">
+        <div class="col-lg-8 col-md-6 col-sm-12 pkg-pg">
 
 <!--            <label>Property Owner:</label>-->
 <!--            <label>Name:</label><h3 th:text="${user.firstName}"></h3>-->
@@ -70,64 +70,120 @@
 <!--            </div>-->
 
 
-            <label> Available Packages: </label>
+            <h2> Available Packages: </h2>
+            <br>
+<!--            TESTING NEW BOOTSTRAP PKG CARD-->
 
-<!--            add container to put two cards per row-->
-            <div class="container">
-            <div class="row">
-                <div class="col-12">
-            <div class="card booking-cards">
-            <div class="list-group-item" th:each="package : ${listOfPackage}">
-                <h3 class="list-group-item" th:text="${package.description}"></h3>
-                <h3 class="list-group-item" th:if="${package.guided == true}">
-                    <i class="fas fa-users"></i>
-                    <label>Guided</label>
-                </h3>
-                <h3 class="list-group-item" th:if="${package.lodging == true}">
-                    <i class="fas fa-campground"></i>
-                    <label>Lodging</label>
-                </h3>
-                <div class="list-group-item">
-                        <label>Days:</label>
-                <h3 th:text="${package.duration }"></h3>
-                </div>
-                <div class="list-group-item">
-                    <div class="row">
-                        <p><i class="fas fa-dollar-sign"></i></p>
-                <h3 th:text="${package.price}"></h3>
-                    </div>
-                        <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">
+<!--                        <div class="list-group-item" th:each="package : ${listOfPackage}">-->
+            <div th:each="package : ${listOfPackage}">
+            <div class="card" style="width: 100%;">
+
+                <img class="card-img-tops" src="../../static/img/log-cabin.jpg" th:src="@{/img/log-cabin.jpg}"  alt="Card image cap">
+
+
+<!--                    <h5 class="card-title">Package</h5>-->
+
+                    <h4 class="card-text list-group-item" th:text="${package.description}"></h4>
+
+
+                                <h4 class="list-group-item" th:if="${package.guided == true}">
+
+                                    <label>Guided:&nbsp;</label><i class="fas fa-users"></i>
+                                </h4>
+                                <h4 class="list-group-item" th:if="${package.lodging == true}">
+                                    <i class="fas fa-campground"></i>
+                                    <label>Lodging</label>
+                                </h4>
+                                <div class="list-group-item">
+<!--                                        <label>Days:</label>-->
+                                    <div class="row">
+                                    <h4>&nbsp;&nbsp;Number of Days:&nbsp;</h4>
+                                <h4 th:text="${package.duration }"></h4>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="row">
+<!--                                        <p><i class="fas fa-dollar-sign"></i></p>-->
+                                        <h4>&nbsp;&nbsp;Price $</h4>
+                                <h4 th:text="${package.price}"></h4>
+                                    </div>
+
+                <div class="card-body">
+                    <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">
                         <button class="btn-primary d-flex justify-content-end" type="submit">Book</button>
                     </form>
+                </div>
             </div>
 
-            </div>
-            </div>
-            </div>
+
+
+<!--            ORIGINAL PACKAGE CARD-->
+<!--            add container to put two cards per row-->
+
+<!--            <div class="card booking-cards">-->
+<!--            <div class="list-group-item" th:each="package : ${listOfPackage}">-->
+<!--                <h3 class="list-group-item" th:text="${package.description}"></h3>-->
+<!--                <h3 class="list-group-item" th:if="${package.guided == true}">-->
+<!--                    <i class="fas fa-users"></i>-->
+<!--                    <label>Guided</label>-->
+<!--                </h3>-->
+<!--                <h3 class="list-group-item" th:if="${package.lodging == true}">-->
+<!--                    <i class="fas fa-campground"></i>-->
+<!--                    <label>Lodging</label>-->
+<!--                </h3>-->
+<!--                <div class="list-group-item">-->
+<!--                        <label>Days:</label>-->
+<!--                <h3 th:text="${package.duration }"></h3>-->
+<!--                </div>-->
+<!--                <div class="list-group-item">-->
+<!--                    <div class="row">-->
+<!--                        <p><i class="fas fa-dollar-sign"></i></p>-->
+<!--                <h3 th:text="${package.price}"></h3>-->
+<!--                    </div>-->
+<!--                        <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">-->
+<!--                        <button class="btn-primary d-flex justify-content-end" type="submit">Book</button>-->
+<!--                    </form>-->
+<!--            </div>-->
+
+<!--            </div>-->
+<!--            </div>-->
+
+
 <!--                <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">-->
 <!--                    <button class="btn-primary" type="submit">Book</button>-->
 <!--                </form>-->
             </div>
+                <br>
             </div>
         </div>
-
-
-        <div class="col-4">
-            <label>Reviews:</label>
-                <div class="card">
+<!--            TESTING NEW REVIEW CARD-->
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <h2>Reviews:</h2>
+<!--            <form class="flex-content-end" th:action="@{/reviews/{id}/create(id = ${listing.id})}" method="GET">-->
+<!--                <button class="btn btn-primary">Write Review</button>-->
+<!--            </form>-->
+            <br>
+            <!--   REVIEW CARDS FROM LOGGED-IN USERS-->
                 <div class="listing-pg" th:each="review : ${reviews}">
-                    <div class="list-group-item">
-                <img class="show-img" src="../../static/img/user_profile_img.jpg" th:src="${review.user.img_user}"/>
-                <h5 class="card-title" th:text="${review.user.username}"></h5>
-                <h5 class="card-title" th:text="${review.title}"></h5>
-                <p class="card-text" th:text="${review.body}"></p>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-tops" src="../../static/img/buck-img.jpg" th:src="@{/img/buck-img.jpg}"  alt="Card image cap">
+                        <div class="card-body">
+                            <div class="row">
+                        <img class="show-img reviewer-pic" src="../../static/img/user_profile_img.jpg" th:src="${review.user.img_user}"/>
+                        <p class="card-title reviewer" th:text="${review.user.username}"></p>
+                        </div>
+                            <h5 class="card-title" th:text="${review.title}"></h5>
+                            <p class="card-text" th:text="${review.body}"></p>
+<!--                    NEED TO FIX THIS. THIS BUTTON TAKES TO CREATING A NEW REVIEW. NOT EVERY CARD NEEDS IT, MAYBE ON TOP ONLY ONCE.-->
+                        <form class="flex-content-end" th:action="@{/reviews/{id}/create(id = ${listing.id})}" method="GET">
+                            <button class="btn btn-primary">Write Review</button>
+                        </form>
                 </div>
+        </div>
+            <br>
+        </div>
             </div>
-            </div>
-            <form class="flex-content-end" th:action="@{/reviews/{id}/create(id = ${listing.id})}" method="GET">
-                <button class="btn-primary">Write Review</button>
-            </form>
-         </div>
+
         </div>
     </div>
 
