@@ -99,12 +99,15 @@ public class UserController {
 
         //check to see if the current user has the same id as the account
         boolean isUserAccount = false;
+        boolean outfitterStatus = false;
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             isUserAccount = currentUser.getId() == user.getId();
+            outfitterStatus = currentUser.isOutfitter();
         }
-        model.addAttribute("isUserAccount", isUserAccount);
 
+        model.addAttribute("isUserAccount", isUserAccount);
+        model.addAttribute("outfitterStatus", outfitterStatus);
 
         return "users/profile";
     }
@@ -134,7 +137,7 @@ public class UserController {
         if(user.getId() == profileFromDB.getId()) {
             userDao.save(user);
         }
-        return "redirect:/profile/";
+        return "redirect:/profile";
 
     }
 

@@ -6,12 +6,13 @@
     <title>Create listing</title>
 </head>
 <body>
-
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"></nav>
+
 <img class="logo" alt="outfitter expert logo" src="../../static/img/oeLogo.png" th:src="@{/img/oeLogo.png}" />
 <div class="card-body">
-<form class="form-section" th:action="@{/listings/create}" method="POST" th:object="${listing}">
+
+    <form class="form-section" th:action="@{/listings/edit-fish}" method="POST" th:object="${listing}">
         <input type="hidden" th:value="${FILE_STACK_ACCESS_TOKEN}" class="fileToken"/>
         <label for="fileupload">Upload file </label>
         <input style="margin-left: 5px;" th:field="*{imgUrl}" value="" type="hidden" id="fileupload">
@@ -19,22 +20,20 @@
         <br/>
         <label style="font-weight: bold" id="nameBox"></label>
         <br>
-
         <label for="listing-title">Title:</label>
         <input id="listing-title" th:value="*{title}" type="text" th:field="*{title}" />
-        <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
         <br/>
-        <label for="listing-location">Location:</label><p th:if="${#fields.hasErrors('location')}" th:errors="*{location}"></p>
+        <label for="listing-location">Location:</label>
         <input id="listing-location" th:value="*{location}" type="text" th:field="*{location}" />
         <br/>
-        <label for="listing-acreage">Size(acres):</label><p th:if="${#fields.hasErrors('acres')}" th:errors="*{acres}"></p>
-        <input id="listing-acreage" value="" type="text" th:field="*{acres}" />
-        <br/>
-        <label for="listing-slots">Slots:</label><p th:if="${#fields.hasErrors('slots')}" th:errors="*{slots}"></p>
-        <input id="listing-slots" th:value="*{slots}" type="text" th:field="*{slots}" />
-        <br/>
-        <label for="listing-animals">Animals:</label><p th:if="${#fields.hasErrors('animals')}" th:errors="*{animals}"></p>
-        <input id="listing-animals" th:value="*{animals}" name="user-animal-list" type="text" placeholder="Ex: White-tailed Deer, Bighorn Sheep, Fox" />
+        <label class="hidden" for="listing-acreage">Size(acres):</label>
+        <input class="hidden" id="listing-acreage" value="0" type="text" th:field="*{acres}" />
+
+        <label class="hidden" for="listing-slots">Slots:</label>
+        <input class="hidden" id="listing-slots" value="0" type="text" th:field="*{slots}" />
+
+        <label for="listing-animals">Fish:</label>
+        <input id="listing-animals" th:value="*{animals}" name="user-animal-list" type="text" />
         <br/>
         <div class="form-check form-switch">
             <input class="form-check-input" th:value="*{guided}" name="guided" type="checkbox" id="listing-guided" th:field="*{guided}">
@@ -42,29 +41,22 @@
                 Guided
             </label>
         </div>
-        <div class="form-check">
+        <div class="form-check hidden" >
             <input class="form-check-input" th:value="*{lodging}" name="lodging" type="checkbox" id="listing-lodging" th:field="*{lodging}">
             <label class="form-check-label" for="listing-lodging">
                 Lodging
             </label>
         </div>
         <br/>
-    <label for="listing-method">Method of hunting</label><p th:if="${#fields.hasErrors('method')}" th:errors="*{method}"></p>
-        <select id="listing-method" class="form-select" aria-label="Default select example" value="" name="method" th:field="*{method}" >
-            <option value="baiting">Baiting</option>
-            <option value="blinds">Blinds</option>
-            <option value="bow">Bow</option>
-            <option value="calling">Calling</option>
-            <option value="decoy">Decoy</option>
-            <option value="High-seat">High-seat</option>
-            <option value="rifle" selected >Rifle</option>
-            <option value="tracking">Tracking</option>
-            <option value="trapping">Trapping</option>
-            <option value="shotgun">Shotgun</option>
-            <option value="stalking">Stalking</option>
+        <select class="form-select" aria-label="Default select example" value="" name="method" th:field="*{method}" >
+            <option value="saltwater">Saltwater Fishing</option>
+            <option value="freshwater">Freshwater Fishing</option>
+            <option value="fly-fishing">Fly Fishing</option>
+            <option value="deep-sea-fishing" selected>Deep Sea Fishing</option>
+            <option value="other">Other</option>
         </select>
 
-        <input type="hidden" id="type" class="form-section" name="post-type" value="true">
+        <input type="hidden" id="type" class="form-section" name="post-type" value="false">
         <br/>
         <input class="custom-button" type="submit" id="submitForm" value="Create" />
     </form>
