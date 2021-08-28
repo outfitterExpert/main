@@ -3,15 +3,20 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8" />
-    <title>Login</title>
+    <title>Log in</title>
 </head>
 <body>
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="error" th:if="${param.logout}">
-    You have been logged out
+<!--<div class="error" th:if="${param.logout}">-->
+<!--    You have been logged out-->
+<!--</div>-->
+
+<div class="container2">
+<img class="login-logo" src="../../static/img/oeLogo2.jpg" th:src="@{img/oeLogo2.jpg}" />
 </div>
-<img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />
+
+<h3 class="login">Please Log in or Sign-up</h3>
     <form class="form-section" th:action="@{/login}" method="post">
         <div class="error" th:if="${param.error}">
             Invalid Username and Password
@@ -21,6 +26,10 @@
         <label for="password">Password</label>
         <input id="password" name="password" type="password" />
         <br/>
+        <div class="error" th:if="${param.logout}">
+            <br>
+            You have been logged out
+        </div>
         <input class="custom-button" type="submit" value="Log In" />
         <a class="blue" href="/sign-up">Not a member? Sign up to join OutfitterExpert</a>
     </form>

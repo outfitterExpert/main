@@ -319,10 +319,26 @@ img {
     /*naysa edits*/
     .logo {
         width: 20em;
-        top: 0;
         margin-left: calc(50% - 160px);
     }
 
+    .login-logo {
+        width: 40%;
+        top: 0;
+        margin: 50px;
+    }
+
+    /*OE Logo(.login-logo) on Login page div wrapper*/
+    .container2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    h3.login {
+        text-align: center;
+        padding-left: 60px;
+    }
 
     .title {
         position: relative;
