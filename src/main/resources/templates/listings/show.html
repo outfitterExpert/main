@@ -6,19 +6,15 @@
     <title>View single Listing</title>
 </head>
 <body>
-
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
-
 <div class="container">
 <div class="card-body">
-
     <div class="row d-flex justify-content-between">
         <div class="list-t col-5">
     <h2 class="listing-title" th:text="${listing.title}"></h2>
     <h4 class="card-text" th:text="${listing.location}"></h4>
         </div>
-
         <div class="col-5">
             <div class="row">
         <img class="show-img" src="../../static/img/user_profile_img.jpg" th:src="${listing.user.img_user}"/>
@@ -31,7 +27,6 @@
         </div>
         </div>
     </div>
-
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -56,9 +51,7 @@
     </div>
 </div>
 </div>
-
-
-
+<!--PACKAGE CARDS FOR BOOKING-->
 <div class="container">
     <div class="row justify-content-around">
         <div class="col-lg-8 col-md-6 col-sm-12 pkg-pg">
@@ -69,26 +62,13 @@
 <!--            <img class="user-img" src="../../static/img/buck-img.jpg" th:src="${user.img_user}"/>-->
 <!--            </div>-->
 
-
             <h2> Available Packages: </h2>
             <br>
-<!--            TESTING NEW BOOTSTRAP PKG CARD-->
-
-
-<!--                        <div class="list-group-item" th:each="package : ${listOfPackage}">-->
             <div th:each="package : ${listOfPackage}">
             <div class="card" style="width: 100%;">
-
                 <img class="card-img-tops" src="../../static/img/log-cabin.jpg" th:src="@{/img/log-cabin.jpg}"  alt="Card image cap">
-
-
-<!--                    <h5 class="card-title">Package</h5>-->
-
                     <h4 class="card-text list-group-item" th:text="${package.description}"></h4>
-
-
                                 <h4 class="list-group-item" th:if="${package.guided == true}">
-
                                     <label>Guided:&nbsp;</label><i class="fas fa-users"></i>
                                 </h4>
                                 <h4 class="list-group-item" th:if="${package.lodging == true}">
@@ -96,7 +76,6 @@
                                     <label>Lodging</label>
                                 </h4>
                                 <div class="list-group-item">
-<!--                                        <label>Days:</label>-->
                                     <div class="row">
                                     <h4>&nbsp;&nbsp;Number of Days:&nbsp;</h4>
                                 <h4 th:text="${package.duration }"></h4>
@@ -108,41 +87,12 @@
                                         <h4>&nbsp;&nbsp;Price $</h4>
                                 <h4 th:text="${package.price}"></h4>
                                     </div>
-
                 <div class="card-body">
                     <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">
-
-
-            <div class="container">
-            <div class="row">
-                <div class="col-12">
-            <div class="card booking-cards">
-            <div class="list-group-item" th:each="package : ${listOfPackage}">
-                <h3 class="list-group-item" th:text="${package.description}"></h3>
-                <h3 class="list-group-item" th:if="${package.guided == true}">
-                    <i class="fas fa-users"></i>
-                    <label>Guided</label>
-                </h3>
-                <h3 class="list-group-item" th:if="${package.lodging == true}">
-                    <i class="fas fa-campground"></i>
-                    <label>Lodging</label>
-                </h3>
-                <div class="list-group-item">
-                        <label>Days:</label>
-                <h3 th:text="${package.duration }"></h3>
-                </div>
-                <div class="list-group-item">
-                    <div class="row">
-                        <p><i class="fas fa-dollar-sign"></i></p>
-                <h3 th:text="${package.price}"></h3>
-                    </div>
-                        <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">
-
                         <button class="btn-primary d-flex justify-content-end" type="submit">Book</button>
                     </form>
                 </div>
             </div>
-
 
 
 <!--            ORIGINAL PACKAGE CARD-->
@@ -184,7 +134,7 @@
                 <br>
             </div>
         </div>
-<!--            TESTING NEW REVIEW CARD-->
+    <!-- REVIEWS SECTION-->
         <div class="col-lg-4 col-md-6 col-sm-12">
             <h2>Reviews:</h2>
 <!--            <form class="flex-content-end" th:action="@{/reviews/{id}/create(id = ${listing.id})}" method="GET">-->
