@@ -74,6 +74,7 @@
             <br>
 <!--            TESTING NEW BOOTSTRAP PKG CARD-->
 
+
 <!--                        <div class="list-group-item" th:each="package : ${listOfPackage}">-->
             <div th:each="package : ${listOfPackage}">
             <div class="card" style="width: 100%;">
@@ -110,6 +111,33 @@
 
                 <div class="card-body">
                     <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">
+
+
+            <div class="container">
+            <div class="row">
+                <div class="col-12">
+            <div class="card booking-cards">
+            <div class="list-group-item" th:each="package : ${listOfPackage}">
+                <h3 class="list-group-item" th:text="${package.description}"></h3>
+                <h3 class="list-group-item" th:if="${package.guided == true}">
+                    <i class="fas fa-users"></i>
+                    <label>Guided</label>
+                </h3>
+                <h3 class="list-group-item" th:if="${package.lodging == true}">
+                    <i class="fas fa-campground"></i>
+                    <label>Lodging</label>
+                </h3>
+                <div class="list-group-item">
+                        <label>Days:</label>
+                <h3 th:text="${package.duration }"></h3>
+                </div>
+                <div class="list-group-item">
+                    <div class="row">
+                        <p><i class="fas fa-dollar-sign"></i></p>
+                <h3 th:text="${package.price}"></h3>
+                    </div>
+                        <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">
+
                         <button class="btn-primary d-flex justify-content-end" type="submit">Book</button>
                     </form>
                 </div>
