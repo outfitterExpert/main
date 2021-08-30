@@ -88,7 +88,7 @@
                                     </div>
                 <div class="card-body">
                     <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">
-                        <button class="btn-primary d-flex justify-content-end" type="submit">Book</button>
+                        <button class="custom-button package-b " type="submit">Book</button>
                     </form>
                 </div>
             </div>
@@ -136,9 +136,10 @@
     <!-- REVIEWS SECTION-->
         <div class="col-lg-4 col-md-6 col-sm-12">
             <h2>Reviews:</h2>
-<!--            <form class="flex-content-end" th:action="@{/reviews/{id}/create(id = ${listing.id})}" method="GET">-->
-<!--                <button class="btn btn-primary">Write Review</button>-->
-<!--            </form>-->
+
+            <form class="flex-content-end" th:action="@{/reviews/{id}/create(id = ${listing.id})}" method="GET">
+                <button class="custom-button review-btn">Write Review</button>
+            </form>
             <br>
             <!--   REVIEW CARDS FROM LOGGED-IN USERS-->
                 <div class="listing-pg" th:each="review : ${reviews}">
@@ -152,9 +153,9 @@
                             <h5 class="card-title" th:text="${review.title}"></h5>
                             <p class="card-text" th:text="${review.body}"></p>
 <!--                    NEED TO FIX THIS. THIS BUTTON TAKES TO CREATING A NEW REVIEW. NOT EVERY CARD NEEDS IT, MAYBE ON TOP ONLY ONCE.-->
-                        <form class="flex-content-end" th:action="@{/reviews/{id}/create(id = ${listing.id})}" method="GET">
-                            <button class="btn btn-primary">Write Review</button>
-                        </form>
+<!--                        <form class="flex-content-end" th:actio {n="@{/reviews/{id}/create(id = ${listing.id})}" method="GET">-->
+<!--                            <button class="custom-button">Write Review</button>-->
+<!--                        </form>-->
                 </div>
         </div>
             <br>
