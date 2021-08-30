@@ -29,6 +29,10 @@
 img {
     border-radius: 50px;
 }
+.img-listing{
+    width: 600px;
+    height: 400px;
+}
 .img-carousel{
     height: 400px;
     width: 200px;
@@ -427,7 +431,7 @@ img {
         margin-top: 40px;
         border-radius: 5px;
         background-color: #037171;
-        color: white;
+        color: #fff;
         margin-bottom: 1rem;
     }
 
@@ -435,18 +439,25 @@ img {
     border: none;
     margin-top: 40px;
     border-radius: 5px;
-    background-color: #E5D000;
-    color: white;
+    background-color: #c49f44;
+    color: #fff;
     margin-bottom: 1rem;
+    margin-right: 5px;
 }
 
 .custom-button-del {
     border: none;
     margin-top: 40px;
     border-radius: 5px;
-    background-color: #C70039;
-    color: white;
+    background-color: #8C0000;
+    color: #fff;
     margin-bottom: 1rem;
+}
+
+.profile-b {
+    padding: 10px 15px;
+    font-weight: bold;
+    margin: 5px -5px 5px 15px;
 }
 
 
@@ -984,9 +995,7 @@ img {
         margin: 0 20%;
     }
 
-    .profile-b {
-        margin: 5px 0;
-    }
+
 
 
 

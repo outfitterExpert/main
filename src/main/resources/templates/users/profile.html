@@ -36,16 +36,29 @@
                 <label>Bio:</label><h3 th:text="${user.bio}"></h3>
                 <br>
 
-                <div th:if="${isUserAccount}">
 
+
+                <div th:if="${isUserAccount}">
+                    <div class="row">
                     <form th:action="@{/profile/edit}" method="GET">
                         <button class="custom-button-edit profile-b" type="submit">Edit Profile</button>
                     </form>
-
                         <button class="custom-button-del profile-b btn-delete">Delete Profile</button>
-
+                    </div>
                 </div>
 
+
+            <br>
+            <h3>Bookings:</h3>
+            <div th:each="booking : ${bookings}">
+                <label>Package</label>
+                <h2 th:text="${booking.package.property.title}"></h2>
+                <label>Start Date:</label>
+                <h4  th:text="${booking.date_start}"></h4>
+                <label>End Date:</label>
+                <h4 th:text="${booking.date_end}"></h4>
+            </div>
+            <br>
 
                         <br>
                         <h2>Reviews:</h2>
@@ -60,6 +73,7 @@
 
                             <div th:if="${isUserAccount}">
 
+                                <div class="row">
                                 <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">
                                     <button class="custom-button-edit profile-b" type="submit">Edit Review</button>
                                 </form>
@@ -67,6 +81,8 @@
                                 <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
                                     <button class="custom-button-del profile-b">Delete Review</button>
                                 </form>
+                                </div>
+                                <br>
 
                                 <!-- review delete test. if doesn't work uncommment.-->
 <!--                                <button class="btn-delete">Delete Review</button>-->
@@ -77,6 +93,7 @@
 <!--                                <br>-->
                             </div>
                         </div>
+            <br>
             </div>
 
 
@@ -86,17 +103,18 @@
         <div th:each="listing : ${listings}">
             <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
                 <button type="submit" class="benjamin-button">
-            <img class="buck" src="../../static/img/buck-img.jpg" th:src="${listing.imgUrl}"/>
+            <img class="img-listing" th:src="${listing.imgUrl}"/>
                 </button>
             </form>
             <h3 th:text="${listing.location}"></h3>
             <h3 th:text="${listing.title}"></h3>
             <div th:if="${isUserAccount}">
-                <div th:if="${isUserAccount}">
+<!--                <div th:if="${isUserAccount}">-->
+                    <div class="row">
                     <form th:action="@{/listings/{id}/package/create (id = ${listing.id})}" method="GET">
                         <button class="custom-button profile-b">Create a Package</button>
                     </form>
-                </div>
+<!--                </div>-->
                 <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">
                     <button class="custom-button-edit profile-b" type="submit">Edit Listing</button>
                 </form>
@@ -106,6 +124,7 @@
 <!--                <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">-->
 <!--                    <button class="custom-button profile-b" type="submit">Edit Listing</button>-->
 <!--                </form>-->
+                </div>
                 <br>
             </div>
             </div>
@@ -153,7 +172,15 @@
         </div>
 
 
-    </div>
+<!--        <h3>Bookings:</h3>-->
+<!--        <div th:each="booking : ${bookings}">-->
+<!--            <h3  th:text="${booking.date_start}"></h3>-->
+<!--            <p th:text="${booking.package.property.title}"></p>-->
+<!--        </div>-->
+
+
+
+        </div>
         </div>
 
         <script th:replace="partials/scripts :: scripts"></script>

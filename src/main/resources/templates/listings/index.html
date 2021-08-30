@@ -19,7 +19,7 @@
         <button type="submit" class="benjamin-button">
            <div id="listing-page">
 <!--            <img class="buck" src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}"/>-->
-               <img class="buck" src="../../static/img/buck-img.jpg" th:src="${listing.imgUrl}"/>
+               <img th:src="${listing.imgUrl}" class="img-listing"/>
                <h3 class="first-txt listing-location" th:text="${listing.location}"/>
                <h3 class="second-txt listing-title" th:text="${listing.title}"/>
                <p class="hidden-info listing-id" th:text="${listing.id}"></p>
@@ -32,14 +32,15 @@
         <hr style="height:1px;border:none;color:#333;background-color:#333;" />
     </div>
 </div>
+
     <div class="map col-lg-5 col-md-0 col-sm-0">
         <div class="navstyle">
-        <div id='map' style='width: 50vw; height: 92vh; margin: 60px;'></div>
+        <div id='map' style='width: 50vw; height: 100vh;'></div>
             <input type="hidden" th:value="${MAPBOX_ACCESS_TOKEN}" class="mapToken">
             <div class="listing-pg" th:each="listing : ${listings}">
-            <div class="first-txt listing-location" th:text="${listing.location}"></div>
-            <div class="second-txt listing-title" th:text="${listing.title}"></div>
-            <p class="hidden-info listing-id" th:text="${listing.id}"></p>
+<!--            <div class="first-txt listing-location" th:text="${listing.location}"></div>-->
+<!--            <div class="second-txt listing-title" th:text="${listing.title}"></div>-->
+<!--            <p class="hidden-info listing-id" th:text="${listing.id}"></p>-->
             </div>
         </div>
     </div>
