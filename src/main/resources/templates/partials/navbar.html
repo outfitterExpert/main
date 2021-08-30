@@ -20,8 +20,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!--==========SEARCHBAR============-->
         <div class="search-container">
-            <form th:action="@{/search}" method="post" class="form-inline">
-                <input class="form-control" name="location" type="text" placeholder="location" aria-label="Search">
+            <form th:action="@{/search}" method="post" class="form-inline" id="special">
+                <input class="form-control" name="location" type="text" placeholder="Location" aria-label="Search">
                 <input class="form-control" name="animals" type="text" placeholder="Animal" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
             </form>
