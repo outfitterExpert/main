@@ -23,11 +23,14 @@
             <br>
             <h2>Profile</h2>
             <br>
+            <div class="card"  style="width: auto; height: auto; padding:15px; margin:15px">
             <!--            <div class="row" style="padding-left: 15px">-->
                 <img class="user-img" src="../../static/img/user_profile_img.jpg" th:src="${user.img_user}"/>
             <p th:if="${user.outfitter == true}">
                 <img class="outfitter" src="https://see.fontimg.com/api/renderfont4/lVYZ/eyJyIjoiZnMiLCJoIjoxMzAsInciOjIwMDAsImZzIjo2NSwiZmdjIjoiIzMwNzczRCIsImJnYyI6IiNGRkZGRkYiLCJ0IjoxfQ/b3V0Zml0dGVy/impact-label.png" alt="Label Maker fonts"></p>
                 <br>
+
+
                 <label>Username:</label><h2 th:text="${user.username}"></h2>
                 <label>Name:</label>
                 <div class="row">
@@ -41,9 +44,8 @@
                 <label>User Location:</label><h3 th:text="${user.user_location}"></h3>
 <!--                <h3 th:text="${user.user_location}"></h3>-->
                 <label>Bio:</label><h3 th:text="${user.bio}"></h3>
+            </div>
                 <br>
-
-
 
 
                 <div th:if="${isUserAccount}">
@@ -54,90 +56,67 @@
                         <button class="custom-button-del profile-b btn-delete">Delete Profile</button>
                     </div>
                 </div>
-
-
+        </div>
+        <div class="col-8">
             <br>
-            <h3>Bookings:</h3>
+            <h2>My Listings:</h2>
+            <div th:each="listing : ${listings}">
+                <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
+                    <button type="submit" class="benjamin-button">
+                        <img class="img-listing" th:src="${listing.imgUrl}"/>
+                    </button>
+                </form>
+                <h3 th:text="${listing.location}"></h3>
+                <h3 th:text="${listing.title}"></h3>
+                <div th:if="${isUserAccount}">
+                    <!--                <div th:if="${isUserAccount}">-->
+                    <div class="row">
+                        <form th:action="@{/listings/{id}/package/create (id = ${listing.id})}" method="GET">
+                            <button class="custom-button profile-b">Create a Package</button>
+                        </form>
+                        <!--                </div>-->
+                        <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">
+                            <button class="custom-button-edit profile-b" type="submit">Edit Listing</button>
+                        </form>
+                        <form th:action="@{/listings/{id}/delete(id = ${listing.id})}" method="post">
+                            <button class="custom-button-del profile-b">Delete Listing</button>
+                        </form>
+                        <!--                <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">-->
+                        <!--                    <button class="custom-button profile-b" type="submit">Edit Listing</button>-->
+                        <!--                </form>-->
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<h2 style="margin-left: 160px;">My Bookings:</h2>
+             <br>
+
+            <div class="container">
+                <div class="card" style="width: 25%; height: auto; padding:15px; margin:15px">
             <div th:each="booking : ${bookings}">
+                <img class="book-img" src="../../static/img/user_profile_img.jpg" th:src="${booking.package.property.imgUrl}"/>
+                <br>
                 <label>Package</label>
                 <h2 th:text="${booking.package.property.title}"></h2>
+                <label>Location:</label>
+                <h2 th:text="${booking.package.property.location}"></h2>
                 <label>Start Date:</label>
                 <h4  th:text="${booking.date_start}"></h4>
                 <label>End Date:</label>
                 <h4 th:text="${booking.date_end}"></h4>
             </div>
-            <br>
-
-                        <br>
-                        <h2>Reviews:</h2>
-                        <br>
-
-                        <div th:each="review : ${reviews}">
-                            <h3  th:text="${review.title}"></h3>
-                            <p th:text="${review.rating}"></p>
-                            <p th:text="${review.body}"></p>
-
-
-
-                            <div th:if="${isUserAccount}">
-
-                                <div class="row">
-                                <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">
-                                    <button class="custom-button-edit profile-b" type="submit">Edit Review</button>
-                                </form>
-
-                                <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
-                                    <button class="custom-button-del profile-b">Delete Review</button>
-                                </form>
-                                </div>
-                                <br>
-
-                                <!-- review delete test. if doesn't work uncommment.-->
-<!--                                <button class="btn-delete">Delete Review</button>-->
-
-<!--                                <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">-->
-<!--                                    <button class="custom-button profile-b" type="submit">Edit Review</button>-->
-<!--                                </form>-->
-<!--                                <br>-->
-                            </div>
-                        </div>
-            <br>
-            </div>
-
-
-        <div class="col-8">
-        <br>
-        <h2>Listings:</h2>
-        <div th:each="listing : ${listings}">
-            <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
-                <button type="submit" class="benjamin-button">
-            <img class="img-listing" th:src="${listing.imgUrl}"/>
-                </button>
-            </form>
-            <h3 th:text="${listing.location}"></h3>
-            <h3 th:text="${listing.title}"></h3>
-            <div th:if="${isUserAccount}">
-<!--                <div th:if="${isUserAccount}">-->
-                    <div class="row">
-                    <form th:action="@{/listings/{id}/package/create (id = ${listing.id})}" method="GET">
-                        <button class="custom-button profile-b">Create a Package</button>
-                    </form>
-<!--                </div>-->
-                <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">
-                    <button class="custom-button-edit profile-b" type="submit">Edit Listing</button>
-                </form>
-                <form th:action="@{/listings/{id}/delete(id = ${listing.id})}" method="post">
-                    <button class="custom-button-del profile-b">Delete Listing</button>
-                </form>
-<!--                <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">-->
-<!--                    <button class="custom-button profile-b" type="submit">Edit Listing</button>-->
-<!--                </form>-->
-                </div>
-                <br>
             </div>
             </div>
-        </div>
-        <hr>
+
+
+
+
 
 
         <!--                    TESTING MODAL HERE-->
@@ -188,8 +167,37 @@
 
 
 
+
+
+<h2 style="margin-left: 160px;">My Reviews:</h2>
+<div class="container testimonial-group">
+
+<div class="row text-center" th:each="review : ${reviews}">
+    <div class="card" style="width: 35rem; height: 15rem; padding:15px; margin:15px">
+    <div class="card-body">
+    <h3  class="card-title" th:text="${review.title}"></h3>
+        <p class="card-text" th:text="${review.body}"></p>
+
+    <div th:if="${isUserAccount}">
+        <div class="row">
+            <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">
+                <button class="custom-button-edit profile-b" type="submit">Edit Review</button>
+            </form>
+
+            <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
+                <button class="custom-button-del profile-b">Delete Review</button>
+            </form>
         </div>
+    </div>
         </div>
+</div>
+</div>
+</div>
+
+
+
+
+
 
         <script th:replace="partials/scripts :: scripts"></script>
 
