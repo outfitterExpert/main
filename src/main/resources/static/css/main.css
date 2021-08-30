@@ -995,8 +995,19 @@ img {
         margin: 0 20%;
     }
 
+.book-img {
+    width: 100%;
+    /*border-radius: 10%;*/
+}
 
-
+.testimonial-group > .row {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.testimonial-group > .row > .card {
+    display: inline-block;
+    float: none;
+}
 
 
 
