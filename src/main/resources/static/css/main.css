@@ -431,6 +431,26 @@ img {
         margin-bottom: 1rem;
     }
 
+.custom-button-edit {
+    border: none;
+    margin-top: 40px;
+    border-radius: 5px;
+    background-color: #E5D000;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.custom-button-del {
+    border: none;
+    margin-top: 40px;
+    border-radius: 5px;
+    background-color: #C70039;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+
+
     .benjamin-button {
         border: none;
         margin-top: 40px;
@@ -964,6 +984,9 @@ img {
         margin: 0 20%;
     }
 
+    .profile-b {
+        margin: 5px 0;
+    }
 
 
 

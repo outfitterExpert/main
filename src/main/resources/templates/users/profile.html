@@ -38,11 +38,12 @@
 
                 <div th:if="${isUserAccount}">
 
-                        <button class="btn-delete">Delete Profile</button>
-
                     <form th:action="@{/profile/{id}/edit(id = ${user.id})}" method="GET">
-                        <button type="submit">Edit Profile</button>
+                        <button class="custom-button-edit profile-b" type="submit">Edit Profile</button>
                     </form>
+
+                        <button class="custom-button-del profile-b btn-delete">Delete Profile</button>
+
                 </div>
 
 
@@ -59,17 +60,21 @@
 
                             <div th:if="${isUserAccount}">
 
+                                <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">
+                                    <button class="custom-button-edit profile-b" type="submit">Edit Review</button>
+                                </form>
+
                                 <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
-                                    <button>Delete Review</button>
+                                    <button class="custom-button-del profile-b">Delete Review</button>
                                 </form>
 
                                 <!-- review delete test. if doesn't work uncommment.-->
 <!--                                <button class="btn-delete">Delete Review</button>-->
 
-                                <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">
-                                    <button type="submit">Edit Review</button>
-                                </form>
-                                <br>
+<!--                                <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">-->
+<!--                                    <button class="custom-button profile-b" type="submit">Edit Review</button>-->
+<!--                                </form>-->
+<!--                                <br>-->
                             </div>
                         </div>
             </div>
@@ -89,15 +94,18 @@
             <div th:if="${isUserAccount}">
                 <div th:if="${isUserAccount}">
                     <form th:action="@{/listings/{id}/package/create (id = ${listing.id})}" method="GET">
-                        <button class="custom-button">Create a Package</button>
+                        <button class="custom-button profile-b">Create a Package</button>
                     </form>
                 </div>
-                <form th:action="@{/listings/{id}/delete(id = ${listing.id})}" method="post">
-                    <button>Delete Listing</button>
-                </form>
                 <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">
-                    <button type="submit">Edit Listing</button>
+                    <button class="custom-button-edit profile-b" type="submit">Edit Listing</button>
                 </form>
+                <form th:action="@{/listings/{id}/delete(id = ${listing.id})}" method="post">
+                    <button class="custom-button-del profile-b">Delete Listing</button>
+                </form>
+<!--                <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">-->
+<!--                    <button class="custom-button profile-b" type="submit">Edit Listing</button>-->
+<!--                </form>-->
                 <br>
             </div>
             </div>
