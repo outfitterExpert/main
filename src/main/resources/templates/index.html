@@ -12,34 +12,43 @@
 
 <nav th:replace="partials/navbar :: navbar"/>
 
-<body>
+<body class="bg-index">
+
 <script src="https://kit.fontawesome.com/968ac4e7b1.js" crossorigin="anonymous"></script>
-<div>
-<img src="../static/img/oe-background.jpg" th:src="@{img/oe-background.jpg}" class="background" style="border-radius: 0; z-index: -4;  -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;" alt="Man walking though water carrying ducks"/><span class="center-img img-text">Hunting</span>
 
+<div class="jumbotron bg-index px-0 w-100 d-none d-md-block">
+    <h1>Welcome to Outfitter Expert</h1>
+    <div class="d-flex row justify-content-center">
+        <div class="column">
+            <p class="center-vh">Hunting season is around the corner and we are here to help you book your next trip. </p>
+            <p>Browse through hunting and fishing listings all across the United States and Northern America</p>
+            <a class="d-flex btn custom-button btn-lg justify-content-center" href="/aboutus" role="button">About us</a>
+        </div>
+    </div>
+    <div class="image-container">
+
+        <!--    Hunting card-->
+        <form th:action="@{/listings/hunting}" method="GET" >
+            <input type="hidden" name="type" value="1">
+            <button type="submit" class="naysa-button">
+                <div class="center-vh">
+                    <img src="../static/img/huntingOutfitter.jpg" th:src="@{img/huntingOutfitter.jpg}" class="card-img-top img-index" alt="Man walking though water carrying ducks"/><span class="center-img img-text">Hunting</span>
+                </div>
+            </button>
+        </form>
+        <!--    Fishing card-->
+        <form th:action="@{/listings/fishing}" method="GET" >
+            <input type="hidden" name="type" value="0">
+            <button type="submit" class="naysa-button">
+                <div class="center-vh">
+                    <img src="../../static/img/fishingOutfitter.jpg" th:src="@{img/fishingOutfitter.jpg}" class="card-img-top img-index" alt="man standing in lake fishing"/><span class="center-img img-text">Fishing</span>
+                </div>
+            </button>
+        </form>
+    </div>
+</div>
 <!--IMAGES SIDE BY SIDE-->
-<!--<div class="image-container">-->
 
-<!--    Hunting card-->
-    <form th:action="@{/listings/hunting}" method="GET" >
-        <input type="hidden" name="type" value="1">
-        <button type="submit" class="naysa-button">
-        <div class="center-vh">
-            <img src="../static/img/huntingOutfitter.jpg" th:src="@{img/huntingOutfitter.jpg}" class="card-img-top img-index" alt="Man walking though water carrying ducks"/><span class="center-img img-text">Hunting</span>
-        </div>
-        </button>
-    </form>
-
-<!--    Fishing card-->
-    <form th:action="@{/listings/fishing}" method="GET" >
-        <input type="hidden" name="type" value="0">
-        <button type="submit" class="naysa-button">
-        <div class="center-vh">
-            <img src="../../static/img/fishingOutfitter.jpg" th:src="@{img/fishingOutfitter.jpg}" class="card-img-top img-index" alt="man standing in lake fishing"/><span class="center-img img-text">Fishing</span>
-        </div>
-        </button>
-    </form>
-<!--</div>-->
 <!--<div sec:authorize="isAuthenticated()" class="nav-item m-0">-->
 <!--    <form th:action="@{/logout}" th:method="post">-->
 <!--        <button style="color: #bbbbbb" class="btn-link btn nav-link icon navIconLink">-->
@@ -48,6 +57,6 @@
 <!--        </button>-->
 <!--    </form>-->
 <!--</div>-->
-</div>
+
 </body>
 </html>
