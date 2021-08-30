@@ -2,6 +2,7 @@ package com.outfitterexpert.outfitterexpert.controllers;
 
 import com.outfitterexpert.outfitterexpert.models.Property;
 import com.outfitterexpert.outfitterexpert.models.User;
+import com.outfitterexpert.outfitterexpert.repositories.BookingRepository;
 import com.outfitterexpert.outfitterexpert.repositories.PropertyRepository;
 import com.outfitterexpert.outfitterexpert.repositories.ReviewRepository;
 import com.outfitterexpert.outfitterexpert.repositories.UserRepository;
@@ -24,6 +25,7 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final PropertyRepository propertyDao;
     private final ReviewRepository reviewDao;
+    private final BookingRepository bookingDao;
 
     @Value("${MAPBOX_ACCESS_TOKEN}")
     private String MAPBOX_ACCESS_TOKEN;
@@ -31,11 +33,12 @@ public class UserController {
     @Value("${FILE_STACK_ACCESS_TOKEN}")
     private String FILE_STACK_ACCESS_TOKEN;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PropertyRepository propertyDao, ReviewRepository reviewDao) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PropertyRepository propertyDao, ReviewRepository reviewDao, BookingRepository bookingDao) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.propertyDao = propertyDao;
         this.reviewDao = reviewDao;
+        this.bookingDao = bookingDao;
 
     }
 
@@ -95,6 +98,7 @@ public class UserController {
         model.addAttribute("user", user);
         model.addAttribute("listings", propertyDao.findByUserId(id));
         model.addAttribute("reviews", reviewDao.findByUserId(id));
+        model.addAttribute("bookings", user.getBookings());
 
 
         //check to see if the current user has the same id as the account
