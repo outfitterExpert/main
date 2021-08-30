@@ -86,7 +86,7 @@
         <div th:each="listing : ${listings}">
             <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
                 <button type="submit" class="benjamin-button">
-            <img class="buck" src="../../static/img/buck-img.jpg" th:src="${listing.imgUrl}"/>
+            <img class="img-listing" th:src="${listing.imgUrl}"/>
                 </button>
             </form>
             <h3 th:text="${listing.location}"></h3>
