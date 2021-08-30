@@ -29,6 +29,10 @@
 img {
     border-radius: 50px;
 }
+.img-listing{
+    width: 600px;
+    height: 400px;
+}
 .img-carousel{
     height: 400px;
     width: 200px;
