@@ -8,12 +8,16 @@
 <body>
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
-<div class="card-body">
-    <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />
+<div class="container">
+    <div class="row">
+<div class="col-lg-12 card-body">
+    <img class="signup-logo" src="../../static/img/oeLogo2.jpg" th:src="@{img/oeLogo2.jpg}" />
+<!--    <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />-->
 <form action="/profile/create" class="form-section" th:action="@{/sign-up (id=${user.id})}" method="post" th:object="${user}">
     <input type="hidden" th:value="${FILE_STACK_ACCESS_TOKEN}" class="fileToken"/>
-    <label for="fileupload">Upload file </label>
+    <label for="fileupload">Upload a User Photo </label>
     <input style="margin-left: 5px;" th:field="*{img_user}" value="" type="hidden" id="fileupload">
+
     <button id="picker" class="custom-button" type="button">Pick file</button>
     <br/>
     <label style="font-weight: bold" id="nameBox"></label>
@@ -63,7 +67,8 @@
 
 </form>
 </div>
-
+    </div>
+</div>
 <script th:replace="partials/scripts :: scripts"></script>
 <script th:src="@{/js/filestack-script.js}"></script>
 </body>
