@@ -19,7 +19,7 @@
         <button type="submit" class="benjamin-button">
            <div id="listing-page">
 <!--            <img class="buck" src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}"/>-->
-               <img class="buck" src="../../static/img/buck-img.jpg" th:src="${listing.imgUrl}"/>
+               <img th:src="${listing.imgUrl}" class="img-listing"/>
                <h3 class="first-txt listing-location" th:text="${listing.location}"/>
                <h3 class="second-txt listing-title" th:text="${listing.title}"/>
                <p class="hidden-info listing-id" th:text="${listing.id}"></p>
