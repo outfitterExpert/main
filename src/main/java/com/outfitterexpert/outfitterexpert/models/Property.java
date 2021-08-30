@@ -1,6 +1,7 @@
 package com.outfitterexpert.outfitterexpert.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -14,9 +15,11 @@ public class Property {
     @Column
     private String imgUrl;
 
+    @NotBlank
     @Column(nullable = false)
     private String title;
 
+    @NotBlank
     @Column(nullable = false)
     private String location;
 
@@ -32,10 +35,11 @@ public class Property {
     @Column(nullable = false)
     private boolean lodging;
 
+    @NotBlank
     @Column(nullable = false)
     private String method;
 
-//true is hunting - false is fishing
+    //true is hunting - false is fishing
     @Column(nullable = false)
     private boolean type;
 

@@ -26,7 +26,7 @@ public class ReviewController {
     @GetMapping("/reviews")
     public String viewPosts(Model model) {
         model.addAttribute("reviews", reviewDao.findAll());
-        return "/postReview/index";
+        return "postReview/index";
     }
 
 
@@ -40,7 +40,7 @@ public class ReviewController {
         }
         model.addAttribute("review", review);
         model.addAttribute("isReviewOwner", isReviewOwner);
-        return "/postReview/review";
+        return "postReview/review";
     }
 
     @GetMapping("/reviews/{listing_id}/create")
@@ -48,7 +48,7 @@ public class ReviewController {
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser"){
             model.addAttribute("review", new Review());
             model.addAttribute("listing_id", listing_id);
-            return "/postReview/create";
+            return "postReview/create";
         }else{
             return "redirect:/login";
         }
@@ -75,7 +75,7 @@ public class ReviewController {
         Review review = reviewDao.findById(id);
         if(currentUser.getId() == review.getUser().getId()) {
             model.addAttribute("review", review);
-            return "/postReview/create";
+            return "postReview/create";
         }else{
             return "redirect:/login";
         }

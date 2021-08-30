@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8" />
-    <title>Login</title>
+    <title>Log in</title>
 </head>
 <body>
 <header th:replace="partials/styles :: styles"></header>
@@ -11,6 +11,7 @@
 <!--<div class="error" th:if="${param.logout}">-->
 <!--    You have been logged out-->
 <!--</div>-->
+
 <img src="../static/img/oe-background.jpg" th:src="@{img/oe-background.jpg}" class="background" style="border-radius: 0; z-index: -4;
     justify-content: center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;" alt="Man walking though water carrying ducks"/>
 
@@ -25,6 +26,10 @@
         <label class="label-color" for="password">Password</label>
         <input id="password" name="password" type="password" />
         <br/>
+        <div class="error" th:if="${param.logout}">
+            <br>
+            You have been logged out
+        </div>
         <input class="custom-button" type="submit" value="Log In" />
         <a class="blue" href="/sign-up">Not a member? Sign up to join OutfitterExpert</a>
         <div class="error" th:if="${param.logout}">

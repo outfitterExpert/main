@@ -21,8 +21,13 @@
                 <img class="user-img" src="../../static/img/user_profile_img.jpg" th:src="${user.img_user}"/>
                 <br>
                 <label>Username:</label><h2 th:text="${user.username}"></h2>
-                <label>Name:</label><h3 th:text="${user.firstName}"></h3>
+                <label>Name:</label>
+                <div class="row">
+                <h3>&nbsp;&nbsp;</h3>
+                <h3 th:text="${user.firstName}"></h3>
+                <h3>&nbsp;</h3>
                 <h3 th:text="${user.lastName}"></h3>
+                </div>
 <!--            <h3 th:text="${user.lastName}"></h3>-->
             <!--    how do you do the if else in html with thyme leaf-->
                 <label>Outfitter:</label><h3 th:text="${user.outfitter}"></h3>
@@ -34,8 +39,6 @@
                 <div th:if="${isUserAccount}">
 
                         <button class="btn-delete">Delete Profile</button>
-
-
 
                     <form th:action="@{/profile/{id}/edit(id = ${user.id})}" method="GET">
                         <button type="submit">Edit Profile</button>
