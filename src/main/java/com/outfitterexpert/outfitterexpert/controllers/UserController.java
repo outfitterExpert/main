@@ -2,6 +2,7 @@ package com.outfitterexpert.outfitterexpert.controllers;
 
 import com.outfitterexpert.outfitterexpert.models.Property;
 import com.outfitterexpert.outfitterexpert.models.User;
+import com.outfitterexpert.outfitterexpert.repositories.BookingRepository;
 import com.outfitterexpert.outfitterexpert.repositories.PropertyRepository;
 import com.outfitterexpert.outfitterexpert.repositories.ReviewRepository;
 import com.outfitterexpert.outfitterexpert.repositories.UserRepository;
@@ -24,6 +25,7 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final PropertyRepository propertyDao;
     private final ReviewRepository reviewDao;
+    private final BookingRepository bookingDao;
 
     @Value("${MAPBOX_ACCESS_TOKEN}")
     private String MAPBOX_ACCESS_TOKEN;
@@ -31,11 +33,12 @@ public class UserController {
     @Value("${FILE_STACK_ACCESS_TOKEN}")
     private String FILE_STACK_ACCESS_TOKEN;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PropertyRepository propertyDao, ReviewRepository reviewDao) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PropertyRepository propertyDao, ReviewRepository reviewDao, BookingRepository bookingDao) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.propertyDao = propertyDao;
         this.reviewDao = reviewDao;
+        this.bookingDao = bookingDao;
 
     }
 
@@ -66,6 +69,10 @@ public class UserController {
         if(outfitter){
             user.setOutfitter(true);
         }
+
+        if(user.getImg_user().equals("")){
+            user.setImg_user("https://cdn.filestackcontent.com/X37zSRiv3Us9kRNMZALR");
+        }
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/login";
@@ -95,6 +102,7 @@ public class UserController {
         model.addAttribute("user", user);
         model.addAttribute("listings", propertyDao.findByUserId(id));
         model.addAttribute("reviews", reviewDao.findByUserId(id));
+        model.addAttribute("bookings", user.getBookings());
 
 
         //check to see if the current user has the same id as the account
@@ -114,30 +122,50 @@ public class UserController {
     //take the user to their profile when they click on the nav "profile button"
 
 
-    @GetMapping("/profile/{id}/edit")
-    public String editProfileForm(@PathVariable long id, Model model ){
+    @GetMapping("/profile/edit")
+    public String editProfileForm(Model model ){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userDao.getById(id);
-        if(currentUser.getId() == user.getId()) {
-            model.addAttribute("user", user);
-            model.addAttribute("FILE_STACK_ACCESS_TOKEN", FILE_STACK_ACCESS_TOKEN);
-            return "users/sign-up";
+        User user = userDao.getById(currentUser.getId());
+        model.addAttribute("user", user);
+        model.addAttribute("FILE_STACK_ACCESS_TOKEN", FILE_STACK_ACCESS_TOKEN);
+        return "users/edit";
 
-        }else{
-            return "redirect:/login";
-        }
     }
 
 
 
-    @PostMapping("/profile/{id}/edit")
-    public String editProfile(@PathVariable long id, @ModelAttribute User user ){
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User profileFromDB = userDao.findById(id);
-        if(user.getId() == profileFromDB.getId()) {
-            userDao.save(user);
+    @PostMapping("/profile/edit")
+    public String editProfile(Model model, @Valid @ModelAttribute("user") User user, Errors result, @RequestParam(defaultValue = "false") boolean outfitter){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User updateAccount = userDao.getById(currentUser.getId());
+
+        if(result.hasErrors()){
+            model.addAttribute("errors", result);
+            model.addAttribute("user", user);
+            return "users/edit";
         }
-        return "redirect:/profile";
+
+        if(outfitter){
+            user.setOutfitter(true);
+        }
+        if(user.getImg_user().equals("") || user.getImg_user().equals("https://cdn.filestackcontent.com/X37zSRiv3Us9kRNMZALR")){
+            user.setImg_user("https://cdn.filestackcontent.com/X37zSRiv3Us9kRNMZALR");
+        }
+
+        updateAccount.setUsername(user.getUsername());
+        updateAccount.setEmail(user.getEmail());
+        updateAccount.setFirstName(user.getFirstName());
+        updateAccount.setLastName(user.getLastName());
+        updateAccount.setBio(user.getBio());
+        updateAccount.setOutfitter(user.isOutfitter());
+        updateAccount.setImg_user(user.getImg_user());
+        updateAccount.setUser_location(user.getUser_location());
+        updateAccount.setPassword(user.getPassword());
+
+//        model.addAttribute("user", updateAccount);
+        userDao.save(updateAccount);
+
+        return "redirect:/profile/" + currentUser.getId();
 
     }
 
