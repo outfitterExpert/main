@@ -61,6 +61,29 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
                     <div class="nav__inner">
                         <br>
                             <ul class="nav-list">
+<!--                                <li sec:authorize="isAuthenticated()" class="nav-list__item">-->
+<!--                                    <form th:action="@{/profile/{id}(id=${#authentication.principal.id})}" th:method="get">-->
+<!--                                        <button class="btn nav-list__url">Profile</button>-->
+<!--                                    </form>-->
+<!--                                </li>-->
+<!--                                <li sec:authorize="isAuthenticated()" class="nav-list__item">-->
+<!--                                    <a href="/listings/create" class="nav-list__url">Create a Hunting listing</a>-->
+<!--                                </li>-->
+<!--                                <li sec:authorize="isAuthenticated()" class="nav-list__item">-->
+<!--                                    <a href="/listings/create-fish" class="nav-list__url">Create a Fishing listing</a>-->
+<!--                                </li>-->
+
+<!--                                <li sec:authorize="isAuthenticated()" class="nav-list__item">-->
+<!--                                    <a href="/bookmarks" class="nav-list__url">Bookmarks</a>-->
+<!--                                </li>-->
+                                <div class="view-listings">
+                                <li class="nav-list__item">
+                                    <a href="/listings" class="nav-list__url">View listings</a>
+                                </li>
+                                <li class="nav-list__item">
+                                    <a href="/about" class="nav-list__url">About Us</a>
+                                </li>
+                                </div>
                                 <li sec:authorize="isAuthenticated()" class="nav-list__item">
                                     <form th:action="@{/profile/{id}(id=${#authentication.principal.id})}" th:method="get">
                                         <button class="btn nav-list__url">Profile</button>
@@ -75,12 +98,6 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
                                 <li sec:authorize="isAuthenticated()" class="nav-list__item">
                                     <a href="/bookmarks" class="nav-list__url">Bookmarks</a>
-                                </li>
-                                <li class="nav-list__item">
-                                    <a href="/listings" class="nav-list__url">View listings</a>
-                                </li>
-                                <li class="nav-list__item">
-                                    <a href="/about" class="nav-list__url">About Us</a>
                                 </li>
                             </ul>
                         </div>

@@ -8,15 +8,19 @@
 <body>
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"></nav>
-<!--<div class="error" th:if="${param.logout}">-->
-<!--    You have been logged out-->
-<!--</div>-->
+
+
 
 <div class="container2">
 <img class="login-logo" src="../../static/img/oeLogo2.jpg" th:src="@{img/oeLogo2.jpg}" />
 </div>
 
-<h3 class="login">Please Log in or Sign-up</h3>
+
+<!--<h3 class="login">Please Log in or Sign-up</h3>-->
+<div class="container2">
+    <div class="row">
+        <div class="col-lg-12" width="100%">
+            <h3 class="login">Please Log in or Sign-up</h3>
     <form class="form-section" th:action="@{/login}" method="post">
         <div class="error" th:if="${param.error}">
             Invalid Username and Password
@@ -33,6 +37,10 @@
         <input class="custom-button" type="submit" value="Log In" />
         <a class="blue" href="/sign-up">Not a member? Sign up to join OutfitterExpert</a>
     </form>
+
+        </div>
+    </div>
+</div>
 <script th:replace="partials/scripts :: scripts"></script>
 </body>
 </html>
