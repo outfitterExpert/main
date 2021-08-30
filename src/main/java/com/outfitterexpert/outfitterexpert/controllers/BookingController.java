@@ -29,7 +29,9 @@ public class BookingController {
     @GetMapping("/listing/package/{id}/book")
     public String bookPackage(@PathVariable long id, Model model){
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser"){
-            model.addAttribute("package", packageDao.findById(id));
+            ListingPackage thisPackage = packageDao.findById(id);
+            model.addAttribute("package", thisPackage);
+            model.addAttribute("property", thisPackage.getProperty());
             model.addAttribute("booking", new Booking());
             return "listings/bookListing";
         }else{

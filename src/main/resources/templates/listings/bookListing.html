@@ -9,22 +9,57 @@
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<h1>Book this listing form/process page</h1>
-<h3 th:text="${package.price}"></h3>
-<h3 th:text="${package.description}"></h3>
-<h3 th:text="${package.guided}"></h3>
-<h3 th:text="${package.lodging}"></h3>
-<h3 th:text="${package.duration}"></h3>
-<form th:action="@{/listing/package/{id}/book (id=${id})}" method="post" th:object="${booking}">
+<main class="row">
+    <section class="col-lg-6" style="padding: 50px">
+        <!--Package details-->
 
-    <label for="date_start">Start date</label>
-    <input id="date_start" name="date_start" type="date" th:field="*{date_start}">
+        <div class="card" style="border-radius: 1em">
+            <div class="card-body row justify-content-between" style="margin: 0 25px">
+                <div class="row">
+                    <h5 th:text="${package.duration}"></h5>
+                    <h5>: Days</h5>
+                </div>
+                <div class="row">
+                    <h5>Price: $</h5><h5 th:text="${package.price}"></h5>
+                </div>
 
-    <label for="date_end">End date</label>
-    <input id="date_end" name="date_end" type="date" th:field="*{date_end}">
+            </div>
+        </div>
 
-    <button type="submit">Book Package!</button>
-</form>
+        <form th:action="@{/listing/package/{id}/book (id=${id})}" method="post" th:object="${booking}">
+
+            <label for="date_start">Start date</label>
+            <input id="date_start" name="date_start" type="date" th:field="*{date_start}">
+
+            <label for="date_end">End date</label>
+            <input id="date_end" name="date_end" type="date" th:field="*{date_end}">
+
+            <button class="custom-button" style="padding: 5px 15px" type="submit">Book</button>
+        </form>
+
+    </section>
+    <section class="col-lg-6" style="padding: 50px">
+        <!--Property listing-->
+        <div class="card w-100" style="border-radius: 1em">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${property.title}"></h5>
+                <div class="row">
+                    <p class="list-group-item" th:if="${package.guided == true}">
+                        <label>Guided:&nbsp;</label><i class="fas fa-users"></i>
+                    </p>
+                    <p class="list-group-item" th:if="${package.lodging == true}">
+                        <i class="fas fa-campground"></i>
+                        <label>Lodging</label>
+                    </p>
+                </div>
+                <div class="card-body">
+                    <p th:text="${package.description}"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
 
 <script th:replace="partials/scripts :: scripts"></script>
 </body>
