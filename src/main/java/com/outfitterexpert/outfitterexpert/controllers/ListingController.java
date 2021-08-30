@@ -11,8 +11,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -116,19 +114,12 @@ public class ListingController {
     }
 
     @PostMapping("/listings/create")
-    public String submitListing(Model model, @Valid @ModelAttribute User user, Errors result, @ModelAttribute Property listing, @RequestParam(name="user-animal-list") String userAnimals, @RequestParam(name = "post-type") String postType ){
+    public String submitListing(Model model, @ModelAttribute User user, @ModelAttribute Property listing, @RequestParam(name="user-animal-list") String userAnimals, @RequestParam(name = "post-type") String postType ){
         //get the user that's logged in
-        System.out.println(listing.getImgUrl());
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         listing.setUser(currentUser);
 
-        if(result.hasErrors()){
-            model.addAttribute("errors", result);
-            model.addAttribute("listing", listing);
-            return "listings/create";
-        }
-
-        List<Animal> listingAnimals = extractAnimals(userAnimals);
+        List<Animal> listingAnimals = packAnimals(userAnimals);
 
         //push the final list to the listing
         listing.setAnimals(listingAnimals);
@@ -157,23 +148,16 @@ public class ListingController {
             model.addAttribute("FILE_STACK_ACCESS_TOKEN", FILE_STACK_ACCESS_TOKEN);
             return "listings/create-fish";
         }
-        return "redirect:/profile";
+        return "redirect:/profile/" + currentUser.getId();
     }
 
     @PostMapping("/listings/create-fish")
-    public String submitFishingListing(Model model, @Valid @ModelAttribute User user, Errors result, @ModelAttribute Property listing, @RequestParam(name="user-animal-list") String userAnimals, @RequestParam(name = "post-type") String postType ){
+    public String submitFishingListing(Model model, @ModelAttribute User user, @ModelAttribute Property listing, @RequestParam(name="user-animal-list") String userAnimals, @RequestParam(name = "post-type") String postType ){
         //get the user that's logged in
-        System.out.println(listing.getImgUrl());
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         listing.setUser(currentUser);
 
-        if(result.hasErrors()){
-            model.addAttribute("errors", result);
-            model.addAttribute("listing", listing);
-            return "listings/create-fish";
-        }
-
-        List<Animal> listingAnimals = extractAnimals(userAnimals);
+        List<Animal> listingAnimals = packAnimals(userAnimals);
 
         //push the final list to the listing
         listing.setAnimals(listingAnimals);
@@ -186,7 +170,7 @@ public class ListingController {
         listing.setType(type);
 
         propertyDao.save(listing);
-        return "redirect:/profile";
+        return "redirect:/profile/" + currentUser.getId();
     }
 
     @GetMapping("/listings/{id}/package/create")
@@ -234,12 +218,26 @@ public class ListingController {
         }
         List<ListingPackage> listOfPackage = packageDao.findByPropertyId(id);
 
+        //extract the animals from the listing
+        StringBuilder animals = new StringBuilder();
+        List<Animal> listingsAnimals = property.getAnimals();
+        for(int i = 0; i < listingsAnimals.size(); i++ ){
+            if(i == 0){
+                animals.append(listingsAnimals.get(i).getName()).append(", ");
+            }else if(i > 0 && i < listingsAnimals.size() - 1){
+                animals.append(listingsAnimals.get(i).getName()).append(", ");
+            }else if(i == listingsAnimals.size() -1){
+                animals.append(listingsAnimals.get(i).getName());
+            }
+        }
+
         boolean isPropertyOwner = false;
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             isPropertyOwner = currentUser.getId() == property.getUser().getId();
         }
         model.addAttribute("listing", property);
+        model.addAttribute("animals", animals);
         model.addAttribute("users", users);
         model.addAttribute("reviews", reviews);
         model.addAttribute("isPropertyOwner", isPropertyOwner);
@@ -288,7 +286,7 @@ public class ListingController {
     public String editListing(@PathVariable long id,@RequestParam(name="user-animal-list") String userAnimals, @RequestParam(name = "post-type") String postType, @ModelAttribute Property listing ){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        List<Animal> listingAnimals = extractAnimals(userAnimals);
+        List<Animal> listingAnimals = packAnimals(userAnimals);
 
         boolean type = Boolean.parseBoolean(postType);
 
@@ -312,7 +310,7 @@ public class ListingController {
         return "redirect:/profile/" + currentUser.getId();
     }
 
-    public List<Animal> extractAnimals(String userAnimals){
+    public List<Animal> packAnimals(String userAnimals){
         //split up the animals the user has selected
         String[] animalList = userAnimals.split(",");
         //this list will be populated when an animal is found in the DB
