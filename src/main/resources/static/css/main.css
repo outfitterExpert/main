@@ -908,6 +908,28 @@ img {
         margin-left: inherit;
     }
 
+    /*.card-body {*/
+    /*    max-width: 100%;*/
+    /*    margin: 0 auto;*/
+    /*    !*padding: 50px;*!*/
+    /*}*/
+
+    .form-section {
+       margin: 0px 100px;
+    }
+
+    .form-check-input {
+
+
+
+    }
+
+    .signup-logo {
+        width: 60%;
+        top: 0;
+        margin: 0 20%;
+    }
+
 
 
 
