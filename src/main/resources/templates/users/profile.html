@@ -25,6 +25,8 @@
             <br>
             <!--            <div class="row" style="padding-left: 15px">-->
                 <img class="user-img" src="../../static/img/user_profile_img.jpg" th:src="${user.img_user}"/>
+            <p th:if="${user.outfitter == true}">
+                <img class="outfitter" src="https://see.fontimg.com/api/renderfont4/lVYZ/eyJyIjoiZnMiLCJoIjoxMzAsInciOjIwMDAsImZzIjo2NSwiZmdjIjoiIzMwNzczRCIsImJnYyI6IiNGRkZGRkYiLCJ0IjoxfQ/b3V0Zml0dGVy/impact-label.png" alt="Label Maker fonts"></p>
                 <br>
                 <label>Username:</label><h2 th:text="${user.username}"></h2>
                 <label>Name:</label>
@@ -36,7 +38,6 @@
                 </div>
 <!--            <h3 th:text="${user.lastName}"></h3>-->
             <!--    how do you do the if else in html with thyme leaf-->
-                <label>Outfitter:</label><h3 th:text="${user.outfitter}"></h3>
                 <label>User Location:</label><h3 th:text="${user.user_location}"></h3>
 <!--                <h3 th:text="${user.user_location}"></h3>-->
                 <label>Bio:</label><h3 th:text="${user.bio}"></h3>
@@ -44,10 +45,11 @@
 
 
 
+
                 <div th:if="${isUserAccount}">
                     <div class="row">
                     <form th:action="@{/profile/edit}" method="GET">
-                        <button class="custom-button-edit profile-b" type="submit">Edit Profile</button>
+                      <button class="custom-button-edit profile-b" type="submit">Edit Profile</button>
                     </form>
                         <button class="custom-button-del profile-b btn-delete">Delete Profile</button>
                     </div>
