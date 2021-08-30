@@ -67,13 +67,12 @@
             <div th:each="package : ${listOfPackage}">
             <div class="card" style="width: 100%;">
                 <img class="card-img-tops" src="../../static/img/log-cabin.jpg" th:src="@{/img/log-cabin.jpg}"  alt="Card image cap">
-                    <h4 class="card-text list-group-item" th:text="${package.description}"></h4>
+                                <h4 class="card-text list-group-item" th:text="${package.description}"></h4>
                                 <h4 class="list-group-item" th:if="${package.guided == true}">
                                     <label>Guided:&nbsp;</label><i class="fas fa-users"></i>
                                 </h4>
                                 <h4 class="list-group-item" th:if="${package.lodging == true}">
-                                    <i class="fas fa-campground"></i>
-                                    <label>Lodging</label>
+                                    <label>Lodging:</label><i class="fas fa-campground"></i>
                                 </h4>
                                 <div class="list-group-item">
                                     <div class="row">
@@ -84,7 +83,7 @@
                                 <div class="list-group-item">
                                     <div class="row">
 <!--                                        <p><i class="fas fa-dollar-sign"></i></p>-->
-                                        <h4>&nbsp;&nbsp;Price $</h4>
+                                        <h4>&nbsp;&nbsp;Price: $</h4>
                                 <h4 th:text="${package.price}"></h4>
                                     </div>
                 <div class="card-body">

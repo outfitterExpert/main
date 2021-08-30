@@ -330,12 +330,18 @@ img {
     margin: 0 200px;
 
 }
-    .form-section {
+    .form-section-login {
+
+        margin: 0 500px;
+        width: auto;
+
+      .form-section
         padding: 50px;
         border-radius: 50px;
     }
     .label-color{
         color:white!important;
+
     }
 
     /*naysa edits*/
@@ -589,8 +595,8 @@ img {
     }
 
     input:checked + .menu-button + .nav__inner {
-        height: 500px;
-        width: 200px;
+        height: 600px;
+        width: 300px;
 
     }
 
@@ -759,6 +765,14 @@ img {
     .nav-list__icon {
         font-size: 30px;
     }
+
+
+.view-listings {
+        margin-top: 100px;
+    }
+
+
+
 
     .hidden {
         display: none;
@@ -931,17 +945,12 @@ img {
         margin-left: inherit;
     }
 
-    /*.card-body {*/
-    /*    max-width: 100%;*/
-    /*    margin: 0 auto;*/
-    /*    !*padding: 50px;*!*/
-    /*}*/
+
+   /*sign-up.html form and logo*/
 
 
-    .form-check-input {
-
-
-
+    .form-section-signup {
+       margin: -10px 150px;
     }
 
     .signup-logo {

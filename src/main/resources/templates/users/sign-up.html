@@ -13,7 +13,7 @@
 <div class="col-lg-12 card-body">
     <img class="signup-logo" src="../../static/img/oeLogo2.jpg" th:src="@{img/oeLogo2.jpg}" />
 <!--    <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />-->
-<form action="/profile/create" class="form-section" th:action="@{/sign-up (id=${user.id})}" method="post" th:object="${user}">
+<form action="/profile/create" class="form-section-signup" th:action="@{/sign-up (id=${user.id})}" method="post" th:object="${user}">
     <input type="hidden" th:value="${FILE_STACK_ACCESS_TOKEN}" class="fileToken"/>
     <label for="fileupload">Upload a User Photo </label>
     <input style="margin-left: 5px;" th:field="*{img_user}" value="" type="hidden" id="fileupload">
