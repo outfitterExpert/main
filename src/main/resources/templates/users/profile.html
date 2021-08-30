@@ -5,6 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>User Profile</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
 </head>
 <body>
 <header th:replace="partials/styles :: styles"></header>
@@ -20,6 +26,8 @@
             <div class="card"  style="width: auto; height: auto; padding:15px; margin:15px">
             <!--            <div class="row" style="padding-left: 15px">-->
                 <img class="user-img" src="../../static/img/user_profile_img.jpg" th:src="${user.img_user}"/>
+            <p th:if="${user.outfitter == true}">
+                <img class="outfitter" src="https://see.fontimg.com/api/renderfont4/lVYZ/eyJyIjoiZnMiLCJoIjoxMzAsInciOjIwMDAsImZzIjo2NSwiZmdjIjoiIzMwNzczRCIsImJnYyI6IiNGRkZGRkYiLCJ0IjoxfQ/b3V0Zml0dGVy/impact-label.png" alt="Label Maker fonts"></p>
                 <br>
 
 
@@ -33,7 +41,6 @@
                 </div>
 <!--            <h3 th:text="${user.lastName}"></h3>-->
             <!--    how do you do the if else in html with thyme leaf-->
-                <label>Outfitter:</label><h3 th:text="${user.outfitter}"></h3>
                 <label>User Location:</label><h3 th:text="${user.user_location}"></h3>
 <!--                <h3 th:text="${user.user_location}"></h3>-->
                 <label>Bio:</label><h3 th:text="${user.bio}"></h3>
@@ -41,11 +48,10 @@
                 <br>
 
 
-
                 <div th:if="${isUserAccount}">
                     <div class="row">
-                    <form th:action="@{/profile/{id}/edit(id = ${user.id})}" method="GET">
-                        <button class="custom-button-edit profile-b" type="submit">Edit Profile</button>
+                    <form th:action="@{/profile/edit}" method="GET">
+                      <button class="custom-button-edit profile-b" type="submit">Edit Profile</button>
                     </form>
                         <button class="custom-button-del profile-b btn-delete">Delete Profile</button>
                     </div>

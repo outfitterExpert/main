@@ -433,6 +433,7 @@ img {
         background-color: #037171;
         color: #fff;
         margin-bottom: 1rem;
+
     }
 
 .custom-button-edit {
@@ -459,6 +460,21 @@ img {
     font-weight: bold;
     margin: 5px -5px 5px 15px;
 }
+
+.package-b {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 15px;
+    font-weight: bold;
+    margin-left: 80%;
+}
+
+.review-btn {
+    padding: 10px 15px;
+    font-weight: bold;
+
+}
+
 
 
 
@@ -631,8 +647,8 @@ img {
     }
 
     input:checked + .menu-button + .nav__inner {
-        height: 600px;
-        width: 300px;
+        height: 450px;
+        width: 350px;
 
     }
 
@@ -743,7 +759,7 @@ img {
     }
 
     .nav-list {
-        width: 30px;
+        width: 60px;
         /*margin: auto;*/
         margin-bottom: 20px;
 
@@ -758,8 +774,8 @@ img {
         /*list-style: none;*/
         margin-top: 20px;
         opacity: 0;
-        width: 140px;
-        font-size: 20px;
+        width: 350px;
+        font-size: 18px;
         /* text-align: end; */
         /*transition: opacity 0.3s ease-in;*/
         list-style: none;
@@ -790,7 +806,7 @@ img {
         color: #6d6e76;
         transition: color 0.3s ease;
         font-family: "Montserrat", sans-serif;
-        font-size: 20px;
+        font-size: 18px;
         padding: 0px;
     }
 
@@ -936,6 +952,26 @@ img {
        padding: 20px;
     }
 
+    .creator-icon {
+        font-size: 30px;
+        padding: 0 10px;
+        transition: transform .3s; /* Animation */
+    }
+
+    .creator-icon:hover {
+        transform: scale(1.5);
+    }
+
+    .creator-trio {
+        margin-left: 40px;
+    }
+
+
+
+
+
+
+
 .list-t{
     margin: 10px;
 }
@@ -983,7 +1019,12 @@ img {
 
 
    /*sign-up.html form and logo*/
-
+.outfitter{
+    width: 150px;
+    height: 45px;
+    border-radius: 9px;
+    opacity: 85%;
+}
 
     .form-section-signup {
        margin: -10px 150px;
@@ -1008,6 +1049,8 @@ img {
     display: inline-block;
     float: none;
 }
+
+
 
 
 
