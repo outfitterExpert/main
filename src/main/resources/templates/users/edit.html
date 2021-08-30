@@ -2,12 +2,64 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8">
-    <title>Edit</title>
+    <meta charset="UTF-8" />
+    <title>Edit profile</title>
 </head>
 <body>
-<h1>User Profile Edit</h1>
+<header th:replace="partials/styles :: styles"></header>
+<nav th:replace="partials/navbar :: navbar"/>
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 card-body">
+<!--            <img class="signup-logo" src="../../static/img/oeLogo2.jpg" th:src="@{img/oeLogo2.jpg}" />-->
+<!--            &lt;!&ndash;    <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />&ndash;&gt;-->
+            <form class="form-section-signup" th:action="@{/profile/edit}" method="post" th:object="${user}">
+                <input type="hidden" th:value="${FILE_STACK_ACCESS_TOKEN}" class="fileToken"/>
+                <label for="fileupload">Upload a User Photo </label>
+                <input style="margin-left: 5px;" th:field="*{img_user}" value="" type="hidden" id="fileupload">
 
+                <button id="picker" class="custom-button" type="button">Pick file</button>
+                <br/>
+                <label style="font-weight: bold" id="nameBox"></label>
+                <br>
+
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" class="validate" th:value="*{username}" th:field="*{username}" />
+                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+
+                <label for="email">Email</label>
+                <input id="email" th:value="*{email}" th:field="*{email}" />
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+
+                <label for="first_name">First Name:</label>
+                <input id="first_name" th:value="*{firstName}" type="text" th:field="*{firstName}" />
+                <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+
+                <label for="last_name">Last Name:</label>
+                <input id="last_name" th:value="*{lastName}" type="text" th:field="*{lastName}" />
+                <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+
+                <label for="user_location">User Location:</label>
+                <input id="user_location" th:value="*{user_location}" type="text" th:field="*{user_location}" />
+
+                <label for="bio">Bio:</label>
+                <input id="bio" th:value="*{bio}" type="text" th:field="*{bio}" />
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" value="" name="outfitter" th:field="*{outfitter}" type="checkbox" id="outfitter" />
+                    <label class="form-check-label" for="outfitter" >Outfitter?</label>
+                </div>
+
+                <input type="hidden" th:value="${user.password}" th:field="*{password}">
+
+                <button class="custom-button" value="Submit" type="submit" />
+
+            </form>
+        </div>
+    </div>
+</div>
+<script th:replace="partials/scripts :: scripts"></script>
+<script th:src="@{/js/filestack-script.js}"></script>
 </body>
 </html>
