@@ -16,7 +16,6 @@ public class User {
 
     @Column(nullable = false)
     @NotBlank
-    @Size(min = 8, max = 50, message = "Password must be between 8 and 50 characters long")
     private String password;
 
     @Column(nullable = false, unique = true)
