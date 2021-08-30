@@ -976,7 +976,12 @@ img {
 
 
    /*sign-up.html form and logo*/
-
+.outfitter{
+    width: 150px;
+    height: 45px;
+    border-radius: 9px;
+    opacity: 85%;
+}
 
     .form-section-signup {
        margin: -10px 150px;
