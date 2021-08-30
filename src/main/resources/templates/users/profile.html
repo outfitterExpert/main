@@ -47,6 +47,18 @@
                 </div>
 
 
+            <br>
+            <h3>Bookings:</h3>
+            <div th:each="booking : ${bookings}">
+                <label>Package</label>
+                <h2 th:text="${booking.package.property.title}"></h2>
+                <label>Start Date:</label>
+                <h4  th:text="${booking.date_start}"></h4>
+                <label>End Date:</label>
+                <h4 th:text="${booking.date_end}"></h4>
+            </div>
+            <br>
+
                         <br>
                         <h2>Reviews:</h2>
                         <br>
@@ -159,7 +171,15 @@
         </div>
 
 
-    </div>
+<!--        <h3>Bookings:</h3>-->
+<!--        <div th:each="booking : ${bookings}">-->
+<!--            <h3  th:text="${booking.date_start}"></h3>-->
+<!--            <p th:text="${booking.package.property.title}"></p>-->
+<!--        </div>-->
+
+
+
+        </div>
         </div>
 
         <script th:replace="partials/scripts :: scripts"></script>
