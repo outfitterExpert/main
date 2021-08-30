@@ -433,6 +433,7 @@ img {
         background-color: #037171;
         color: #fff;
         margin-bottom: 1rem;
+
     }
 
 .custom-button-edit {
@@ -459,6 +460,21 @@ img {
     font-weight: bold;
     margin: 5px -5px 5px 15px;
 }
+
+.package-b {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 15px;
+    font-weight: bold;
+    margin-left: 80%;
+}
+
+.review-btn {
+    padding: 10px 15px;
+    font-weight: bold;
+
+}
+
 
 
 
