@@ -16,35 +16,72 @@
 
 
 
+<!--&lt;!&ndash;<h3 class="login">Please Log in or Sign-up</h3>&ndash;&gt;-->
+<!--<div class="container2">-->
+<!--    <div class="row">-->
+<!--        <div class="col-lg-12" width="100%">-->
+<!--            <h3 class="login">Please Log in or Sign-up</h3>-->
+<!--    <form class="form-section" th:action="@{/login}" method="post">-->
+
+<!--&lt;!&ndash;<img class="logo center-img" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />&ndash;&gt;-->
+<!--    <div class="form-section-login center-img form-background" th:action="@{/login}" method="post">-->
+<!--&lt;!&ndash;        <img class="logo center-img" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />&ndash;&gt;-->
+
+<!--        <div class="error" th:if="${param.error}">-->
+<!--            Invalid Username and Password-->
+<!--        </div>-->
+<!--        <label class="label-color" for="username">Username</label>-->
+<!--        <input id="username" name="username" type="text" />-->
+<!--        <label class="label-color" for="password">Password</label>-->
+<!--        <input id="password" name="password" type="password" />-->
+<!--        <br/>-->
+<!--        <div class="error" th:if="${param.logout}">-->
+<!--            <br>-->
+<!--            You have been logged out-->
+<!--        </div>-->
+<!--        <input class="custom-button" type="submit" value="Log In" />-->
+<!--        <a class="blue" href="/sign-up">Not a member? Sign up to join OutfitterExpert</a>-->
+<!--        </form>-->
+<!--        <div class="error" th:if="${param.logout}">-->
+<!--            You have been logged out-->
+<!--        </div>-->
+
+
+
+<!--    </div>-->
+<!--</div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<script th:replace="partials/scripts :: scripts"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+<div class="container2">
+    <img class="login-logo" src="../../static/img/oeLogo2.jpg" th:src="@{img/oeLogo2.jpg}" />
+</div>
+
+
 <!--<h3 class="login">Please Log in or Sign-up</h3>-->
 <div class="container2">
     <div class="row">
         <div class="col-lg-12" width="100%">
             <h3 class="login">Please Log in or Sign-up</h3>
-    <form class="form-section" th:action="@{/login}" method="post">
-
-<!--<img class="logo center-img" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />-->
-    <form class="form-section-login center-img form-background" th:action="@{/login}" method="post">
-<!--        <img class="logo center-img" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />-->
-
-        <div class="error" th:if="${param.error}">
-            Invalid Username and Password
-        </div>
-        <label class="label-color" for="username">Username</label>
-        <input id="username" name="username" type="text" />
-        <label class="label-color" for="password">Password</label>
-        <input id="password" name="password" type="password" />
-        <br/>
-        <div class="error" th:if="${param.logout}">
-            <br>
-            You have been logged out
-        </div>
-        <input class="custom-button" type="submit" value="Log In" />
-        <a class="blue" href="/sign-up">Not a member? Sign up to join OutfitterExpert</a>
-        <div class="error" th:if="${param.logout}">
-            You have been logged out
-        </div>
-    </form>
+            <form class="form-section" th:action="@{/login}" method="post">
+                <div class="error" th:if="${param.error}">
+                    Invalid Username and Password
+                </div>
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" />
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" />
+                <br/>
+                <div class="error" th:if="${param.logout}">
+                    <br>
+                    You have been logged out
+                </div>
+                <input class="custom-button" type="submit" value="Log In" />
+                <a class="blue" href="/sign-up">Not a member? Sign up to join OutfitterExpert</a>
+            </form>
 
         </div>
     </div>
