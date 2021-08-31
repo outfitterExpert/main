@@ -3,15 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Error Profile</title>
-    <link rel="stylesheet" th:href="@{/css/error.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
-<body>
-<div id="app">
-    <h1>:-(</h1>
-    <div class="txt">
-        <h2>Something went wrong, and we couldn't complete your request.</h2>
+<body id="jumanji">
 
-        <a href="/">Go back to home page</a>
+<div >
+<!--    <h1>:-(</h1>-->
+    <div class="txt">
+        <h2 class="jumanji">Hey there Buckaroo, you went down the wrong path here! Let the Outfitters bring you home!</h2>
+        <div >
+            <img src="../static/img/jumanji-final.jpg" th:src="@{/img/jumanji-final.jpg}" class="error-pic" alt="Outfitter group pic"/>
+        </div>
+        <br>
+        <a class="jumamji-link" href="/">Go back to home page</a>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+<!--        <form th:href="/" th:action="/" method="GET">-->
+<!--            <button type="submit" class="custom-button" value="">Go back to home page</button>-->
+<!--        </form>-->
     </div>
 </div>
 </body>
