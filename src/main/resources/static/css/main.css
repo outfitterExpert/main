@@ -147,14 +147,14 @@ img {
     textarea {
         flex: 1;
         width: 100%;
-        height: 100px;
+        height: 800px;
         border: none;
         border-bottom: 1px solid lightgrey;
         background: transparent;
         outline: none;
         transition: 0.3s;
         color: grey;
-        padding: 4px 32px;
+        /*padding: 4px 32px;*/
     }
 
 /*     textarea:focus {
