@@ -101,9 +101,24 @@ img {
     }
     .img-index{
         border-radius: 100px;
-        background: transparent;
+        /*background: transparent;*/
         overflow: hidden;
         /*box-shadow: 8px 8px 7px #ccc;*/
+        border: solid 1px #555;
+        background-color: #eed;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+
+        transition: transform .5s; /* Animation */
+    }
+
+
+
+    .img-index:hover {
+        transform: scale(1.1); /* (150% zoom)*/
+        /*margin-bottom: 50px;*/
     }
 
     input {
@@ -965,6 +980,24 @@ img {
     .creator-trio {
         margin-left: 40px;
     }
+
+    .welcome {
+        margin-right: -3%;
+    }
+
+    /*INDEX PAGE BENNY EDITS*/
+
+    .logo-index {
+
+        width: 50%;
+        margin-top: -30px;
+    }
+
+.logo-login {
+
+    width: 50%;
+    margin-top: 100px;
+}
 
 
 
