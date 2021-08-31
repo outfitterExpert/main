@@ -29,11 +29,22 @@
 img {
     border-radius: 50px;
 }
-.img-listing{
+.img-listing {
     width: 600px;
     height: 400px;
-    padding:5px;
-    margin:5px;
+    margin: 5px;
+
+    border: solid 1px #555;
+    background-color: #eed;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    transition: transform .3s; /* Animation */
+}
+
+.img-listing:hover {
+    transform: scale(1.1); /* (150% zoom)*/
 }
 
 .img-listing-profile{
@@ -533,6 +544,7 @@ img {
         font-size: 35px;
         top: 17px;
         right: 20px;
+        text-shadow: 2px 2px black;
     }
 
     .second-txt {
@@ -544,8 +556,8 @@ img {
         left: 10px;
         margin-top: 40px;
         border-radius: 20px;
-        background-color: rgba(119, 136, 153, .4);
         color: white;
+        text-shadow: 2px 2px black;
 
     }
 
@@ -1147,6 +1159,7 @@ img {
 .book-img {
     width: 100%;
     height: 12em;
+
     /*border-radius: 10%;*/
 }
 
