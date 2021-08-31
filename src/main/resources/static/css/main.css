@@ -100,6 +100,7 @@ img {
 
     }
     .img-index{
+        width: 75%;
         border-radius: 100px;
         /*background: transparent;*/
         overflow: hidden;
@@ -993,10 +994,32 @@ img {
         margin-top: -30px;
     }
 
-.logo-login {
+    .logo-login {
 
-    width: 50%;
-    margin-top: 100px;
+        width: 50%;
+        margin-top: 100px;
+    }
+
+    .index-intro {
+        width: 70%;
+        margin: 100px auto 100px auto;
+        border: 1px solid black;
+        background-color: white;
+        /*border-radius: 5%;*/
+        opacity: 0.5;
+
+    }
+
+    .index-btn {
+        width: 50%;
+        margin-left: 25%;
+
+    }
+
+.index-txt {
+    font-weight: bold;
+    text-align: center;
+
 }
 
 
