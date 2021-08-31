@@ -10,14 +10,14 @@
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"/>
 
-<div class="container">
+<!--<div class="container">-->
 <div class="whole row">
 <div class="listings-group col-lg-7 col-md-12 col-sm-12">
     <div class="listing-pg" th:each="listing : ${listings}">
 
         <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
         <button type="submit" class="benjamin-button">
-           <div id="listing-page">
+           <div id="listing-page" style="margin-left: 5em;margin-right: 5em;">
 <!--            <img class="buck" src="../../static/img/buck-img.jpg" th:src="@{img/buck-img.jpg}"/>-->
                <img th:src="${listing.imgUrl}" class="img-listing"/>
                <h3 class="first-txt listing-location" th:text="${listing.location}"/>

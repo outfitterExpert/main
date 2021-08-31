@@ -26,11 +26,13 @@
             <div class="card" style="width: auto; height: auto; padding:15px; margin:15px">
                 <!--            <div class="row" style="padding-left: 15px">-->
                 <img class="user-img" src="../../static/img/user_profile_img.jpg" th:src="${user.img_user}"/>
-                <p th:if="${user.outfitter == true}">
-                    <img class="outfitter"
-                         src="https://see.fontimg.com/api/renderfont4/lVYZ/eyJyIjoiZnMiLCJoIjoyNzIsInciOjIwMDAsImZzIjoxMzYsImZnYyI6IiMwNjUzNDkiLCJiZ2MiOiIjRkZGRkZGIn0/b3V0Zml0dGVy/impact-label.png"
-                         alt="Label Maker fonts">
-                </p>
+
+                <p style="margin-left: calc(50% - 75px);" th:if="${user.outfitter == true}">
+                <img class="outfitter"
+                     src="https://see.fontimg.com/api/renderfont4/lVYZ/eyJyIjoiZnMiLCJoIjoyNzIsInciOjIwMDAsImZzIjoxMzYsImZnYyI6IiMwNjUzNDkiLCJiZ2MiOiIjRkZGRkZGIn0/b3V0Zml0dGVy/impact-label.png"
+                     alt="Label Maker fonts">
+            </p>
+
                 <p th:if="${user.outfitter == false}">
                     <img class="outfitter"
                          src="https://see.fontimg.com/api/renderfont4/lVYZ/eyJyIjoiZnMiLCJoIjoyNzIsInciOjIwMDAsImZzIjoxMzYsImZnYyI6IiMwNjUzNDkiLCJiZ2MiOiIjRkZGRkZGIn0/b3V0ZG9vcnNtYW4/impact-label.png"
