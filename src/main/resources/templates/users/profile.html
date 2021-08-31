@@ -71,13 +71,13 @@
             </div>
         </div>
 
-        <div class="col-8">
+        <div class="col-7">
             <br>
             <h2 class="d-flex justify-content-center">My Listings</h2>
             <br>
             <div class="row d-flex justify-content-center">
                 <div style="margin-bottom:50px; margin-top:16px; width:max-content; height:43em; overflow-y: scroll">
-                    <div th:each="listing : ${listings}">
+                    <div class="d-flex justify-content-center" th:each="listing : ${listings}">
                         <div class="card"
                              style="padding-right: 7px; padding-left: 10px; padding-bottom:7px; margin-bottom:7px">
                             <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET">
