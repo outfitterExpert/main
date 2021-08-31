@@ -78,7 +78,7 @@
                 <div class="row d-fex justify-content-center">
                     <div style="margin-bottom:50px; margin-top:16px; width:auto; height:43em; overflow-y: scroll">
                         <div th:each="listing : ${listings}">
-                            <div class="card" style="padding-right: 7px; padding-left: 7px">
+                            <div class="card" style="padding-right: 7px; padding-left: 10px; padding-bottom:7px; margin-bottom:7px">
                                 <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET">
                                     <button type="submit" class="benjamin-button">
                                         <img class="img-listing-profile" th:src="${listing.imgUrl}"/>
@@ -116,7 +116,7 @@
     </div>
 </div>
 <h2 style="margin-left: 160px;">My Bookings:</h2>
-<br>
+
 <div class="testimonial-group" style="margin-left: 150px; margin-right: 150px">
     <div class="column">
         <div class="col-xs-4 card" style="width: 25%; height: auto; padding:15px; margin:15px"
