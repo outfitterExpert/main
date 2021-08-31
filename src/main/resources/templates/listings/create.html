@@ -9,7 +9,10 @@
 
 <header th:replace="partials/styles :: styles"></header>
 <nav th:replace="partials/navbar :: navbar"></nav>
-<img class="logo" alt="outfitter expert logo" src="../../static/img/oeLogo.png" th:src="@{/img/oeLogo.png}" />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 card-body">
+<img class="signup-logo" alt="outfitter expert logo" src="../../static/img/oeLogo2.jpg" th:src="@{/img/oeLogo2.jpg}" />
 <div class="card-body">
 <form class="form-section" th:action="@{/listings/create}" method="POST" th:object="${listing}">
         <input type="hidden" th:value="${FILE_STACK_ACCESS_TOKEN}" class="fileToken"/>
@@ -70,6 +73,9 @@
         <br/>
         <input class="custom-button" type="submit" id="submitForm" value="Create" />
     </form>
+</div>
+        </div>
+    </div>
 </div>
 <script th:replace="partials/scripts :: scripts"></script>
 <script th:src="@{/js/filestack-script.js}"></script>
