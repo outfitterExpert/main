@@ -21,18 +21,20 @@
         <label for="description">Description</label>
         <textarea id="description" th:field="*{description}" placeholder="Activities provided"></textarea>
 
-        <div class="form-checkmark form-switch">
-            <input class="form-check-input" name="guided" type="checkbox" id="listing-guided" th:value="*{guided}" th:field="*{guided}">
-            <label class="form-check-label" for="listing-guided">
-                Guided
-            </label>
+    <div class="form-switch">
+        <div class="custom-control custom-switch">
+            <input class="custom-control-input" th:value="*{guided}" name="guided" type="checkbox" id="listing-guided" th:field="*{guided}">
+            <label class="custom-control-label" for="listing-guided">Guided</label>
         </div>
-        <div class="form-checkmark">
-            <input class="form-check-input" name="lodging" type="checkbox" id="listing-lodging" th:value="*{lodging}" th:field="*{lodging}">
-            <label class="form-check-label" for="listing-lodging">
+    </div>
+    <div class="custom-control custom-switch">
+        <div>
+            <input class="custom-control-input" th:value="*{lodging}" name="lodging" type="checkbox" id="listing-lodging" th:field="*{lodging}">
+            <label class="custom-control-label" for="listing-lodging">
                 Lodging
             </label>
         </div>
+    </div>
     <div class="date">
         <label>Expiration date</label>
         <input type="date" name="date_exp">
