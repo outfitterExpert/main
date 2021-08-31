@@ -7,6 +7,7 @@ import com.outfitterexpert.outfitterexpert.repositories.BookingRepository;
 import com.outfitterexpert.outfitterexpert.repositories.PackageRepository;
 import com.outfitterexpert.outfitterexpert.repositories.PropertyRepository;
 import com.outfitterexpert.outfitterexpert.repositories.UserRepository;
+import com.outfitterexpert.outfitterexpert.services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +19,14 @@ public class BookingController {
     private final PackageRepository packageDao;
     private final PropertyRepository propertyDao;
     private final BookingRepository bookingDao;
+    private final EmailService emailDao;
 
-    public BookingController(UserRepository userDao, PackageRepository packageDao, PropertyRepository propertyDao, BookingRepository bookingDao) {
+    public BookingController(UserRepository userDao, PackageRepository packageDao, PropertyRepository propertyDao, BookingRepository bookingDao, EmailService emailDao) {
         this.userDao = userDao;
         this.packageDao = packageDao;
         this.propertyDao = propertyDao;
         this.bookingDao = bookingDao;
+        this.emailDao = emailDao;
     }
 
     @GetMapping("/listing/package/{id}/book")
@@ -52,8 +55,9 @@ public class BookingController {
         booking.setUser(currentUser);
 
         bookingDao.save(booking);
-        //save booking
-        //return user to their profile to view active bookings
+        emailDao.sendUserBooked(booking, booking.getPackage().getProperty().getTitle() + " has been booked!", "Thank you, \n" + currentUser.getUsername() + " for booking: " + booking.getPackage().getProperty().getTitle());
+        emailDao.sendPropertyOwner(booking.getPackage(), booking.getPackage().getProperty().getTitle() + " has been booked!", currentUser.getEmail() + " Just booked your property!");
+
         return "redirect:/listings";
     }
 }
