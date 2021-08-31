@@ -85,16 +85,17 @@
                             </div>
                         </div>
                         <div class="list-group-item">
-                            <div class="row">
-    <!--                                        <p><i class="fas fa-dollar-sign"></i></p>-->
-                                <h4>&nbsp;&nbsp;Price: $</h4>
-                        <h4 th:text="${package.price}"></h4>
+                            <div class="column">
+                                <div class="row">
+                                    <!--                                        <p><i class="fas fa-dollar-sign"></i></p>-->
+                                    <h4>&nbsp;&nbsp;Price: $</h4>
+                                    <h4 th:text="${package.price}"></h4>
+                                </div>
+                                <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">
+                                    <button class="book-btn" type="submit">Book</button>
+                                </form>
                             </div>
-                <div class="card-body">
-                    <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">
-                        <button class="custom-button package-b " type="submit">Book</button>
-                    </form>
-                </div>
+
             </div>
             </div>
                 <br>

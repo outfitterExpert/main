@@ -16,17 +16,19 @@
 <div class="card-body">
 <form class="form-section" th:action="@{/listings/create}" method="POST" th:object="${listing}">
         <input type="hidden" th:value="${FILE_STACK_ACCESS_TOKEN}" class="fileToken"/>
-        <label for="fileupload">Upload file </label>
-        <input style="margin-left: 5px;" th:field="*{imgUrl}" value="" type="hidden" id="fileupload">
-        <button id="picker" class="custom-button" type="button">Pick file</button>
-        <br/>
-        <label style="font-weight: bold" id="nameBox"></label>
-        <br>
 
         <label for="listing-title">Title:</label>
         <input id="listing-title" th:value="*{title}" type="text" th:field="*{title}" />
         <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
         <br/>
+<!--    Image upload    -->
+        <label for="fileupload">Upload Image </label>
+        <input style="margin-left: 5px;" th:field="*{imgUrl}" value="" type="hidden" id="fileupload">
+        <button id="picker" class="custom-button" style="padding: 5px 10px" type="button">Browse</button>
+        <br/>
+        <label style="font-weight: bold" id="nameBox"></label>
+        <br>
+<!--    End of Image upload    -->
         <label for="listing-location">Location:</label><p th:if="${#fields.hasErrors('location')}" th:errors="*{location}"></p>
         <input id="listing-location" th:value="*{location}" type="text" th:field="*{location}" />
         <br/>
