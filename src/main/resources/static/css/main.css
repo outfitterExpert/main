@@ -1074,14 +1074,28 @@ img {
     /*border-radius: 10%;*/
 }
 
-.testimonial-group > .row {
-    overflow-x: auto;
+.review-container {
+    width: 100%;
+    height: 20rem;
+}
+
+.card {
+    display: inline-block;
+}
+
+.testimonial-group{
+    overflow-x: scroll;
     white-space: nowrap;
 }
-.testimonial-group > .row > .card {
-    display: inline-block;
-    float: none;
-}
+
+/*.testimonial-group > .row {*/
+/*    overflow-x: auto;*/
+/*    white-space: nowrap;*/
+/*}*/
+/*.testimonial-group > .row > .col-xs-4  {*/
+/*    display: inline-block;*/
+/*    float: none;*/
+/*}*/
 
 
 

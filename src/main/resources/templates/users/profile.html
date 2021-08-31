@@ -17,51 +17,56 @@
 <nav th:replace="partials/navbar :: navbar"/>
 <script th:replace="partials/scripts :: scripts"></script>
 <br>
-<div class="container" >
+<div class="container">
     <div class="row">
         <div class="col-4" style="padding-left: 15px">
             <br>
             <h2>Profile</h2>
             <br>
-            <div class="card"  style="width: auto; height: auto; padding:15px; margin:15px">
-            <!--            <div class="row" style="padding-left: 15px">-->
+            <div class="card" style="width: auto; height: auto; padding:15px; margin:15px">
+                <!--            <div class="row" style="padding-left: 15px">-->
                 <img class="user-img" src="../../static/img/user_profile_img.jpg" th:src="${user.img_user}"/>
-            <p th:if="${user.outfitter == true}">
-                <img class="outfitter" src="https://see.fontimg.com/api/renderfont4/lVYZ/eyJyIjoiZnMiLCJoIjoxMzAsInciOjIwMDAsImZzIjo2NSwiZmdjIjoiIzMwNzczRCIsImJnYyI6IiNGRkZGRkYiLCJ0IjoxfQ/b3V0Zml0dGVy/impact-label.png" alt="Label Maker fonts"></p>
+                <p th:if="${user.outfitter == true}">
+                    <img class="outfitter"
+                         src="https://see.fontimg.com/api/renderfont4/lVYZ/eyJyIjoiZnMiLCJoIjoxMzAsInciOjIwMDAsImZzIjo2NSwiZmdjIjoiIzMwNzczRCIsImJnYyI6IiNGRkZGRkYiLCJ0IjoxfQ/b3V0Zml0dGVy/impact-label.png"
+                         alt="Label Maker fonts"></p>
                 <br>
 
 
-                <label>Username:</label><h2 th:text="${user.username}"></h2>
+                <label>Username:</label>
+                <h2 th:text="${user.username}"></h2>
                 <label>Name:</label>
                 <div class="row">
-                <h3>&nbsp;&nbsp;</h3>
-                <h3 th:text="${user.firstName}"></h3>
-                <h3>&nbsp;</h3>
-                <h3 th:text="${user.lastName}"></h3>
+                    <h3>&nbsp;&nbsp;</h3>
+                    <h3 th:text="${user.firstName}"></h3>
+                    <h3>&nbsp;</h3>
+                    <h3 th:text="${user.lastName}"></h3>
                 </div>
-<!--            <h3 th:text="${user.lastName}"></h3>-->
-            <!--    how do you do the if else in html with thyme leaf-->
-                <label>User Location:</label><h3 th:text="${user.user_location}"></h3>
-<!--                <h3 th:text="${user.user_location}"></h3>-->
-                <label>Bio:</label><h3 th:text="${user.bio}"></h3>
+                <!--            <h3 th:text="${user.lastName}"></h3>-->
+                <!--    how do you do the if else in html with thyme leaf-->
+                <label>User Location:</label>
+                <h3 th:text="${user.user_location}"></h3>
+                <!--                <h3 th:text="${user.user_location}"></h3>-->
+                <label>Bio:</label>
+                <h3 th:text="${user.bio}"></h3>
             </div>
-                <br>
+            <br>
 
 
-                <div th:if="${isUserAccount}">
-                    <div class="row">
+            <div th:if="${isUserAccount}">
+                <div class="row">
                     <form th:action="@{/profile/edit}" method="GET">
-                      <button class="custom-button-edit profile-b" type="submit">Edit Profile</button>
+                        <button class="custom-button-edit profile-b" type="submit">Edit Profile</button>
                     </form>
-                        <button class="custom-button-del profile-b btn-delete">Delete Profile</button>
-                    </div>
+                    <button class="custom-button-del profile-b btn-delete">Delete Profile</button>
                 </div>
+            </div>
         </div>
         <div class="col-8">
             <br>
             <h2>My Listings:</h2>
             <div th:each="listing : ${listings}">
-                <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET" >
+                <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET">
                     <button type="submit" class="benjamin-button">
                         <img class="img-listing" th:src="${listing.imgUrl}"/>
                     </button>
@@ -93,70 +98,65 @@
 </div>
 
 
-
 <h2 style="margin-left: 160px;">My Bookings:</h2>
-             <br>
+<br>
 
-            <div class="container">
-                <div class="card" style="width: 25%; height: auto; padding:15px; margin:15px">
-            <div th:each="booking : ${bookings}">
-                <img class="book-img" src="../../static/img/user_profile_img.jpg" th:src="${booking.package.property.imgUrl}"/>
-                <br>
-                <label>Package</label>
-                <h2 th:text="${booking.package.property.title}"></h2>
-                <label>Location:</label>
-                <h2 th:text="${booking.package.property.location}"></h2>
-                <label>Start Date:</label>
-                <h4  th:text="${booking.date_start}"></h4>
-                <label>End Date:</label>
-                <h4 th:text="${booking.date_end}"></h4>
-            </div>
-            </div>
-            </div>
-
-
-
-
-
-
-        <!--                    TESTING MODAL HERE-->
-        <!-- Delete Profile Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title pull-right" id="myModalLabel">Warning</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
-
-                    </div>
-                    <div class="modal-body">
-
-                        <p class="alert alert-danger pull-right" type="submit">Are you sure you want to delete?</p>
-
-
-                    </div>
-
-                    <div class="modal-footer">
-                        <form th:action="@{/profile/{id}/delete(id = ${user.id})}" method="post">
-                            <button type="submit" class="btn-danger" id="btnDelteYes">Yes I'm sure.</button>
-                        </form>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    </div>
-
-                <!--test deleting review button-->
-<!--                    <div class="modal-footer">-->
-<!--                        <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">-->
-<!--                            <button type="submit" class="btn-danger" id="btnDelteYes-review">Yes I'm sure.</button>-->
-<!--                        </form>-->
-<!--                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>-->
-<!--                    </div>-->
-
-
-
-                </div>
-            </div>
+<div class="container">
+    <div class="card" style="width: 25%; height: auto; padding:15px; margin:15px">
+        <div th:each="booking : ${bookings}">
+            <img class="book-img" src="../../static/img/user_profile_img.jpg"
+                 th:src="${booking.package.property.imgUrl}"/>
+            <br>
+            <label>Package</label>
+            <h2 th:text="${booking.package.property.title}"></h2>
+            <label>Location:</label>
+            <h2 th:text="${booking.package.property.location}"></h2>
+            <label>Start Date:</label>
+            <h4 th:text="${booking.date_start}"></h4>
+            <label>End Date:</label>
+            <h4 th:text="${booking.date_end}"></h4>
         </div>
+    </div>
+</div>
+
+
+<!--                    TESTING MODAL HERE-->
+<!-- Delete Profile Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title pull-right" id="myModalLabel">Warning</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+
+            </div>
+            <div class="modal-body">
+
+                <p class="alert alert-danger pull-right" type="submit">Are you sure you want to delete?</p>
+
+
+            </div>
+
+            <div class="modal-footer">
+                <form th:action="@{/profile/{id}/delete(id = ${user.id})}" method="post">
+                    <button type="submit" class="btn-danger" id="btnDelteYes">Yes I'm sure.</button>
+                </form>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+
+            <!--test deleting review button-->
+            <!--                    <div class="modal-footer">-->
+            <!--                        <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">-->
+            <!--                            <button type="submit" class="btn-danger" id="btnDelteYes-review">Yes I'm sure.</button>-->
+            <!--                        </form>-->
+            <!--                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>-->
+            <!--                    </div>-->
+
+
+        </div>
+    </div>
+</div>
 
 
 <!--        <h3>Bookings:</h3>-->
@@ -166,40 +166,34 @@
 <!--        </div>-->
 
 
-
-
-
 <h2 style="margin-left: 160px;">My Reviews:</h2>
-<div class="container testimonial-group">
+<div class="testimonial-group">
+    <div class="column text-center">
+        <div class="col-xs-4 card" style="width: 25rem; height: 15rem; padding:15px; margin:15px" th:each="review : ${reviews}">
+                <div class="card-body">
+                    <h3 class="card-title" th:text="${review.title}"></h3>
+                    <p class="card-text" th:text="${review.body}"></p>
 
-<div class="row text-center" th:each="review : ${reviews}">
-    <div class="card" style="width: 35rem; height: 15rem; padding:15px; margin:15px">
-    <div class="card-body">
-    <h3  class="card-title" th:text="${review.title}"></h3>
-        <p class="card-text" th:text="${review.body}"></p>
+                    <div th:if="${isUserAccount}">
+                        <div class="row">
+                            <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">
+                                <button class="custom-button-edit profile-b" type="submit">Edit Review</button>
+                            </form>
 
-    <div th:if="${isUserAccount}">
-        <div class="row">
-            <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">
-                <button class="custom-button-edit profile-b" type="submit">Edit Review</button>
-            </form>
+                            <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
+                                <button class="custom-button-del profile-b">Delete Review</button>
+                            </form>
+                        </div>
+                    </div>
 
-            <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
-                <button class="custom-button-del profile-b">Delete Review</button>
-            </form>
+                </div>
+            </div>
         </div>
     </div>
-        </div>
-</div>
-</div>
-</div>
 
 
 
-
-
-
-        <script th:replace="partials/scripts :: scripts"></script>
+<script th:replace="partials/scripts :: scripts"></script>
 
 </body>
 </html>
