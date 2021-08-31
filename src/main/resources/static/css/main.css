@@ -170,6 +170,7 @@ img {
 
     .center-vh {
         position: relative;
+
     }
 
     .center-img {
@@ -1035,8 +1036,36 @@ img {
 
 }
 
+.error-pic {
+    margin-left:10%;
+    border-radius: 20px;
+    border: solid 1px #555;
+    background-color: #eed;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 
+}
 
+#jumanji {
+    background-color: #037171;
+}
+.jumanji {
+    text-align: center;
+    color: red;
+    font-size: 40px;
+    text-shadow: 2px 2px white;
+}
+
+.jumamji-link {
+    text-align: center;
+    color: #c49f44;
+    font-weight: bolder;
+    margin-left: 40%;
+    font-size: 25px;
+    text-shadow: 2px 2px white;
+}
 
 
 
