@@ -65,32 +65,36 @@
         <div class="col-8">
             <br>
             <h2>My Listings:</h2>
-            <div th:each="listing : ${listings}">
-                <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET">
-                    <button type="submit" class="benjamin-button">
-                        <img class="img-listing" th:src="${listing.imgUrl}"/>
-                    </button>
-                </form>
-                <h3 th:text="${listing.location}"></h3>
-                <h3 th:text="${listing.title}"></h3>
-                <div th:if="${isUserAccount}">
-                    <!--                <div th:if="${isUserAccount}">-->
-                    <div class="row">
-                        <form th:action="@{/listings/{id}/package/create (id = ${listing.id})}" method="GET">
-                            <button class="custom-button profile-b">Create a Package</button>
+            <div class="testimonial-group">
+                <div class="column text-center">
+                    <div th:each="listing : ${listings}">
+                        <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET">
+                            <button type="submit" class="benjamin-button">
+                                <img class="img-listing" th:src="${listing.imgUrl}"/>
+                            </button>
                         </form>
-                        <!--                </div>-->
-                        <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">
-                            <button class="custom-button-edit profile-b" type="submit">Edit Listing</button>
-                        </form>
-                        <form th:action="@{/listings/{id}/delete(id = ${listing.id})}" method="post">
-                            <button class="custom-button-del profile-b">Delete Listing</button>
-                        </form>
-                        <!--                <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">-->
-                        <!--                    <button class="custom-button profile-b" type="submit">Edit Listing</button>-->
-                        <!--                </form>-->
+                        <h3 th:text="${listing.location}"></h3>
+                        <h3 th:text="${listing.title}"></h3>
+                        <div th:if="${isUserAccount}">
+                            <!--                <div th:if="${isUserAccount}">-->
+                            <div class="row">
+                                <form th:action="@{/listings/{id}/package/create (id = ${listing.id})}" method="GET">
+                                    <button class="custom-button profile-b">Create a Package</button>
+                                </form>
+                                <!--                </div>-->
+                                <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">
+                                    <button class="custom-button-edit profile-b" type="submit">Edit Listing</button>
+                                </form>
+                                <form th:action="@{/listings/{id}/delete(id = ${listing.id})}" method="post">
+                                    <button class="custom-button-del profile-b">Delete Listing</button>
+                                </form>
+                                <!--                <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">-->
+                                <!--                    <button class="custom-button profile-b" type="submit">Edit Listing</button>-->
+                                <!--                </form>-->
+                            </div>
+                            <br>
+                        </div>
                     </div>
-                    <br>
                 </div>
             </div>
         </div>
@@ -100,21 +104,25 @@
 
 <h2 style="margin-left: 160px;">My Bookings:</h2>
 <br>
+<div class="testimonial-group" style="margin-left: 150px; margin-right: 150px">
+    <div class="column">
+        <div class="col-xs-4 card" style="width: 25%; height: auto; padding:15px; margin:15px"
+             th:each="booking : ${bookings}">
+            <div class="card-body text-wrap" style="width: 110%">
 
-<div class="container">
-    <div class="card" style="width: 25%; height: auto; padding:15px; margin:15px">
-        <div th:each="booking : ${bookings}">
-            <img class="book-img" src="../../static/img/user_profile_img.jpg"
-                 th:src="${booking.package.property.imgUrl}"/>
-            <br>
-            <label>Package</label>
-            <h2 th:text="${booking.package.property.title}"></h2>
-            <label>Location:</label>
-            <h2 th:text="${booking.package.property.location}"></h2>
-            <label>Start Date:</label>
-            <h4 th:text="${booking.date_start}"></h4>
-            <label>End Date:</label>
-            <h4 th:text="${booking.date_end}"></h4>
+                <img class="book-img" src="../../static/img/user_profile_img.jpg"
+                     th:src="${booking.package.property.imgUrl}"/>
+                <br>
+                <label>Package</label>
+                <h5 class="card-text" th:text="${booking.package.property.title}"></h5>
+                <label>Location:</label>
+                <h5 class="card-text" th:text="${booking.package.property.location}"></h5>
+                <label>Start Date:</label>
+                <h5 class="card-text" th:text="${booking.date_start}"></h5>
+                <label>End Date:</label>
+                <h5 class="card-text" th:text="${booking.date_end}"></h5>
+
+            </div>
         </div>
     </div>
 </div>
@@ -167,30 +175,33 @@
 
 
 <h2 style="margin-left: 160px;">My Reviews:</h2>
-<div class="testimonial-group">
+<div class="testimonial-group" style="margin-left: 150px; margin-right: 150px">
     <div class="column text-center">
-        <div class="col-xs-4 card" style="width: 25rem; height: 15rem; padding:15px; margin:15px" th:each="review : ${reviews}">
-                <div class="card-body">
-                    <h3 class="card-title" th:text="${review.title}"></h3>
-                    <p class="card-text" th:text="${review.body}"></p>
+        <div class="card text-wrap" style="width: 25rem; height: auto; padding:15px; margin:15px"
+             th:each="review : ${reviews}">
+            <div class="card-body  d-flex align-items-stretch">
+                <div class="column">
+                <h4 class="card-title" th:text="${review.title}"></h4>
+                <h5 class="card-text" th:text="${review.body}"></h5>
 
-                    <div th:if="${isUserAccount}">
-                        <div class="row">
-                            <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">
-                                <button class="custom-button-edit profile-b" type="submit">Edit Review</button>
-                            </form>
 
-                            <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
-                                <button class="custom-button-del profile-b">Delete Review</button>
-                            </form>
-                        </div>
+                <div th:if="${isUserAccount}">
+                    <div class="row">
+                        <form th:action="@{/reviews/{id}/edit(id = ${review.id})}" method="GET">
+                            <button class="custom-button-edit profile-b" type="submit">Edit Review</button>
+                        </form>
+
+                        <form th:action="@{/reviews/{id}/delete(id = ${review.id})}" method="post">
+                            <button class="custom-button-del profile-b">Delete Review</button>
+                        </form>
                     </div>
-
                 </div>
+                </div>
+
             </div>
         </div>
     </div>
-
+</div>
 
 
 <script th:replace="partials/scripts :: scripts"></script>
