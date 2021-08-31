@@ -58,7 +58,7 @@
 <!--PACKAGE CARDS FOR BOOKING-->
 <div class="container">
     <div class="row justify-content-around">
-        <div class="col-lg-8 col-md-6 col-sm-12 pkg-pg">
+        <div class="col-lg-4 col-md-6 col-sm-12 pkg-pg">
 
 <!--            <label>Property Owner:</label>-->
 <!--            <label>Name:</label><h3 th:text="${user.firstName}"></h3>-->
@@ -70,75 +70,38 @@
             <br>
             <div th:each="package : ${listOfPackage}">
             <div class="card" style="width: 100%;">
-                <img class="card-img-tops" src="../../static/img/log-cabin.jpg" th:src="@{/img/log-cabin.jpg}"  alt="Card image cap">
-                                <h4 class="card-text list-group-item" th:text="${package.description}"></h4>
-                                <h4 class="list-group-item" th:if="${package.guided == true}">
-                                    <label>Guided:&nbsp;</label><i class="fas fa-users"></i>
-                                </h4>
-                                <h4 class="list-group-item" th:if="${package.lodging == true}">
-                                    <label>Lodging:</label><i class="fas fa-campground"></i>
-                                </h4>
-                                <div class="list-group-item">
-                                    <div class="row">
-                                    <h4>&nbsp;&nbsp;Number of Days:&nbsp;</h4>
-                                <h4 th:text="${package.duration }"></h4>
-                                    </div>
-                                </div>
-                                <div class="list-group-item">
-                                    <div class="row">
-<!--                                        <p><i class="fas fa-dollar-sign"></i></p>-->
-                                        <h4>&nbsp;&nbsp;Price: $</h4>
-                                <h4 th:text="${package.price}"></h4>
-                                    </div>
+                <img class="card-img-tops-again" src="../../static/img/log-cabin.jpg" th:src="@{/img/log-cabin.jpg}"  alt="Card image cap">
+                        <h4 class="card-text list-group-item" th:text="${package.description}"></h4>
+                        <h4 class="list-group-item" th:if="${package.guided == true}">
+                            <label>Guided:&nbsp;</label><i class="fas fa-users"></i>
+                        </h4>
+                        <h4 class="list-group-item" th:if="${package.lodging == true}">
+                            <label>Lodging:</label><i class="fas fa-campground"></i>
+                        </h4>
+                        <div class="list-group-item">
+                            <div class="row">
+                            <h4>&nbsp;&nbsp;Number of Days:&nbsp;</h4>
+                        <h4 th:text="${package.duration }"></h4>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="row">
+    <!--                                        <p><i class="fas fa-dollar-sign"></i></p>-->
+                                <h4>&nbsp;&nbsp;Price: $</h4>
+                        <h4 th:text="${package.price}"></h4>
+                            </div>
                 <div class="card-body">
                     <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">
                         <button class="custom-button package-b " type="submit">Book</button>
                     </form>
                 </div>
             </div>
-
-
-<!--            ORIGINAL PACKAGE CARD-->
-<!--            add container to put two cards per row-->
-
-<!--            <div class="card booking-cards">-->
-<!--            <div class="list-group-item" th:each="package : ${listOfPackage}">-->
-<!--                <h3 class="list-group-item" th:text="${package.description}"></h3>-->
-<!--                <h3 class="list-group-item" th:if="${package.guided == true}">-->
-<!--                    <i class="fas fa-users"></i>-->
-<!--                    <label>Guided</label>-->
-<!--                </h3>-->
-<!--                <h3 class="list-group-item" th:if="${package.lodging == true}">-->
-<!--                    <i class="fas fa-campground"></i>-->
-<!--                    <label>Lodging</label>-->
-<!--                </h3>-->
-<!--                <div class="list-group-item">-->
-<!--                        <label>Days:</label>-->
-<!--                <h3 th:text="${package.duration }"></h3>-->
-<!--                </div>-->
-<!--                <div class="list-group-item">-->
-<!--                    <div class="row">-->
-<!--                        <p><i class="fas fa-dollar-sign"></i></p>-->
-<!--                <h3 th:text="${package.price}"></h3>-->
-<!--                    </div>-->
-<!--                        <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">-->
-<!--                        <button class="btn-primary d-flex justify-content-end" type="submit">Book</button>-->
-<!--                    </form>-->
-<!--            </div>-->
-
-<!--            </div>-->
-<!--            </div>-->
-
-
-<!--                <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">-->
-<!--                    <button class="btn-primary" type="submit">Book</button>-->
-<!--                </form>-->
             </div>
                 <br>
             </div>
         </div>
     <!-- REVIEWS SECTION-->
-        <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="col-lg-8 col-md-6 col-sm-12">
             <h2>Reviews:</h2>
 
             <form class="flex-content-end" th:action="@{/reviews/{id}/create(id = ${listing.id})}" method="GET">
@@ -147,8 +110,7 @@
             <br>
             <!--   REVIEW CARDS FROM LOGGED-IN USERS-->
                 <div class="listing-pg" th:each="review : ${reviews}">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-tops" src="../../static/img/buck-img.jpg" th:src="@{/img/buck-img.jpg}"  alt="Card image cap">
+                    <div class="card">
                         <div class="card-body">
                             <div class="row">
                         <img class="show-img reviewer-pic" src="../../static/img/user_profile_img.jpg" th:src="${review.user.img_user}"/>

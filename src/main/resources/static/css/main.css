@@ -864,7 +864,7 @@ img {
     }
 /*profile image in show page*/
 .show-img {
-    width: 15%;
+    width: 10%;
     border-radius: 50%;
     margin: 10px;
     /*box-shadow: 5px 5px gray;*/
@@ -1069,9 +1069,11 @@ img {
     .pkg-pg {
         position: relative;
         width: 100%;
-        padding-right: 100px;
-        padding-left: 100px;
         margin-left: inherit;
+    }
+
+    .listing-pg{
+        width: 100%;
     }
 
 
@@ -1121,6 +1123,10 @@ img {
 /*    float: none;*/
 /*}*/
 
+.card-img-tops-again{
+    border-radius: 5% 5% 0 0;
+    width: 100%;
+}
 
 
 
