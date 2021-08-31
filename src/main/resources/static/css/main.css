@@ -30,8 +30,8 @@ img {
     border-radius: 50px;
 }
 .img-listing {
-    width: 375px;
-    height: 340px;
+    width: 400px;
+    height: 300px;
     margin: 5px;
 
     border: solid 1px #555;
@@ -43,8 +43,23 @@ img {
     transition: transform .3s; /* Animation */
 }
 
+
 .img-listing:hover {
     transform: scale(1.1); /* (150% zoom)*/
+}
+
+.img-listing-profile {
+    width: 550px;
+    height: 400px;
+    margin: 5px;
+
+    border: solid 1px #555;
+    background-color: #eed;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    transition: transform .3s; /* Animation */
 }
 
 .img-listing-profile{
@@ -530,7 +545,7 @@ img {
 
 
     #listing-page {
-        margin: 0 .5rem;
+        margin: 3%;
         position: relative;
     }
 
@@ -545,7 +560,6 @@ img {
         top: 17px;
         right: 20px;
         text-shadow: 2px 2px black;
-
     }
 
     .second-txt {
@@ -872,10 +886,10 @@ img {
 
     /*profile image*/
     .user-img {
-        border-radius: 70%;
+        width: 90%;
+        border-radius: 50%;
         /*box-shadow: 5px 5px gray;*/
-        height: 200px;
-        width: 200px;
+
         border: solid 1px #555;
         background-color: #eed;
         box-shadow:  0 0 10px  rgba(0,0,0,0.6);
@@ -1003,35 +1017,8 @@ img {
     }
 
     .creator-trio {
-        /*margin-left: 40px;*/
-        margin-left: 35px;
+        margin-left: 40px;
     }
-
-
-/*@media only screen and (max-width: 576px) {*/
-/*    .creator-trio {*/
-/*        margin-left: 100px;*/
-/*    }*/
-
-/*    .creators {*/
-/*        margin-left: 60px;*/
-/*    }*/
-/*}*/
-
-/*@media only screen and (max-width: 1079px) {*/
-/*    .creator-trio {*/
-/*        margin-left: 100px;*/
-/*    }*/
-
-/*    .creators {*/
-/*        margin-left: 50px;*/
-/*    }*/
-/*}*/
-
-
-
-
-
 
     .welcome {
         margin-right: -3%;
@@ -1311,14 +1298,4 @@ img {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-}
-
-.book-btn{
-    width: 100%;
-    padding: 10px 15px;
-    border: none;
-    margin-top: 20px;
-    border-radius: 5px;
-    background-color: #037171;
-    color: #fff;
 }
