@@ -32,7 +32,15 @@ img {
 .img-listing{
     width: 600px;
     height: 400px;
+    padding:5px;
+    margin:5px;
 }
+
+.img-listing-profile{
+    width:550px;
+    height:400px;
+}
+
 .img-carousel{
     height: 400px;
     width: 200px;

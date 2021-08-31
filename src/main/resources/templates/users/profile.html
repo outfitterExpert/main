@@ -27,14 +27,14 @@
                 <!--            <div class="row" style="padding-left: 15px">-->
                 <img class="user-img" src="../../static/img/user_profile_img.jpg" th:src="${user.img_user}"/>
                 <p th:if="${user.outfitter == true}">
-                <img class="outfitter"
-                     src="https://see.fontimg.com/api/renderfont4/lVYZ/eyJyIjoiZnMiLCJoIjoyNzIsInciOjIwMDAsImZzIjoxMzYsImZnYyI6IiMwNjUzNDkiLCJiZ2MiOiIjRkZGRkZGIn0/b3V0Zml0dGVy/impact-label.png"
-                     alt="Label Maker fonts">
-            </p>
+                    <img class="outfitter"
+                         src="https://see.fontimg.com/api/renderfont4/lVYZ/eyJyIjoiZnMiLCJoIjoyNzIsInciOjIwMDAsImZzIjoxMzYsImZnYyI6IiMwNjUzNDkiLCJiZ2MiOiIjRkZGRkZGIn0/b3V0Zml0dGVy/impact-label.png"
+                         alt="Label Maker fonts">
+                </p>
                 <p th:if="${user.outfitter == false}">
                     <img class="outfitter"
-                        src="https://see.fontimg.com/api/renderfont4/lVYZ/eyJyIjoiZnMiLCJoIjoyNzIsInciOjIwMDAsImZzIjoxMzYsImZnYyI6IiMwNjUzNDkiLCJiZ2MiOiIjRkZGRkZGIn0/b3V0ZG9vcnNtYW4/impact-label.png"
-                        alt="Label Maker fonts">
+                         src="https://see.fontimg.com/api/renderfont4/lVYZ/eyJyIjoiZnMiLCJoIjoyNzIsInciOjIwMDAsImZzIjoxMzYsImZnYyI6IiMwNjUzNDkiLCJiZ2MiOiIjRkZGRkZGIn0/b3V0ZG9vcnNtYW4/impact-label.png"
+                         alt="Label Maker fonts">
                 </p>
                 <br>
 
@@ -73,36 +73,40 @@
             <br>
             <h2>My Listings:</h2>
             <br>
-            <div style="margin-bottom:50px; margin-top:16px; width:auto; height:43em; overflow: auto; overflow-y: scroll">
-                <div class="testimonial-group">
-                    <div class="row text-center">
-                        <div class="card" th:each="listing : ${listings}">
-                            <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET">
-                                <button type="submit" class="benjamin-button">
-                                    <img class="img-listing" th:src="${listing.imgUrl}"/>
-                                </button>
-                            </form>
-                            <h3 th:text="${listing.location}"></h3>
-                            <h3 th:text="${listing.title}"></h3>
-                            <div th:if="${isUserAccount}">
-                                <!--                <div th:if="${isUserAccount}">-->
-                                <div class="row">
-                                    <form th:action="@{/listings/{id}/package/create (id = ${listing.id})}"
-                                          method="GET">
-                                        <button class="custom-button profile-b">Create a Package</button>
-                                    </form>
-                                    <!--                </div>-->
-                                    <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">
-                                        <button class="custom-button-edit profile-b" type="submit">Edit Listing</button>
-                                    </form>
-                                    <form th:action="@{/listings/{id}/delete(id = ${listing.id})}" method="post">
-                                        <button class="custom-button-del profile-b">Delete Listing</button>
-                                    </form>
-                                    <!--                <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">-->
-                                    <!--                    <button class="custom-button profile-b" type="submit">Edit Listing</button>-->
-                                    <!--                </form>-->
+
+            <div class="testimonial-group">
+                <div class="row d-fex justify-content-center">
+                    <div style="margin-bottom:50px; margin-top:16px; width:auto; height:43em; overflow-y: scroll">
+                        <div th:each="listing : ${listings}">
+                            <div class="card" style="padding-right: 7px; padding-left: 7px">
+                                <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET">
+                                    <button type="submit" class="benjamin-button">
+                                        <img class="img-listing-profile" th:src="${listing.imgUrl}"/>
+                                    </button>
+                                </form>
+                                <h3 th:text="${listing.location}"></h3>
+                                <h3 th:text="${listing.title}"></h3>
+                                <div th:if="${isUserAccount}">
+                                    <!--                <div th:if="${isUserAccount}">-->
+                                    <div class="row text-center">
+                                        <form th:action="@{/listings/{id}/package/create (id = ${listing.id})}"
+                                              method="GET">
+                                            <button class="custom-button profile-b">Create a Package</button>
+                                        </form>
+                                        <!--                </div>-->
+                                        <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">
+                                            <button class="custom-button-edit profile-b" type="submit">Edit Listing
+                                            </button>
+                                        </form>
+                                        <form th:action="@{/listings/{id}/delete(id = ${listing.id})}"
+                                              method="post">
+                                            <button class="custom-button-del profile-b">Delete Listing</button>
+                                        </form>
+                                        <!--                <form th:action="@{/listings/{id}/edit(id = ${listing.id})}" method="GET">-->
+                                        <!--                    <button class="custom-button profile-b" type="submit">Edit Listing</button>-->
+                                        <!--                </form>-->
+                                    </div>
                                 </div>
-                                <br>
                             </div>
                         </div>
                     </div>
@@ -111,8 +115,6 @@
         </div>
     </div>
 </div>
-
-
 <h2 style="margin-left: 160px;">My Bookings:</h2>
 <br>
 <div class="testimonial-group" style="margin-left: 150px; margin-right: 150px">
