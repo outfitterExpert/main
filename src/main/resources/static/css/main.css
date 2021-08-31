@@ -510,7 +510,7 @@ img {
 
 
     #listing-page {
-        margin: 3%;
+        margin: 0 .5rem;
         position: relative;
     }
 
@@ -524,6 +524,7 @@ img {
         font-size: 35px;
         top: 17px;
         right: 20px;
+        text-shadow: #037171;
     }
 
     .second-txt {
@@ -850,10 +851,10 @@ img {
 
     /*profile image*/
     .user-img {
-        width: 90%;
-        border-radius: 50%;
+        border-radius: 70%;
         /*box-shadow: 5px 5px gray;*/
-
+        height: 200px;
+        width: 200px;
         border: solid 1px #555;
         background-color: #eed;
         box-shadow:  0 0 10px  rgba(0,0,0,0.6);
