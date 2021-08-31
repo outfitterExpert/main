@@ -990,8 +990,35 @@ img {
     }
 
     .creator-trio {
-        margin-left: 40px;
+        /*margin-left: 40px;*/
+        margin-left: 35px;
     }
+
+
+/*@media only screen and (max-width: 576px) {*/
+/*    .creator-trio {*/
+/*        margin-left: 100px;*/
+/*    }*/
+
+/*    .creators {*/
+/*        margin-left: 60px;*/
+/*    }*/
+/*}*/
+
+/*@media only screen and (max-width: 1079px) {*/
+/*    .creator-trio {*/
+/*        margin-left: 100px;*/
+/*    }*/
+
+/*    .creators {*/
+/*        margin-left: 50px;*/
+/*    }*/
+/*}*/
+
+
+
+
+
 
     .welcome {
         margin-right: -3%;
