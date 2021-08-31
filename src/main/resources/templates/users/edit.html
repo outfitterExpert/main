@@ -46,9 +46,11 @@
                 <label for="bio">Bio:</label>
                 <input id="bio" th:value="*{bio}" type="text" th:field="*{bio}" />
 
-                <div class="form-check form-switch">
-                    <input class="form-check-input" value="" name="outfitter" th:field="*{outfitter}" type="checkbox" id="outfitter" />
-                    <label class="form-check-label" for="outfitter" >Outfitter?</label>
+                <div class="form-switch">
+                    <div class="custom-control custom-switch">
+                        <input class="custom-control-input" th:field="*{outfitter}" name="outfitter" type="checkbox" id="outfitter">
+                        <label class="custom-control-label" for="outfitter">Outfitter</label>
+                    </div>
                 </div>
 
                 <input type="hidden" th:value="${user.password}" th:field="*{password}">

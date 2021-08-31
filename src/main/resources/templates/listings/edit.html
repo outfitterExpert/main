@@ -35,18 +35,20 @@
         <label for="listing-animals">Animals:</label>
         <input id="listing-animals" th:value="${animal_list}" name="user-animal-list" type="text" placeholder="Ex: White-tailed Deer, Bighorn Sheep, Fox" />
         <br/>
-        <div class="form-check form-switch">
-            <input class="form-check-input" th:value="*{guided}" name="guided" type="checkbox" id="listing-guided" th:field="*{guided}">
-            <label class="form-check-label" for="listing-guided">
-                Guided
-            </label>
+    <div class="form-switch">
+        <div class="custom-control custom-switch">
+            <input class="custom-control-input" th:value="*{guided}" name="guided" type="checkbox" id="listing-guided" th:field="*{guided}">
+            <label class="custom-control-label" for="listing-guided">Guided</label>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" th:value="*{lodging}" name="lodging" type="checkbox" id="listing-lodging" th:field="*{lodging}">
-            <label class="form-check-label" for="listing-lodging">
+    </div>
+    <div class="custom-control custom-switch">
+        <div>
+            <input class="custom-control-input" th:value="*{lodging}" name="lodging" type="checkbox" id="listing-lodging" th:field="*{lodging}">
+            <label class="custom-control-label" for="listing-lodging">
                 Lodging
             </label>
         </div>
+    </div>
         <br/>
     <label for="listing-method">Method of hunting</label>
         <select id="listing-method" class="form-select" aria-label="Default select example" value="" name="method" th:field="*{method}" >

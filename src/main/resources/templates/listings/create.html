@@ -36,17 +36,19 @@
         <label for="listing-animals">Animals:</label><p th:if="${#fields.hasErrors('animals')}" th:errors="*{animals}"></p>
         <input id="listing-animals" th:value="*{animals}" name="user-animal-list" type="text" placeholder="Ex: White-tailed Deer, Bighorn Sheep, Fox" />
         <br/>
-        <div class="form-check form-switch">
-            <input class="form-check-input" th:value="*{guided}" name="guided" type="checkbox" id="listing-guided" th:field="*{guided}">
-            <label class="form-check-label" for="listing-guided">
-                Guided
-            </label>
+        <div class="form-switch">
+            <div class="custom-control custom-switch">
+                <input class="custom-control-input" th:value="*{guided}" name="guided" type="checkbox" id="listing-guided" th:field="*{guided}">
+                <label class="custom-control-label" for="listing-guided">Guided</label>
+            </div>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" th:value="*{lodging}" name="lodging" type="checkbox" id="listing-lodging" th:field="*{lodging}">
-            <label class="form-check-label" for="listing-lodging">
-                Lodging
-            </label>
+        <div class="custom-control custom-switch">
+            <div>
+                <input class="custom-control-input" th:value="*{lodging}" name="lodging" type="checkbox" id="listing-lodging" th:field="*{lodging}">
+                <label class="custom-control-label" for="listing-lodging">
+                    Lodging
+                </label>
+            </div>
         </div>
         <br/>
     <label for="listing-method">Method of hunting</label><p th:if="${#fields.hasErrors('method')}" th:errors="*{method}"></p>
