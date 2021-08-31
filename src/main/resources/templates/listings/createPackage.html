@@ -13,11 +13,12 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 card-body">
-<form class="form-section" th:action="@{/listings/{id}/package/create (id=${listing_id})}" method="POST" th:object="${listPackage}">
+        <h1 style="margin-left: 50px">Create a package for your listing</h1>
+<form class="form-section" style="padding-top: 0" th:action="@{/listings/{id}/package/create (id=${listing_id})}" method="POST" th:object="${listPackage}">
         <label for="price">Price</label>
         <input id="price" th:field="*{price}" />
 
-        <label for="duration">Duration</label>
+        <label for="duration">Duration: Number of Days</label>
         <input id="duration" th:field="*{duration}" />
 
         <label for="description">Description</label>
@@ -38,7 +39,7 @@
         </div>
     </div>
     <div class="date">
-        <label>Expiration date</label>
+        <label>Package Expiration date</label>
         <input type="date" name="date_exp">
         <input class="custom-button" type="submit" value="Create">
     </div>

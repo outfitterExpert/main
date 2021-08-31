@@ -15,13 +15,6 @@
 <!--    <img class="logo" src="../../static/img/oeLogo.png" th:src="@{img/oeLogo.png}" />-->
 <form action="/profile/create" class="form-section-signup" th:action="@{/sign-up (id=${user.id})}" method="post" th:object="${user}">
     <input type="hidden" th:value="${FILE_STACK_ACCESS_TOKEN}" class="fileToken"/>
-    <label for="fileupload">Upload a User Photo </label>
-    <input style="margin-left: 5px;" th:field="*{img_user}" value="" type="hidden" id="fileupload">
-
-    <button id="picker" class="custom-button" type="button">Pick file</button>
-    <br/>
-    <label style="font-weight: bold" id="nameBox"></label>
-    <br>
 
     <label for="username">Username</label>
     <input id="username" name="username" type="text" class="validate" th:value="*{username}" th:field="*{username}" />
@@ -30,6 +23,16 @@
     <label for="email">Email</label>
     <input id="email" th:value="*{email}" th:field="*{email}" />
     <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+
+<!--    Upload user profile picture     -->
+    <label for="fileupload">Upload a profile picture</label>
+    <input style="margin-left: 5px;" th:field="*{img_user}" value="" type="hidden" id="fileupload">
+
+    <button id="picker" class="custom-button" style="padding: 5px 10px" type="button">Browse</button>
+    <br/>
+    <label style="font-weight: bold" id="nameBox"></label>
+    <br>
+<!--    End of photo upload     -->
 
     <label for="first_name">First Name:</label>
     <input id="first_name" th:value="*{firstName}" type="text" th:field="*{firstName}" />
