@@ -2,6 +2,7 @@ package com.outfitterexpert.outfitterexpert.models;
 
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,6 +17,7 @@ public class ListingPackage {
     private long id;
 
     @Column(nullable = false)
+    @NumberFormat(style = NumberFormat.Style.CURRENCY)
     private double price;
 
     @Column(nullable = false)
