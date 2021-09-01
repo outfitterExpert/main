@@ -101,15 +101,19 @@
                             </div>
 
             </div>
+
             </div>
+
+                <br>
                 <br>
             </div>
+            <br>
         </div>
     <!-- REVIEWS SECTION-->
         <div class="col-lg-8 col-md-6 col-sm-12">
             <h2>Reviews:</h2>
 
-            <form class="flex-content-end" th:action="@{/reviews/{id}/create(id = ${listing.id})}" method="GET">
+            <form class="flex-content-end review-div" th:action="@{/reviews/{id}/create(id = ${listing.id})}" method="GET">
                 <button class="custom-button review-btn">Write Review</button>
             </form>
             <br>
@@ -135,7 +139,10 @@
         </div>
             <br>
         </div>
+            <br>
             </div>
+
+
 
         </div>
     </div>
