@@ -902,7 +902,11 @@ img {
     }
 /*profile image in show page*/
 .show-img {
-    width: 10%;
+    width: 50px;
+    height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+
     border-radius: 50%;
     margin: 10px;
     /*box-shadow: 5px 5px gray;*/
@@ -1019,7 +1023,42 @@ img {
 
     .creator-trio {
         margin-left: 40px;
+
+        /*margin-left: 35px;*/
     }
+
+
+@media only screen and (max-width: 738px) {
+    .creator-trio {
+        margin-left: 140px;
+    }
+
+    .creators {
+        margin-left: 110px;
+
+    }
+}
+
+/*@media only screen and (max-width: 1100px) {*/
+/*    .creator-trio {*/
+/*        margin-left: 80px;*/
+/*    }*/
+
+/*    .creators {*/
+/*        margin-left: 30px;*/
+/*    }*/
+/*}*/
+
+/*@media only screen and (max-width: 1165px) {*/
+/*    .creator-trio {*/
+/*        margin-left: 35px;*/
+/*    }*/
+
+/*    .creators {*/
+/*        margin-left: 20px;*/
+/*    }*/
+/*}*/
+
 
     .welcome {
         margin-right: -3%;
@@ -1293,10 +1332,20 @@ img {
 
 }
 
+.book-btn{
+    border: none;
+    /* margin-top: 40px; */
+    width: 100%;
+    border-radius: 5px;
+    background-color: #037171;
+    color: #fff;
+    /* margin-bottom: 1rem; */
+}
+
 .center-img-again {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
+position: absolute;
+top: 60%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 2;
 }
