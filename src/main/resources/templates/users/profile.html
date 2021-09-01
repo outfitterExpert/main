@@ -25,7 +25,9 @@
             <br>
             <div class="card" style="width: auto; height: auto; padding:15px; margin:15px">
                 <!--            <div class="row" style="padding-left: 15px">-->
-                <img class="user-img" src="../../static/img/user_profile_img.jpg" th:src="${user.img_user}"/>
+                <div style="margin-left: 10%">
+                    <img class="user-img" src="../../static/img/user_profile_img.jpg" th:src="${user.img_user}"/>
+                </div>
 
                 <p style="margin-left: calc(50% - 75px);" th:if="${user.outfitter == true}">
                 <img class="outfitter"
