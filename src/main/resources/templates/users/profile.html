@@ -73,6 +73,7 @@
                         </div>
                     </div>
 
+<!--LISTINGS -->
                         <div class="col-8">
                             <br>
                             <h2 class="d-flex justify-content-center">My Listings</h2>
@@ -81,10 +82,10 @@
                                 <div style="margin-bottom:50px; margin-top:16px; width:max-content; height:43em; overflow-y: scroll; max-width:100%; overflow-x: hidden;">
                                     <div class="d-flex justify-content-center" th:each="listing : ${listings}">
                                         <div class="card"
-                                             style="padding-right: 7px; padding-left: 10px; padding-bottom:7px; margin-bottom:7px">
+                                             style="padding-bottom:7px; margin-bottom:10px">
                                             <form th:action="@{/listings/{id}(id = ${listing.id})}" method="GET">
                                                 <button type="submit" class="benjamin-button">
-                                                    <img class="img-listing-profile" th:src="${listing.imgUrl}"/>
+                                                    <img class="img-listing-profile" style="border-radius: 20px 20px 0 0" th:src="${listing.imgUrl}"/>
                                                 </button>
                                             </form>
                                             <h3 th:text="${listing.title}"></h3>
@@ -121,17 +122,16 @@
                         </div>
                     </div>
                 </div>
+<!--BOOKINGS-->
 <h2 class="d-flex justify-content-center">My Bookings</h2>
 
 <div class="testimonial-group" style="margin-left: 150px; margin-right: 150px">
     <div class="column">
-        <div class="card text-wrap" style="width: 25%; height: auto; padding:15px; margin:15px"
+        <div class="card text-wrap" style="width: 25%; height: auto; margin:15px"
              th:each="booking : ${bookings}">
-            <div class="card-body" style="width: 100%; padding:0">
-
-                <img class="book-img" src="../../static/img/user_profile_img.jpg"
-                     th:src="${booking.package.property.imgUrl}"/>
-                <br>
+            <img style="border-radius: 20px 20px 0 0" class="book-img" src="../../static/img/user_profile_img.jpg"
+                 th:src="${booking.package.property.imgUrl}"/>
+            <div class="card-body" style="width: 100%; padding:15px">
                 <label>Package</label>
                 <h5 class="card-text" th:text="${booking.package.property.title}"></h5>
                 <label>Location:</label>

@@ -49,15 +49,15 @@ img {
 }
 
 .img-listing-profile {
-    width: 550px;
+    width: 589px;
     height: 400px;
-    margin: 5px;
+    /*margin: 5px;*/
 
-    border: solid 1px #555;
+    /*border: solid 1px #555;*/
     background-color: #eed;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);*/
     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    /*-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);*/
     -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     transition: transform .3s; /* Animation */
 }
@@ -536,10 +536,11 @@ img {
 
     .benjamin-button {
         border: none;
-        margin-top: 40px;
+        /*margin-top: 40px;*/
         border-radius: 20px;
         background-color: #ffffff;
         color: white;
+        padding: 0;
     }
     .naysa-button {
         border: none;
