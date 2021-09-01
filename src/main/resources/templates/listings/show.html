@@ -90,17 +90,20 @@
                         </div>
                         <div class="list-group-item">
                             <div class="column">
-                                <div class="row">
+                                <div class="row" style="margin: 0">
                                     <!--                                        <p><i class="fas fa-dollar-sign"></i></p>-->
                                     <h4>Price: </h4>
                                     <h4 th:text="${#numbers.formatCurrency(package.price)}"></h4>
                                 </div>
-                                <form th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">
-                                    <button class="book-btn" type="submit">Book</button>
-                                </form>
                             </div>
-
-            </div>
+                     </div>
+                <div class="list-group-item">
+                    <div class="row">
+                        <form class="w-100" th:action="@{/listing/package/{id}/book (id=${package.id})}" method="get">
+                            <button class="book-btn w-100" type="submit">Book</button>
+                        </form>
+                    </div>
+                </div>
 
             </div>
 
