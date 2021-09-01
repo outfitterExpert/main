@@ -77,10 +77,10 @@
                 <img class="card-img-tops-again" src="../../static/img/log-cabin.jpg" th:src="@{/img/log-cabin.jpg}"  alt="Card image cap">
                         <h4 class="card-text list-group-item" th:text="${package.description}"></h4>
                         <h4 class="list-group-item" th:if="${package.guided == true}">
-                            <label>Guided:&nbsp;</label><i class="fas fa-users"></i>
+                            <i style="font-weight: bold; margin-right: 5px;" class ="fas fa-users"></i><label> Guided</label>
                         </h4>
                         <h4 class="list-group-item" th:if="${package.lodging == true}">
-                            <label>Lodging:</label><i class="fas fa-campground"></i>
+                            <i style="font-weight: bold; margin-right: 5px;" class="fas fa-campground"></i><label> Lodging</label>
                         </h4>
                         <div class="list-group-item">
                             <div class="row">

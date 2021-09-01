@@ -16,11 +16,12 @@
         <div class="card" style="border-radius: 1em">
             <div class="card-body row justify-content-between" style="margin: 0 25px">
                 <div class="row">
+                    <h5 style="font-weight: bold; margin-right: 5px;">Days: </h5>
                     <h5 th:text="${package.duration}"></h5>
-                    <h5>: Days</h5>
+
                 </div>
                 <div style="padding-left: 60px" class="row">
-                    <h5>Price: </h5><h5 th:text="${#numbers.formatCurrency(package.price)}"></h5>
+                    <h5 style="font-weight: bold; margin-right: 5px;">Price: </h5><h5 th:text="${#numbers.formatCurrency(package.price)}"></h5>
                 </div>
 
             </div>
@@ -42,12 +43,13 @@
         <!--Property listing-->
         <div class="card w-100" style="border-radius: 1em">
             <div class="card-body">
-                <h5 class="card-title" th:text="${property.title}"></h5>
+                <h5 style="font-weight: bolder" th:text="${property.title}"></h5>
                 <div class="row">
-                    <p class="list-group-item" th:if="${package.guided == true}">
-                        <label>Guided:&nbsp;</label><i class="fas fa-users"></i>
+                    <p class="list-group-item" style="border: none;" th:if="${package.guided == true}">
+                        <i class="fas fa-users"></i>
+                        <label>Guided</label>
                     </p>
-                    <p class="list-group-item" th:if="${package.lodging == true}">
+                    <p class="list-group-item" style="border: none;" th:if="${package.lodging == true}">
                         <i class="fas fa-campground"></i>
                         <label>Lodging</label>
                     </p>
