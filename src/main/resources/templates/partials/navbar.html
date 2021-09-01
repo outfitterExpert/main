@@ -5,6 +5,17 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
     <title>Outfitter Expert</title>
+    <style>
+        @media screen and (max-width: 1280px){
+        i{
+            display: none;
+            }
+            .search-container{
+                display: flex;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
 <script src="https://kit.fontawesome.com/968ac4e7b1.js" crossorigin="anonymous"></script>
@@ -19,15 +30,15 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!--==========SEARCHBAR============-->
-        <div class="search-container">
-            <form th:action="@{/search}" method="post" class="form-inline" id="special">
-                <input class="form-control" name="location" type="text" placeholder="Location" aria-label="Search">
-                <input class="form-control" name="animals" type="text" placeholder="Animal" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+        <div class=" d-flex row-1 my-2 search-container">
+            <form th:action="@{/search}" method="post" class="form-row align-items-center" id="special" style="flex-wrap: nowrap">
+                <input class="form-control col-5" name="location" type="text" placeholder="Location" aria-label="Search">
+                <input class="form-control col-5" name="animals" type="text" placeholder="Animal" aria-label="Search">
+                <button class=" m-1 btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
             </form>
         </div>
         <!--================================SOCIAL MEDIA ICONS==================================-->
-        <form class="d-flex row-1 my-2">
+        <form class="d-flex row my-2">
             <a class="navbar-icon" href="https://www.facebook.com/OutfitterExpert-101138728768176/"><i class="fab fa-facebook-square"></i></a>
             <a class="navbar-icon" href="https://www.instagram.com/_outfitterexpert_/?igshid=7ltyhidmj6hd"><i class="fab fa-instagram"></i></a>
             <a class="navbar-icon" href="https://www.linkedin.com/company/outfitter-expert"><i class="fab fa-linkedin"></i></a>
