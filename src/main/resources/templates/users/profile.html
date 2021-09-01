@@ -138,10 +138,9 @@
                 <h5 class="card-text" th:text="${booking.package.property.title}"></h5>
                 <label>Location:</label>
                 <h5 class="card-text" th:text="${booking.package.property.location}"></h5>
-                <label>Start Date:</label>
-                <h5 class="card-text" th:text="${booking.date_start}"></h5>
-                <label>End Date:</label>
-                <h5 class="card-text" th:text="${booking.date_end}"></h5>
+                <hr>
+                <p>Start Date: <span th:text="${#dates.format(booking.date_start, 'MMM-dd-yyyy')}"/>
+                <p>End Date: <span th:text="${#dates.format(booking.date_end, 'MMM-dd-yyyy')}"/>
 
             </div>
         </div>
