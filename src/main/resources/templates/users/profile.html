@@ -18,6 +18,33 @@
 <script th:replace="partials/scripts :: scripts"></script>
 <br>
 
+<div class="container">
+    <div class="row">
+        <div class="col-4" style="padding-left: 15px">
+            <br>
+            <h2 class="d-flex justify-content-center">Profile</h2>
+            <br>
+            <div class="card" style="width: auto; height: auto; padding:15px; margin:15px">
+                <!--            <div class="row" style="padding-left: 15px">-->
+                <div style="margin-left: 10%">
+                    <img class="user-img" src="../../static/img/user_profile_img.jpg" th:src="${user.img_user}"/>
+                </div>
+
+                <p style="margin-left: calc(50% - 75px);" th:if="${user.outfitter == true}">
+                <img class="outfitter"
+                     src="https://see.fontimg.com/api/renderfont4/lVYZ/eyJyIjoiZnMiLCJoIjoyNzIsInciOjIwMDAsImZzIjoxMzYsImZnYyI6IiMwNjUzNDkiLCJiZ2MiOiIjRkZGRkZGIn0/b3V0Zml0dGVy/impact-label.png"
+                     alt="Label Maker fonts">
+            </p>
+
+                <p th:if="${user.outfitter == false}">
+                    <img class="outfitter"
+                         src="https://see.fontimg.com/api/renderfont4/lVYZ/eyJyIjoiZnMiLCJoIjoyNzIsInciOjIwMDAsImZzIjoxMzYsImZnYyI6IiMwNjUzNDkiLCJiZ2MiOiIjRkZGRkZGIn0/b3V0ZG9vcnNtYW4/impact-label.png"
+                         alt="Label Maker fonts">
+                </p>
+                <br>
+
+
+
 <div class="big-contain">
     <div class="container">
         <div class="row">
