@@ -21,7 +21,11 @@
         </div>
         <div class="col-5">
             <div class="d-flex justify-content-end">
-                <img class="show-img" src="../../static/img/user_profile_img.jpg" th:src="${listing.user.img_user}"/>
+                <form th:action="@{/profile/{id}(id = ${listing.user.id})}" method="GET">
+                <button type="submit" style="border: none; background-color: transparent">
+                    <img style="margin: 0" class="show-img" src="../../static/img/user_profile_img.jpg" th:src="${listing.user.img_user}"/>
+                </button>
+                </form>
                 <h3 class="owner-name" th:text="${listing.user.username}"></h3>
     <!--        <div th:if="${isPropertyOwner}">-->
     <!--            <form th:action="@{/listings/{id}/package/create (id = ${listing.id})}" method="GET">-->
@@ -114,9 +118,13 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                        <img class="show-img reviewer-pic" src="../../static/img/user_profile_img.jpg" th:src="${review.user.img_user}"/>
-                        <p class="card-title reviewer" th:text="${review.user.username}"></p>
-                        </div>
+                                <form th:action="@{/profile/{id}(id = ${review.user.id})}" method="GET">
+                                    <button type="submit" style="border: none; background-color: transparent">
+                                        <img class="show-img reviewer-pic" src="../../static/img/user_profile_img.jpg" th:src="${review.user.img_user}"/>
+                                    </button>
+                                </form>
+                                <p class="card-title reviewer" th:text="${review.user.username}"></p>
+                            </div>
                             <h5 class="card-title" th:text="${review.title}"></h5>
                             <p class="card-text" th:text="${review.body}"></p>
 <!--                    NEED TO FIX THIS. THIS BUTTON TAKES TO CREATING A NEW REVIEW. NOT EVERY CARD NEEDS IT, MAYBE ON TOP ONLY ONCE.-->
