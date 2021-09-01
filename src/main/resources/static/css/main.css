@@ -1151,7 +1151,10 @@ img {
 
 
 
-
+.listing-txt {
+    margin-left: 20px;
+    margin-top: 15px;
+}
 
 .list-t{
     margin: 10px;
