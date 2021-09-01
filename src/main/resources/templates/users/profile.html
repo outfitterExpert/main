@@ -61,12 +61,9 @@
                                 <!--                <h3 th:text="${user.user_location}"></h3>-->
                                 <label>Bio:</label>
                                 <h3 th:text="${user.bio}"></h3>
-                            </div>
-                            <br>
-
 
                             <div th:if="${isUserAccount}">
-                                <div class="row">
+                                <div class="row d-flex justify-content-around">
                                     <form th:action="@{/profile/edit}" method="GET">
                                         <button class="custom-button-edit profile-b" type="submit">Edit Profile</button>
                                     </form>
@@ -74,6 +71,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
 
                         <div class="col-8">
                             <br>
@@ -93,7 +91,7 @@
                                             <h3 th:text="${listing.title}"></h3>
                                             <div th:if="${isUserAccount}">
                                                 <!--                <div th:if="${isUserAccount}">-->
-                                                <div class="row text-center">
+                                                <div class="row text-center d-flex justify-content-around">
                                                     <form th:action="@{/listings/{id}/package/create (id = ${listing.id})}"
                                                           method="GET">
                                                         <button class="custom-button profile-b">Create a Package
