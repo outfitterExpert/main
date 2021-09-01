@@ -128,7 +128,7 @@
 <h2 class="d-flex justify-content-center">My Bookings</h2>
 
 <div class="testimonial-group" style="margin-left: 150px; margin-right: 150px">
-    <div class="column">
+    <div class="column" style="display: flex; align-items: flex-start;">
         <div class="card text-wrap" style="width: 25%; height: auto; margin:15px"
              th:each="booking : ${bookings}">
             <img style="border-radius: 20px 20px 0 0" class="book-img" src="../../static/img/user_profile_img.jpg"
@@ -144,6 +144,7 @@
 
             </div>
         </div>
+
     </div>
 </div>
 
