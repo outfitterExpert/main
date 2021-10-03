@@ -979,6 +979,10 @@ img {
 
     /*ABOUT US PAGE STYLING*/
     .creators {
+        padding: 40px;
+    }
+
+    .developers {
         padding: 20px;
     }
 
