@@ -19,38 +19,25 @@
                 <br>
             </div>
 
-        <div id="Kirby" class="col-lg-4 col-md-6 creator-div">
-            <a class="creator-link" href="" target="_blank">
+        <div id="Kirby" class="col-lg-4 col-md-4 creator-div">
+            <button class="show-K-Bio" style="color: rgba(255, 255, 255, 0); border: none; background-color: rgba(255, 255, 255, 0)">
                 <img class="creator-img" src="../../static/img/kirby-kissinger.jpg" th:src="@{img/kirby-kissinger.jpg}" />
-            </a>
+            </button>
             <h3 class="creators">Kirby Kissinger</h3>
-<!--            <form class="d-flex row-1 my-2 creator-trio">-->
-<!--                <a class="creator-icon" href="https://www.linkedin.com/in/austin-whitley-01/" target="_blank"><i class="fab fa-linkedin"></i></a>-->
-<!--                <a class="creator-icon" href="https://github.com/Austin-Whitley/" target="_blank"><i class="fab fa-github-square"></i></a>-->
-<!--                <a class="creator-icon" href="https://alumni.codeup.com/students/1115" target="_blank"><i class="fas fa-laptop"></i></a>-->
-<!--            </form>-->
+
         </div>
-        <div id="Matt" class="col-lg-4 col-md-6 creator-div">
-            <a class="creator-link" href="" target="_blank">
+        <div id="Matt" class="col-lg-4 col-md-4 creator-div">
+            <button class="show-M-Bio" style="color: rgba(255, 255, 255, 0); border: none; background-color: rgba(255, 255, 255, 0)">
                 <img class="creator-img" src="../../static/img/matt-ingram.jpg" th:src="@{img/matt-ingram.jpg}" />
-            </a>
+            </button>
             <h3 class="creators">Matt Ingram</h3>
-<!--            <form class="d-flex row-1 my-2 creator-trio">-->
-<!--                <a class="creator-icon" href="https://www.linkedin.com/in/austin-whitley-01/" target="_blank"><i class="fab fa-linkedin"></i></a>-->
-<!--                <a class="creator-icon" href="https://github.com/Austin-Whitley/" target="_blank"><i class="fab fa-github-square"></i></a>-->
-<!--                <a class="creator-icon" href="https://alumni.codeup.com/students/1115" target="_blank"><i class="fas fa-laptop"></i></a>-->
-<!--            </form>-->
+
         </div>
-        <div id="Colby" class="col-lg-4 col-md-6 creator-div">
-            <a class="creator-link" href="" target="_blank">
+        <div id="Colby" class="col-lg-4 col-md-4 creator-div">
+            <button class="show-C-Bio" style="color: rgba(255, 255, 255, 0); border: none; background-color: rgba(255, 255, 255, 0)">
                 <img class="creator-img" src="../../static/img/colby-kissinger.jpg" th:src="@{img/colby-kissinger.jpg}" />
-            </a>
+            </button>
             <h3 class="creators">Colby Kissinger</h3>
-<!--            <form class="d-flex row-1 my-2 creator-trio">-->
-<!--                <a class="creator-icon" href="https://www.linkedin.com/in/austin-whitley-01/" target="_blank"><i class="fab fa-linkedin"></i></a>-->
-<!--                <a class="creator-icon" href="https://github.com/Austin-Whitley/" target="_blank"><i class="fab fa-github-square"></i></a>-->
-<!--                <a class="creator-icon" href="https://alumni.codeup.com/students/1115" target="_blank"><i class="fas fa-laptop"></i></a>-->
-<!--            </form>-->
         </div>
 
             <br>
@@ -113,5 +100,71 @@
 
     </div>
 </div>
+
+<!--MODALS HERE-->
+<!--Kirby-->
+<div class="modal fade" id="KirbyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title pull-right">Kirby Kissinger, COO</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="pull-right" type="submit">Kirby has a bachelor's degree in geography with a focus in GIS and a minor in geology. She started
+                    her career as a GIS Analyst and was quickly promoted to GIS Manager of 7 counties and 32 cities.
+                    After her success as a GIS manager she was hired as a project manager at a startup app/ software
+                    company where she specializes in software implementation. Kirby Is keen to use her start up
+                    knowledge, software implementation, project management and data analytic skills to ensure
+                    OutfitterExpert thrives. In addition to Kirby’s professional skills, she grew up navigating the
+                    various Texas lakes and rivers, fueling her passion for the outdoors.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Matt-->
+<div class="modal fade" id="MattModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title pull-right">Matt Ingram, CEO</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="pull-right" type="submit">Matt began his career in the United States Army where he acquired skills of resiliency, leadership
+                    and determination. He was drawn to this profession due to his lifetime of experience engaging the
+                    outdoors in various degrees of hunting and fishing. After his military service Matt shifted his career
+                    to sales and project management at a commercial landscaping business. Matt is eager to apply his
+                    knowledge of business to business sales, risk and task management to insure OutfitterExperts
+                    success. In Matts free time he continues to train, educate and prepare for future outfitter
+                    endeavors.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Colby-->
+<div class="modal fade" id="ColbyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title pull-right" id="myModalLabel">Colby Kissinger, CMO</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="pull-right" type="submit">Colby has extensive experience in sales and marketing. He has a history of working with various
+                    startup companies to promote and build their brand. Colby specializes in creating an online
+                    presence to drive exceptional sales and brand awareness for OutfitterExpert. His communication
+                    skills and magnetic nature is the key to his successful sales history. Colby has a background
+                    of recreational travel, hunting and fishing this has built a passion for wildlife and the great
+                    outdoors!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:replace="partials/scripts :: scripts"></script>
+
 </body>
 </html>    
