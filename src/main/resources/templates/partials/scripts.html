@@ -35,6 +35,24 @@
         //     $('#myModal').modal();
         // });
 
+        $('.show-K-Bio').on('click', function (e) {
+            e.preventDefault();
+            var href = $(this).attr('href');
+            $('#KirbyModal').modal();
+        });
+
+        $('.show-M-Bio').on('click', function (e) {
+            e.preventDefault();
+            var href = $(this).attr('href');
+            $('#MattModal').modal();
+        });
+
+        $('.show-C-Bio').on('click', function (e) {
+            e.preventDefault();
+            var href = $(this).attr('href');
+            $('#ColbyModal').modal();
+        });
+
     </script>
 
 </th:block>
