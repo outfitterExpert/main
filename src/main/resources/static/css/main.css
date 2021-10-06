@@ -1012,8 +1012,8 @@ img {
     }
 
     .creator-img:hover {
-        transform: scale(1.5); /* (150% zoom)*/
-        margin-bottom: 50px;
+        transform: scale(1.1); /* (110% zoom)*/
+        /*margin-bottom: 50px;*/
     }
 
     .creator-div {
